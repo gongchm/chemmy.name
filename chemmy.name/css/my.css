@@ -1,4 +1,4 @@
-#header {
+ï»¿#header {
   padding: 20px;
   background: #ccc;
   }
@@ -19,7 +19,7 @@
   }
 body {
   text-decoration: none;
-  font-family: ËÎÌå,Songti,Verdana,Tahoma,Arial,Geogia,Sans-serif;
+  font-family: ï¿½ï¿½ï¿½ï¿½,Songti,Verdana,Tahoma,Arial,Geogia,Sans-serif;
 }
 li{
   padding: 4px;
@@ -50,4 +50,19 @@ z-index:100;
 background: #FFFFAA; 
 font: 16px "Arial", sans-serif;
 text-align: left; 
+}
+/* å“åº”å¼è®¾è®¡ */
+@media screen and (max-width: 768px) {
+  #sidebar { float: none; width: 100%; padding: 15px; text-align: center; }
+  #content { margin-left: 0; padding: 15px; }
+  #sidebar img { max-width: 120px; height: auto; }
+}
+@media screen and (max-width: 480px) {
+  #sidebar { padding: 10px; }
+  #content { padding: 10px; }
+  #sidebar img { max-width: 100px; height: auto; }
+  body { font-size: 14px; }
+  h1 { font-size: 18px; }
+  h2 { font-size: 16px; }
+  li { padding: 2px; }
 }
