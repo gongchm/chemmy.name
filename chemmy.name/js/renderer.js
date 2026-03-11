@@ -456,9 +456,12 @@ class ModularContentRenderer {
             
             // 加载主配置
             await this.loadConfig();
+            console.log('🔍 config加载完成:', this.config);
             if (!this.config) {
                 throw new Error('无法加载主配置文件');
             }
+            
+            console.log('🔍 this.config.modules:', this.config.modules);
 
             // 渲染页面头部
             this.renderHeader(this.config.header);
