@@ -61,19 +61,25 @@ class ModularContentRenderer {
     async loadModules() {
         try {
             for (const [moduleId, moduleConfig] of Object.entries(this.config.modules)) {
+                console.log(`🔍 处理模块配置: ${moduleId}`, moduleConfig);
                 if (moduleConfig.enabled) {
                     try {
+                        console.log(`🔍 加载模块文件: data/modules/${moduleConfig.file}`);
                         const response = await fetch(`data/modules/${moduleConfig.file}`);
                         if (!response.ok) {
                             throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                         }
                         const moduleData = await response.json();
-                        this.modules.set(moduleId, { ...moduleConfig, ...moduleData });
+                        console.log(`🔍 模块 ${moduleId} 原始数据:`, moduleData);
+                        const mergedData = { ...moduleConfig, ...moduleData };
+                        console.log(`🔍 模块 ${moduleId} 合并后数据:`, mergedData);
+                        this.modules.set(moduleId, mergedData);
                     } catch (error) {
                         console.error(`无法加载模块 ${moduleId}:`, error);
                         this.showError(`无法加载模块 ${moduleId}: ${error.message}`);
                     }
                 } else {
+                    console.log(`🔍 模块 ${moduleId} 已禁用，跳过`);
                 }
             }
         } catch (error) {
