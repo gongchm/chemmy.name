@@ -188,20 +188,40 @@ class ModularContentRenderer {
         
         const navLinks = document.querySelectorAll('.nav-link');
         console.log('🔥 找到的navLinks数量:', navLinks.length);
+        console.log('🔥 navLinks详情:', Array.from(navLinks).map(link => ({ text: link.textContent, module: link.getAttribute('data-module') })));
         
+        // 添加直接的点击测试
         navLinks.forEach((link, index) => {
             console.log(`🔥 navLink ${index}:`, link.textContent, '->', link.getAttribute('data-module'));
+            
+            // 添加鼠标悬停测试
+            link.addEventListener('mouseenter', () => {
+                console.log('🔥 鼠标悬停在:', link.textContent);
+            });
             
             link.addEventListener('click', (e) => {
                 console.log('🔥🔥🔥 导航链接被点击! 🔥🔥🔥');
                 console.log('🔥 点击的链接:', link.textContent);
                 console.log('🔥 目标模块:', link.getAttribute('data-module'));
+                console.log('🔥 事件对象:', e);
+                console.log('🔥 阻止默认行为前...');
                 
                 e.preventDefault();
+                e.stopPropagation();
+                
+                console.log('🔥 阻止默认行为后，调用 switchModule');
                 const moduleId = link.getAttribute('data-module');
                 console.log('🔥 调用 switchModule:', moduleId);
                 this.switchModule(moduleId);
             });
+        });
+        
+        // 添加全局点击测试
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('nav-link')) {
+                console.log('🔥🔥🔥 全局点击事件捕获到导航链接! 🔥🔥🔥');
+                console.log('🔥 点击的目标:', e.target.textContent);
+            }
         });
     }
 
