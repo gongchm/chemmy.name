@@ -425,8 +425,7 @@ class ModularContentRenderer {
         footerElement.innerHTML = `
             <div class="footer-content">
                 <div class="footer-info">
-                    <p>${updateDate}<a href="${footer.updateLink}">更新</a></p>
-                    <p>${footer.createDate}</p>
+                    <p>${footer.createDate}，${updateDate}<a href="${footer.updateLink}">更新</a></p>
                     <p><a href="${footer.cssValidator.url}"><img style="border: 0; width: 88px; height: 31px" src="${footer.cssValidator.img}" alt="${footer.cssValidator.alt}" /></a></p>
                 </div>
                 ${contactsHTML}
@@ -480,6 +479,13 @@ class ModularContentRenderer {
                     this.renderPapersModule(moduleData);
                 } else {
                     this.renderModule(this.currentModule, moduleData);
+                    // 为默认模块添加visible类
+                    setTimeout(() => {
+                        const section = document.querySelector(`#${this.currentModule}`);
+                        if (section) {
+                            section.classList.add('visible');
+                        }
+                    }, 100);
                 }
             }
             
@@ -512,7 +518,7 @@ class ModularContentRenderer {
         
         sectionHTML += '</section>';
         
-        main.innerHTML += sectionHTML;
+        main.innerHTML = sectionHTML;
     }
 
     // 渲染论文模块
@@ -531,7 +537,7 @@ class ModularContentRenderer {
         // 渲染论文列表
         if (moduleData.papers && Array.isArray(moduleData.papers)) {
             moduleData.papers.forEach((paper, index) => {
-                papersHTML += this.renderPaperItem(paper, index);
+                papersHTML += this.renderPaperItem(paper, index + 1);
             });
         }
 
