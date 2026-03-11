@@ -130,6 +130,7 @@ class ModularContentRenderer {
                     }
                     navHTML += '</div>';
                     
+                    nav.innerHTML = navHTML;
                     
                     // 在nav元素创建后设置事件
                     this.setupNavigationEvents();
@@ -151,7 +152,7 @@ class ModularContentRenderer {
         }
         navHTML += '</div>';
         
-        
+        nav.innerHTML = navHTML;
         this.setupNavigationEvents();
     }
 
