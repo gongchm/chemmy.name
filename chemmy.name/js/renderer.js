@@ -452,7 +452,7 @@ class ModularContentRenderer {
         
         console.log('final papersHTML before rendering:', papersHTML);
 
-        currentMain.innerHTML = `<section id="papers">
+        currentMain.innerHTML = `<section id="papers" class="visible">
             <div class="papers-container">
                 ${papersHTML}
             </div>
@@ -462,6 +462,7 @@ class ModularContentRenderer {
         console.log('main element exists:', !!currentMain);
         console.log('papers section exists:', !!document.querySelector('#papers'));
         console.log('papers-container exists:', !!document.querySelector('.papers-container'));
+        console.log('papers section has visible class:', !!document.querySelector('#papers.visible'));
         
         // 添加一个简单的测试元素来验证DOM操作是否工作
         setTimeout(() => {
