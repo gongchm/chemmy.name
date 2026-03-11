@@ -11,60 +11,32 @@
   },
   "modules": [
     {
-      "id": "interest",
-      "file": "interest.json",
-      "title": "方向和兴趣",
+      "id": "experience",
+      "file": "experience.json",
+      "title": "主要经历",
       "enabled": true,
       "order": 1
-    },
-    {
-      "id": "cert",
-      "file": "cert.json",
-      "title": "资格和获奖",
-      "enabled": true,
-      "order": 2
-    },
-    {
-      "id": "patents",
-      "file": "patents.json",
-      "title": "授权专利",
-      "enabled": true,
-      "order": 3
     },
     {
       "id": "papers",
       "file": "papers.json",
       "title": "主要论文",
       "enabled": true,
-      "order": 4
+      "order": 2
     },
     {
-      "id": "employment",
-      "file": "employment.json",
-      "title": "工作与教育经历",
+      "id": "awards",
+      "file": "awards.json",
+      "title": "获奖与专利",
       "enabled": true,
-      "order": 5
-    },
-    {
-      "id": "community",
-      "file": "community.json",
-      "title": "参与社团",
-      "enabled": true,
-      "order": 6
-    },
-    {
-      "id": "students",
-      "file": "students.json",
-      "title": "指导学生",
-      "enabled": false,
-      "order": 7
+      "order": 3
     },
     {
       "id": "contacts",
       "file": "contacts.json",
       "title": "联系方式",
       "enabled": true,
-      "order": 8
+      "order": 4
     }
   ],
   "footer": {
