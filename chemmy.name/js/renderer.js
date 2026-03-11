@@ -108,7 +108,9 @@ class ModularContentRenderer {
         const nav = document.querySelector('nav ul');
         if (!nav) return;
 
-        let navHTML = '';
+        let navHTML = '<li class="nav-brand">龚成明@DERI</li>';
+        navHTML += '<div class="nav-menu">';
+        
         this.modules.forEach((moduleData, moduleId) => {
             const isActive = moduleId === this.currentModule;
             const activeClass = isActive ? 'active' : '';
@@ -117,6 +119,7 @@ class ModularContentRenderer {
         if (this.config.englishLink) {
             navHTML += `<li><a href="${this.config.englishLink.url}" class="english-link">${this.config.englishLink.text}</a></li>`;
         }
+        navHTML += '</div>';
         nav.innerHTML = navHTML;
         this.setupNavigationEvents();
     }
@@ -371,9 +374,6 @@ class ModularContentRenderer {
             console.log('模块化内容渲染完成');
             console.log(`已加载 ${this.modules.size} 个模块`);
             
-            // 添加滚动监听
-            this.setupScrollListener();
-            
         } catch (error) {
             this.isLoading = false;
             console.error('渲染过程中发生错误:', error);
@@ -532,34 +532,6 @@ class ModularContentRenderer {
             return enKeywords;
         }
         return '';
-    }
-
-    // 设置滚动监听
-    setupScrollListener() {
-        const header = document.querySelector('header');
-        const headerInfo = document.querySelector('.header-info h1');
-        if (!header || !headerInfo) return;
-        
-        // 创建固定姓名元素
-        const fixedName = document.createElement('div');
-        fixedName.className = 'fixed-name';
-        fixedName.textContent = headerInfo.textContent;
-        document.body.appendChild(fixedName);
-        
-        // 监听滚动事件
-        let lastScrollTop = 0;
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            // 当头部滚出视窗时显示固定姓名
-            if (scrollTop > header.offsetTop + 50) {
-                fixedName.classList.add('visible');
-            } else {
-                fixedName.classList.remove('visible');
-            }
-            
-            lastScrollTop = scrollTop;
-        });
     }
 
     // 获取模块列表
