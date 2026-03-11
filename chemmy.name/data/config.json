@@ -41,37 +41,30 @@
     {
       "id": "employment",
       "file": "employment.json",
-      "title": "工作经历",
+      "title": "工作与教育经历",
       "enabled": true,
       "order": 5
-    },
-    {
-      "id": "education",
-      "file": "education.json",
-      "title": "教育经历",
-      "enabled": true,
-      "order": 6
     },
     {
       "id": "community",
       "file": "community.json",
       "title": "参与社团",
       "enabled": true,
-      "order": 7
+      "order": 6
     },
     {
       "id": "students",
       "file": "students.json",
       "title": "指导学生",
-      "enabled": true,
-      "order": 8
+      "enabled": false,
+      "order": 7
     },
     {
       "id": "contacts",
       "file": "contacts.json",
       "title": "联系方式",
       "enabled": true,
-      "order": 9
+      "order": 8
     }
   ],
   "footer": {
