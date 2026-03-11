@@ -349,8 +349,7 @@ class ModularContentRenderer {
     // 渲染单个论文项
     renderPaperItem(paper, index) {
         const authorsHTML = this.renderAuthors(paper.authors);
-        const keywordsHTML = this.renderKeywords(paper.keywords);
-        const keywordsEnHTML = this.renderKeywords(paper.keywordsEn);
+        const keywordsDisplay = this.getKeywordsDisplay(paper.keywords, paper.keywordsEn);
         
         let citationHTML = '';
         
@@ -371,8 +370,7 @@ class ModularContentRenderer {
                         <em>${paper.journalEn}</em> (${paper.journal}), ${paper.year}, <strong>${paper.volume}</strong>(${paper.issue}): ${paper.pages}. 
                         ${doiLink}
                     </div>
-                    ${keywordsHTML ? `<div class="paper-keywords"><strong>关键词:</strong> ${keywordsHTML}</div>` : ''}
-                    ${keywordsEnHTML ? `<div class="paper-keywords-en"><strong>Keywords:</strong> ${keywordsEnHTML}</div>` : ''}
+                    ${keywordsDisplay ? `<div class="paper-keywords"><strong>关键词:</strong> ${keywordsDisplay}</div>` : ''}
                     <div class="paper-abstract">
                         <strong>摘要:</strong> ${paper.abstract}
                     </div>
@@ -396,8 +394,7 @@ class ModularContentRenderer {
                         <em>${paper.conference}</em>, ${paper.location}, ${paper.year}, pp. ${paper.pages}. 
                         ${doiLink}
                     </div>
-                    ${keywordsHTML ? `<div class="paper-keywords"><strong>关键词:</strong> ${keywordsHTML}</div>` : ''}
-                    ${keywordsEnHTML ? `<div class="paper-keywords-en"><strong>Keywords:</strong> ${keywordsEnHTML}</div>` : ''}
+                    ${keywordsDisplay ? `<div class="paper-keywords"><strong>关键词:</strong> ${keywordsDisplay}</div>` : ''}
                     <div class="paper-abstract">
                         <strong>摘要:</strong> ${paper.abstract}
                     </div>
@@ -420,8 +417,7 @@ class ModularContentRenderer {
                         <em>${paper.journalEn}</em>, ${paper.year}, ${paper.pages}. 
                         ${paper.doi ? `arXiv: <a href="https://arxiv.org/abs/${paper.doi.replace('arXiv:', '')}" target="_blank">${paper.doi}</a>` : ''}
                     </div>
-                    ${keywordsHTML ? `<div class="paper-keywords"><strong>关键词:</strong> ${keywordsHTML}</div>` : ''}
-                    ${keywordsEnHTML ? `<div class="paper-keywords-en"><strong>Keywords:</strong> ${keywordsEnHTML}</div>` : ''}
+                    ${keywordsDisplay ? `<div class="paper-keywords"><strong>关键词:</strong> ${keywordsDisplay}</div>` : ''}
                     <div class="paper-abstract">
                         <strong>摘要:</strong> ${paper.abstract}
                     </div>
@@ -444,6 +440,21 @@ class ModularContentRenderer {
     renderKeywords(keywords) {
         if (!keywords || keywords.length === 0) return '';
         return keywords.join('; ');
+    }
+
+    // 获取关键词的中文显示
+    getKeywordsDisplay(keywords, keywordsEn) {
+        const zhKeywords = this.renderKeywords(keywords);
+        const enKeywords = this.renderKeywords(keywordsEn);
+        
+        if (zhKeywords && enKeywords) {
+            return `${zhKeywords} (${enKeywords})`;
+        } else if (zhKeywords) {
+            return zhKeywords;
+        } else if (enKeywords) {
+            return enKeywords;
+        }
+        return '';
     }
 
     // 渲染页脚
