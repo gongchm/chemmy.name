@@ -51,7 +51,6 @@ class ModularContentRenderer {
                 throw new Error(`HTTP ${response.status}: ${response.statusText}`);
             }
             this.config = await response.json();
-            console.log('主配置加载成功:', this.config);
         } catch (error) {
             console.error('无法加载主配置文件:', error);
             this.showError('无法加载配置文件，请检查网络连接');
@@ -61,9 +60,7 @@ class ModularContentRenderer {
     // 加载模块数据
     async loadModules() {
         try {
-            console.log('开始加载模块，config.modules:', this.config.modules);
             for (const [moduleId, moduleConfig] of Object.entries(this.config.modules)) {
-                console.log(`处理模块 ${moduleId}, 配置:`, moduleConfig);
                 if (moduleConfig.enabled) {
                     try {
                         const response = await fetch(`data/modules/${moduleConfig.file}`);
@@ -72,13 +69,11 @@ class ModularContentRenderer {
                         }
                         const moduleData = await response.json();
                         this.modules.set(moduleId, { ...moduleConfig, ...moduleData });
-                        console.log(`模块 ${moduleId} 加载成功:`, moduleData);
                     } catch (error) {
                         console.error(`无法加载模块 ${moduleId}:`, error);
                         this.showError(`无法加载模块 ${moduleId}: ${error.message}`);
                     }
                 } else {
-                    console.log(`模块 ${moduleId} 已禁用，跳过加载`);
                 }
             }
         } catch (error) {
@@ -109,34 +104,23 @@ class ModularContentRenderer {
 
     // 渲染导航
     renderNavigation() {
-        console.log('🔥🔥🔥 renderNavigation 被调用了! 🔥🔥🔥');
-        
         const nav = document.querySelector('nav ul');
-        console.log('🔥 nav element:', nav);
-        console.log('🔥 document.querySelector("nav"):', document.querySelector('nav'));
-        console.log('🔥 document.querySelector("nav ul"):', document.querySelector('nav ul'));
-        console.log('🔥 document.querySelectorAll("nav ul"):', document.querySelectorAll('nav ul'));
-        
         if (!nav) {
-            console.log('🔥 ERROR: nav element not found! 创建nav元素...');
             // 创建nav元素
             const header = document.querySelector('header');
             if (header) {
                 const newNav = document.createElement('nav');
                 newNav.innerHTML = '<ul></ul>';
                 header.appendChild(newNav);
-                console.log('🔥 创建了新的nav元素:', newNav);
                 
                 // 重新获取nav元素并设置内容
                 const createdNav = document.querySelector('nav ul');
                 if (createdNav) {
-                    console.log('🔥 重新获取到创建的nav元素:', createdNav);
                     
                     let navHTML = '<li class="nav-brand">龚成明@DERI</li>';
                     navHTML += '<div class="nav-menu">';
                     
                     this.modules.forEach((moduleData, moduleId) => {
-                        console.log(`🔥 处理模块 ${moduleId}:`, moduleData);
                         const isActive = moduleId === this.currentModule;
                         const activeClass = isActive ? 'active' : '';
                         navHTML += `<li><a href="#${moduleId}" class="nav-link ${activeClass}" data-module="${moduleId}">${moduleData.title}</a></li>`;
@@ -146,9 +130,6 @@ class ModularContentRenderer {
                     }
                     navHTML += '</div>';
                     
-                    console.log('🔥 生成的navHTML:', navHTML);
-                    createdNav.innerHTML = navHTML;
-                    console.log('🔥 nav.innerHTML 设置完成');
                     
                     // 在nav元素创建后设置事件
                     this.setupNavigationEvents();
@@ -157,21 +138,10 @@ class ModularContentRenderer {
             return;
         }
         
-        console.log('🔥 this.modules:', this.modules);
-        console.log('🔥 this.modules.size:', this.modules.size);
-        console.log('🔥 this.currentModule:', this.currentModule);
-
         let navHTML = '<li class="nav-brand">龚成明@DERI</li>';
         navHTML += '<div class="nav-menu">';
         
         this.modules.forEach((moduleData, moduleId) => {
-            console.log(`🔥 处理模块 ${moduleId}:`, moduleData);
-            console.log(`🔥 模块数据结构:`, {
-                id: moduleId,
-                title: moduleData.title,
-                enabled: moduleData.enabled,
-                order: moduleData.order
-            });
             const isActive = moduleId === this.currentModule;
             const activeClass = isActive ? 'active' : '';
             navHTML += `<li><a href="#${moduleId}" class="nav-link ${activeClass}" data-module="${moduleId}">${moduleData.title}</a></li>`;
@@ -181,99 +151,42 @@ class ModularContentRenderer {
         }
         navHTML += '</div>';
         
-        console.log('🔥 生成的navHTML:', navHTML);
-        nav.innerHTML = navHTML;
-        console.log('🔥 nav.innerHTML 设置完成');
         
         this.setupNavigationEvents();
     }
 
     // 设置导航事件
     setupNavigationEvents() {
-        console.log('🔥🔥🔥 setupNavigationEvents 被调用了! 🔥🔥🔥');
-        
         const navLinks = document.querySelectorAll('.nav-link');
-        console.log('🔥 找到的navLinks数量:', navLinks.length);
-        console.log('🔥 navLinks详情:', Array.from(navLinks).map(link => ({ text: link.textContent, module: link.getAttribute('data-module') })));
         
-        // 添加直接的点击测试
-        navLinks.forEach((link, index) => {
-            console.log(`🔥 navLink ${index}:`, link.textContent, '->', link.getAttribute('data-module'));
-            
-            // 添加鼠标悬停测试
-            link.addEventListener('mouseenter', () => {
-                console.log('🔥 鼠标悬停在:', link.textContent);
-            });
-            
+        navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
-                console.log('🔥🔥🔥 导航链接被点击! 🔥🔥🔥');
-                console.log('🔥 点击的链接:', link.textContent);
-                console.log('🔥 目标模块:', link.getAttribute('data-module'));
-                console.log('🔥 事件对象:', e);
-                console.log('🔥 阻止默认行为前...');
-                
                 e.preventDefault();
-                e.stopPropagation();
-                
-                console.log('🔥 阻止默认行为后，调用 switchModule');
                 const moduleId = link.getAttribute('data-module');
-                console.log('🔥 调用 switchModule:', moduleId);
                 this.switchModule(moduleId);
             });
-        });
-        
-        // 添加全局点击测试
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('nav-link')) {
-                console.log('🔥🔥🔥 全局点击事件捕获到导航链接! 🔥🔥🔥');
-                console.log('🔥 点击的目标:', e.target.textContent);
-            }
         });
     }
 
     // 切换模块
     async switchModule(moduleId) {
-        console.log('🔥🔥🔥 switchModule 被调用了! 🔥🔥🔥');
-        console.log('🔥 moduleId:', moduleId);
-        console.log('🔥 currentModule:', this.currentModule);
-        
-        if (moduleId === this.currentModule) {
-            console.log('🔥 模块相同，返回');
-            return;
-        }
+        if (moduleId === this.currentModule) return;
         
         this.currentModule = moduleId;
         this.updateNavigationHighlight();
         
         const main = document.querySelector('main');
-        if (!main) {
-            console.log('🔥 ERROR: main element not found in switchModule!');
-            return;
-        }
+        if (!main) return;
         
         const moduleData = this.modules.get(moduleId);
-        if (!moduleData) {
-            console.log('🔥 ERROR: moduleData not found for:', moduleId);
-            return;
-        }
-        
-        console.log('🔥 moduleData:', moduleData);
+        if (!moduleData) return;
         
         // 清空并重新渲染内容
         main.innerHTML = '';
         
         if (moduleData.renderer === 'papers') {
-            console.log('🔥🔥🔥 调用 renderPapersModule! 🔥🔥🔥');
-            try {
-                this.renderPapersModule(moduleData);
-                console.log('🔥🔥🔥 renderPapersModule 调用成功! 🔥🔥🔥');
-            } catch (error) {
-                console.error('🔥🔥🔥 renderPapersModule 调用失败! 🔥🔥🔥');
-                console.error('🔥 错误详情:', error);
-                console.error('🔥 错误堆栈:', error.stack);
-            }
+            this.renderPapersModule(moduleData);
         } else {
-            console.log('🔥 调用 renderModule for:', moduleId);
             this.renderModule(moduleId, moduleData);
         }
         
@@ -471,7 +384,6 @@ class ModularContentRenderer {
             
             if (enabledModules.length > 0) {
                 this.currentModule = enabledModules[0][0];
-                console.log('🔥 设置默认模块:', this.currentModule);
             }
             
             // 动态生成导航菜单
@@ -491,9 +403,6 @@ class ModularContentRenderer {
             this.renderFooter(this.config.footer);
             
             this.isLoading = false;
-            console.log('模块化内容渲染完成');
-            console.log(`已加载 ${this.modules.size} 个模块`);
-            
         } catch (error) {
             this.isLoading = false;
             console.error('渲染过程中发生错误:', error);
@@ -524,81 +433,39 @@ class ModularContentRenderer {
 
     // 渲染论文模块
     renderPapersModule(moduleData) {
-        console.log('🔥🔥🔥 renderPapersModule 被调用了! 🔥🔥🔥');
-        console.log('🔥 moduleData:', moduleData);
-        
-        // 创建绝对定位的测试元素，绕过所有CSS
-        const absoluteTest = document.createElement('div');
-        absoluteTest.style.cssText = `
-            position: fixed !important;
-            top: 50px !important;
-            left: 50px !important;
-            width: 300px !important;
-            height: 100px !important;
-            background: lime !important;
-            color: black !important;
-            padding: 20px !important;
-            z-index: 99999 !important;
-            font-size: 18px !important;
-            font-weight: bold !important;
-            border: 3px solid red !important;
-        `;
-        absoluteTest.textContent = 'ABSOLUTE TEST - 论文模块';
-        document.body.appendChild(absoluteTest);
-        
         const main = document.querySelector('main');
-        console.log('🔥 main element:', main);
-        
-        if (!main) {
-            console.log('🔥 ERROR: main element not found!');
-            return;
-        }
-        
-        // 第一步：清空main
-        console.log('🔥 步骤1: 清空main');
+        if (!main) return;
+
+        // 清空并重新渲染内容
         main.innerHTML = '';
-        console.log('🔥 main.innerHTML after clear:', main.innerHTML);
-        
-        // 第二步：创建简单的测试内容
-        console.log('🔥 步骤2: 创建简单测试内容');
-        const testHTML = '<div style="background: yellow !important; padding: 20px !important; margin: 10px !important; font-size: 24px !important; font-weight: bold !important; border:5px solid blue !important;">测试内容：论文模块</div>';
-        main.innerHTML = testHTML;
-        console.log('🔥 main.innerHTML after test:', main.innerHTML);
-        console.log('🔥 main的完整HTML结构:', main.outerHTML);
-        
-        // 第三步：检查是否可见
-        setTimeout(() => {
-            console.log('🔥 步骤3: 检查测试内容是否可见');
-            const testDiv = main.querySelector('div');
-            if (testDiv) {
-                console.log('🔥 测试div存在:', !!testDiv);
-                console.log('🔥 测试div样式:', testDiv.style.cssText);
-                console.log('🔥 测试div是否可见:', testDiv.offsetWidth > 0 && testDiv.offsetHeight > 0);
-                console.log('🔥 测试div尺寸:', testDiv.offsetWidth, 'x', testDiv.offsetHeight);
-                console.log('🔥 测试div计算样式:', window.getComputedStyle(testDiv).cssText);
-                console.log('🔥 main元素计算样式:', window.getComputedStyle(main).cssText);
-            }
-        }, 100);
-        
-        console.log('🔥🔥🔥 renderPapersModule 结束 🔥🔥🔥');
+
+        // 创建论文容器
+        let papersHTML = '<section id="papers" class="visible">';
+        papersHTML += '<h2>主要论文</h2>';
+        papersHTML += '<div class="papers-container">';
+
+        // 渲染论文列表
+        if (moduleData.papers && Array.isArray(moduleData.papers)) {
+            moduleData.papers.forEach((paper, index) => {
+                papersHTML += this.renderPaperItem(paper, index);
+            });
+        }
+
+        papersHTML += '</div>';
+        papersHTML += '</section>';
+
+        main.innerHTML = papersHTML;
     }
 
     // 渲染单个论文项
     renderPaperItem(paper, index) {
-        console.log(`renderPaperItem called for paper ${index}:`, paper.title);
-        console.log(`paper type:`, paper.type);
-        
         const authorsHTML = this.renderAuthors(paper.authors);
         const keywordsHTML = this.renderKeywords(paper.keywords);
         const keywordsEnHTML = this.renderKeywords(paper.keywordsEn);
         
-        console.log(`authorsHTML:`, authorsHTML);
-        console.log(`keywordsHTML:`, keywordsHTML);
-        
         let citationHTML = '';
         
         if (paper.type === 'journal') {
-            console.log('Rendering journal paper');
             const doiLink = paper.doi ? `DOI: <a href="https://doi.org/${paper.doi}" target="_blank">${paper.doi}</a>` : '';
             citationHTML = `
                 <div class="paper-item journal-paper">
