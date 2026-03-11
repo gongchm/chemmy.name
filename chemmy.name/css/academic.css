@@ -872,6 +872,67 @@ button:focus {
   top: 6px;
 }
 
+/* Footer样式 */
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 20px 0;
+  border-top: 1px solid #e9ecef;
+}
+
+.footer-info {
+  flex: 0 0 auto;
+}
+
+.footer-info p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.footer-contacts {
+  flex: 0 0 auto;
+}
+
+.footer-contacts h3 {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.contact-item {
+  margin: 8px 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.contact-item strong {
+  color: #495057;
+}
+
+.contact-item a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .footer-contacts {
+    order: -1;
+  }
+}
+
 /* 打印样式 */
 @media print {
   body {

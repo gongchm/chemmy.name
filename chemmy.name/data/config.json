@@ -43,13 +43,6 @@
       "title": "获奖与专利",
       "enabled": true,
       "order": 3
-    },
-    {
-      "id": "contacts",
-      "file": "contacts.json",
-      "title": "联系方式",
-      "enabled": true,
-      "order": 4
     }
   ],
   "footer": {
@@ -60,6 +53,28 @@
       "url": "http://jigsaw.w3.org/css-validator/check/referer",
       "img": "http://jigsaw.w3.org/css-validator/images/vcss",
       "alt": "Valid CSS!"
+    },
+    "contacts": {
+      "address": {
+        "text": "南京市雨花台区文竹路8号四号楼五楼（",
+        "coordinates": {
+          "text": "31.9792, 118.7789",
+          "url": "https://map.baidu.com/search?query=南京市雨花台区文竹路8号",
+          "target": "_blank"
+        },
+        "suffix": "），210002"
+      },
+      "phone": "+86 25 58793001",
+      "email": [
+        {
+          "display": "gongcm",
+          "domain": "@teld.cn"
+        },
+        {
+          "display": "gongchm", 
+          "domain": "@gmail.com"
+        }
+      ]
     }
   },
   "englishLink": {

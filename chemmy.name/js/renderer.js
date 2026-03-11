@@ -381,10 +381,56 @@ class ModularContentRenderer {
         const day = String(currentDate.getDate()).padStart(2, '0');
         const updateDate = `${year}年${month}月${day}日`;
 
+        // 渲染联系方式
+        let contactsHTML = '';
+        if (footer.contacts) {
+            const contacts = footer.contacts;
+            
+            // 地址
+            let addressHTML = '';
+            if (contacts.address) {
+                const addr = contacts.address;
+                const coordLink = addr.coordinates ? 
+                    `<a href="${addr.coordinates.url}" target="${addr.coordinates.target || '_blank'}">${addr.coordinates.text}</a>` : '';
+                addressHTML = `
+                    <div class="contact-item">
+                        <strong>地址：</strong>${addr.text}${coordLink}${addr.suffix || ''}
+                    </div>
+                `;
+            }
+            
+            // 电话
+            const phoneHTML = contacts.phone ? 
+                `<div class="contact-item"><strong>电话：</strong>${contacts.phone}</div>` : '';
+            
+            // 邮箱
+            let emailHTML = '';
+            if (contacts.email && Array.isArray(contacts.email)) {
+                const emails = contacts.email.map(email => 
+                    `<a href="mailto:${email.display}${email.domain}">${email.display}${email.domain}</a>`
+                ).join('; ');
+                emailHTML = `<div class="contact-item"><strong>电子邮件：</strong>${emails}</div>`;
+            }
+            
+            contactsHTML = `
+                <div class="footer-contacts">
+                    <h3>联系方式</h3>
+                    ${addressHTML}
+                    ${phoneHTML}
+                    ${emailHTML}
+                </div>
+            `;
+        }
+
         footerElement.innerHTML = `
-            <p>${updateDate}<a href="${footer.updateLink}">更新</a></p>
-            <p>${footer.createDate}</p>
-            <p><a href="${footer.cssValidator.url}"><img style="border: 0; width: 88px; height: 31px" src="${footer.cssValidator.img}" alt="${footer.cssValidator.alt}" /></a></p>
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>${updateDate}<a href="${footer.updateLink}">更新</a></p>
+                    <p>${footer.createDate}</p>
+                    <p><a href="${footer.cssValidator.url}"><img style="border: 0; width: 88px; height: 31px" src="${footer.cssValidator.img}" alt="${footer.cssValidator.alt}" /></a></p>
+                </div>
+                ${contactsHTML}
+            </div>
         `;
     }
 
