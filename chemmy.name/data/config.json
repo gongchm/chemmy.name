@@ -1,4 +1,16 @@
 {
+  "header": {
+    "title": "龚成明的个人主页",
+    "meta": {
+      "description": "龚成明的个人主页 - 电力系统专家，研究方向包括配电网管理系统、状态估计、并行计算等",
+      "keywords": "龚成明,电力系统,状态估计,配电网,DMS,并行计算",
+      "author": "龚成明"
+    },
+    "skipLink": {
+      "text": "跳转到主内容",
+      "target": "#main-content"
+    }
+  },
   "profile": {
     "name": "龚成明",
     "photo": "pic/photo.jpg",

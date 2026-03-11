@@ -82,6 +82,40 @@ class ModularContentRenderer {
         }
     }
 
+    // 渲染页面头部
+    renderHeader(headerConfig) {
+        // 设置页面标题
+        document.title = headerConfig.title;
+        
+        // 设置meta标签
+        this.setMetaTags(headerConfig.meta);
+        
+        // 设置跳转链接
+        const skipLink = document.querySelector('.skip-link');
+        if (skipLink && headerConfig.skipLink) {
+            skipLink.textContent = headerConfig.skipLink.text;
+            skipLink.href = headerConfig.skipLink.target;
+        }
+    }
+
+    // 设置meta标签
+    setMetaTags(metaConfig) {
+        if (metaConfig.description) {
+            let descMeta = document.querySelector('meta[name="description"]');
+            if (descMeta) descMeta.content = metaConfig.description;
+        }
+        
+        if (metaConfig.keywords) {
+            let keywordsMeta = document.querySelector('meta[name="keywords"]');
+            if (keywordsMeta) keywordsMeta.content = metaConfig.keywords;
+        }
+        
+        if (metaConfig.author) {
+            let authorMeta = document.querySelector('meta[name="author"]');
+            if (authorMeta) authorMeta.content = metaConfig.author;
+        }
+    }
+
     // 渲染个人信息
     renderProfile(profile) {
         const header = document.querySelector('header');
@@ -366,6 +400,9 @@ class ModularContentRenderer {
                 throw new Error('无法加载主配置文件');
             }
 
+            // 渲染页面头部
+            this.renderHeader(this.config.header);
+            
             // 渲染个人信息
             this.renderProfile(this.config.profile);
             
