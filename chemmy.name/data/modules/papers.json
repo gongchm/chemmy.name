@@ -1,36 +1,6 @@
 {
-  "title": "主要论文",
+  "title": "学术论文",
   "papers": [
-    {
-      "type": "journal",
-      "authors": [
-        {
-          "name": "陈荃韡",
-          "nameEn": "Chen Canhan"
-        },
-        {
-          "name": "龚成明",
-          "nameEn": "Gong Chengming"
-        },
-        {
-          "name": "赵晋泉",
-          "nameEn": "Zhao Jinquan"
-        }
-      ],
-      "title": "并行稀疏系统直接求解库SuperLUMT在状态估计中的应用",
-      "titleEn": "Application of Parallel Sparse System Direct Solver Library SuperLUMT in State Estimation",
-      "journal": "电力系统自动化",
-      "journalEn": "Automation of Electric Power Systems",
-      "year": 2017,
-      "volume": 41,
-      "issue": 3,
-      "pages": "83-88",
-      "keywords": ["并行计算", "状态估计", "稀疏矩阵", "SuperLU"],
-      "keywordsEn": ["Parallel computing", "State estimation", "Sparse matrix", "SuperLU"],
-      "abstract": "针对电力系统状态估计中大规模稀疏线性方程组的求解问题，提出了一种基于并行稀疏系统直接求解库SuperLUMT的快速求解方法。该方法充分利用了现代多核处理器的并行计算能力，通过任务并行和数据并行相结合的策略，显著提高了大规模电力系统状态估计的计算效率。仿真结果表明，与传统的串行求解方法相比，所提方法在8核处理器上可获得6倍以上的加速比。",
-      "abstractEn": "A fast solution method based on parallel sparse system direct solver library SuperLUMT is proposed for solving large-scale sparse linear equations in power system state estimation. The method makes full use of the parallel computing capabilities of modern multi-core processors through a combination of task parallelism and data parallelism, significantly improving the computational efficiency of large-scale power system state estimation. Simulation results show that compared with traditional serial solution methods, the proposed method can achieve more than 6x speedup on 8-core processors.",
-      "url": "http://www.aeps-info.com/aeps/ch/reader/view_abstract.aspx?file_no=20160607008&flag=1"
-    },
     {
       "type": "journal",
       "authors": [
@@ -43,260 +13,23 @@
           "nameEn": "Yu Yijun"
         },
         {
-          "name": "路轶",
-          "nameEn": "Lu Yi"
+          "name": "梁小鹏",
+          "nameEn": "Liang Xiaopeng"
         }
       ],
-      "title": "加权最小二乘状态估计量测权值计算的实用方法",
-      "titleEn": "Practical Method for Measurement Weight Calculation in Weighted Least Squares State Estimation",
-      "journal": "电力系统自动化",
-      "journalEn": "Automation of Electric Power Systems",
-      "year": 2016,
-      "volume": 40,
-      "issue": 11,
-      "pages": "143-147",
-      "keywords": ["加权最小二乘", "状态估计", "量测权值", "实用方法"],
-      "keywordsEn": ["Weighted least squares", "State estimation", "Measurement weight", "Practical method"],
-      "abstract": "研究了加权最小二乘状态估计中量测权值计算的实用方法。针对传统权值计算方法的局限性，提出了一种基于量测精度和可靠性的权值计算方法。该方法能够根据量测设备的实际性能动态调整权值，提高了状态估计的准确性和鲁棒性。",
-      "abstractEn": "The practical method for measurement weight calculation in weighted least squares state estimation is studied. To address the limitations of traditional weight calculation methods, a weight calculation method based on measurement accuracy and reliability is proposed. The method can dynamically adjust weights according to the actual performance of measurement devices, improving the accuracy and robustness of state estimation.",
-      "url": "http://www.aeps-info.com/aeps/ch/reader/view_abstract.aspx?file_no=20160507008&flag=1"
-    },
-    {
-      "type": "journal",
-      "authors": [
-        {
-          "name": "丁宏恩",
-          "nameEn": "Ding Hong'en"
-        },
-        {
-          "name": "高宗和",
-          "nameEn": "Gao Zonghe"
-        },
-        {
-          "name": "苏大威",
-          "nameEn": "Su Dawei"
-        }
-      ],
-      "title": "混合量测状态估计相角参考点坏数据问题的处理方法",
-      "titleEn": "Processing Method for Bad Data Problems in Mixed Measurement State Estimation Phase Angle Reference Points",
-      "journal": "电力系统自动化",
-      "journalEn": "Automation of Electric Power Systems",
-      "year": 2014,
-      "volume": 38,
-      "issue": 9,
-      "pages": "132-136",
-      "keywords": ["混合量测", "状态估计", "相角参考点", "坏数据处理"],
-      "keywordsEn": ["Mixed measurement", "State estimation", "Phase angle reference", "Bad data processing"],
-      "abstract": "研究了混合量测状态估计中相角参考点坏数据问题的处理方法。提出了一种基于相角参考点一致性检验的坏数据检测方法，通过分析不同参考点之间的相角关系，实现了对相角参考点坏数据的快速检测和识别。",
-      "abstractEn": "The processing method for bad data problems in mixed measurement state estimation phase angle reference points is studied. A bad data detection method based on phase angle reference point consistency check is proposed. By analyzing the phase angle relationship between different reference points, rapid detection and identification of phase angle reference point bad data are achieved.",
-      "url": "http://www.aeps-info.com/aeps/ch/reader/view_abstract.aspx?file_no=20140507008&flag=1"
-    },
-    {
-      "type": "journal",
-      "authors": [
-        {
-          "name": "罗玉春",
-          "nameEn": "Luo Yuchun"
-        },
-        {
-          "name": "龚成明",
-          "nameEn": "Gong Chengming"
-        },
-        {
-          "name": "王毅",
-          "nameEn": "Wang Yi"
-        }
-      ],
-      "title": "基于EMS的地区电网合环风险评估系统",
-      "titleEn": "Regional Power Grid Loop Closing Risk Assessment System Based on EMS",
+      "title": "旁路代的识别算法",
+      "titleEn": "Algorithm for Series Capacitor Banks Identification",
       "journal": "江苏电机工程",
       "journalEn": "Jiangsu Electrical Engineering",
-      "year": 2014,
-      "volume": 33,
-      "issue": 2,
-      "pages": "30-33",
-      "doi": "10.19464/j.cnki.cn32-1541/tm.2014.02.009",
-      "keywords": ["EMS", "地区电网", "合环风险评估", "电网安全"],
-      "keywordsEn": ["EMS", "Regional power grid", "Loop closing risk assessment", "Power grid security"],
-      "abstract": "开发了一套基于EMS的地区电网合环风险评估系统。该系统能够实时分析电网运行状态，评估合环操作的风险等级，为调度人员提供决策支持。系统已在多个地区电网中成功应用。",
-      "abstractEn": "A regional power grid loop closing risk assessment system based on EMS is developed. The system can analyze power grid operation status in real time, evaluate the risk level of loop closing operations, and provide decision support for dispatch personnel. The system has been successfully applied in multiple regional power grids.",
-      "url": "https://kns.cnki.net/kcms/detail/detail.aspx?doi=10.19464/j.cnki.cn32-1541/tm.2014.02.009"
-    },
-    {
-      "type": "journal",
-      "authors": [
-        {
-          "name": "张婷",
-          "nameEn": "Zhang Ting"
-        },
-        {
-          "name": "翟明玉",
-          "nameEn": "Zhai Mingyu"
-        },
-        {
-          "name": "张海滨",
-          "nameEn": "Zhang Haibin"
-        }
-      ],
-      "title": "基于不确定性推理的变电站拓扑错误辨识",
-      "titleEn": "Substation Topology Error Identification Based on Uncertainty Reasoning",
-      "journal": "电力系统自动化",
-      "journalEn": "Automation of Electric Power Systems",
-      "year": 2014,
-      "volume": 38,
-      "issue": 6,
-      "pages": "49-54",
-      "keywords": ["不确定性推理", "变电站", "拓扑错误辨识", "状态估计"],
-      "keywordsEn": ["Uncertainty reasoning", "Substation", "Topology error identification", "State estimation"],
-      "abstract": "研究了基于不确定性推理的变电站拓扑错误辨识问题。提出了一种结合贝叶斯推理和模糊逻辑的拓扑错误辨识方法，通过分析量测数据的不确定性，实现了对变电站拓扑错误的准确辨识。",
-      "abstractEn": "The substation topology error identification problem based on uncertainty reasoning is studied. A topology error identification method combining Bayesian reasoning and fuzzy logic is proposed. By analyzing the uncertainty of measurement data, accurate identification of substation topology errors is achieved.",
-      "url": "http://www.aeps-info.com/aeps/ch/reader/view_abstract.aspx?file_no=20140506008&flag=1"
-    },
-    {
-      "type": "conference",
-      "authors": [
-        {
-          "name": "邹德虎",
-          "nameEn": "Zou Dehu"
-        },
-        {
-          "name": "王毅",
-          "nameEn": "Wang Yi"
-        },
-        {
-          "name": "龚成明",
-          "nameEn": "Gong Chengming"
-        }
-      ],
-      "title": "基于PQ解耦的支路参数估计",
-      "titleEn": "Branch Parameter Estimation Based on PQ Decoupling",
-      "conference": "2013年中国电机工程学会年会",
-      "location": "中国",
-      "year": 2013,
-      "pages": "1943-1946",
-      "keywords": ["PQ解耦", "支路参数估计", "电力系统", "参数辨识"],
-      "keywordsEn": ["PQ decoupling", "Branch parameter estimation", "Power system", "Parameter identification"],
-      "abstract": "提出了一种基于PQ解耦的支路参数估计方法。通过解耦有功和无功功率的计算，提高了参数估计的效率和精度。该方法适用于大规模电力系统的在线参数辨识。",
-      "abstractEn": "A branch parameter estimation method based on PQ decoupling is proposed. By decoupling the calculation of active and reactive power, the efficiency and accuracy of parameter estimation are improved. The method is suitable for online parameter identification of large-scale power systems.",
-      "url": "https://www.cnki.net/"
-    },
-    {
-      "type": "conference",
-      "authors": [
-        {
-          "name": "徐秀之",
-          "nameEn": "Xu Xiuzhi"
-        },
-        {
-          "name": "龚成明",
-          "nameEn": "Gong Chengming"
-        },
-        {
-          "name": "李雷",
-          "nameEn": "Li Lei"
-        }
-      ],
-      "title": "电力系统状态估计中杠杆量测的特性及检测方法综述",
-      "titleEn": "Review of Characteristics and Detection Methods of Leverage Measurements in Power System State Estimation",
-      "conference": "2013年中国电机工程学会年会",
-      "location": "中国",
-      "year": 2013,
-      "pages": "2088-2091",
-      "keywords": ["杠杆量测", "状态估计", "检测方法", "综述"],
-      "keywordsEn": ["Leverage measurements", "State estimation", "Detection method", "Review"],
-      "abstract": "综述了电力系统状态估计中杠杆量测的特性及检测方法。分析了杠杆量测对状态估计结果的影响，总结了现有的杠杆量测检测算法，并提出了未来的研究方向。",
-      "abstractEn": "The characteristics and detection methods of leverage measurements in power system state estimation are reviewed. The impact of leverage measurements on state estimation results is analyzed, existing leverage measurement detection algorithms are summarized, and future research directions are proposed.",
-      "url": "https://www.cnki.net/"
-    },
-    {
-      "type": "journal",
-      "authors": [
-        {
-          "name": "邹德虎",
-          "nameEn": "Zou Dehu"
-        },
-        {
-          "name": "王仲达",
-          "nameEn": "Wang Zhongda"
-        },
-        {
-          "name": "徐柳飞",
-          "nameEn": "Xu Liufei"
-        }
-      ],
-      "title": "网络备自投系统在地调EMS中的应用",
-      "titleEn": "Application of Network Backup Automatic Switching System in Regional Dispatch EMS",
-      "journal": "电力系统自动化",
-      "journalEn": "Automation of Electric Power Systems",
-      "year": 2013,
-      "volume": 37,
-      "issue": 17,
-      "pages": "106-111",
-      "keywords": ["网络备自投", "EMS", "地区调度", "电网自动化"],
-      "keywordsEn": ["Network backup automatic switching", "EMS", "Regional dispatch", "Power grid automation"],
-      "abstract": "研究了网络备自投系统在地调EMS中的应用。介绍了网络备自投系统的基本原理和实现方法，分析了其在提高电网供电可靠性方面的作用。系统已在多个地区电网中成功运行。",
-      "abstractEn": "The application of network backup automatic switching system in regional dispatch EMS is studied. The basic principle and implementation method of network backup automatic switching system are introduced, and its role in improving power supply reliability is analyzed. The system has been successfully operated in multiple regional power grids.",
-      "url": "http://www.aeps-info.com/aeps/ch/reader/view_abstract.aspx?file_no=20130507008&flag=1"
-    },
-    {
-      "type": "journal",
-      "authors": [
-        {
-          "name": "赵晋泉",
-          "nameEn": "Zhao Jinquan"
-        },
-        {
-          "name": "孙晓明",
-          "nameEn": "Sun Xiaoming"
-        },
-        {
-          "name": "龚成明",
-          "nameEn": "Gong Chengming"
-        }
-      ],
-      "title": "含FACTS元件的电力系统电压稳定评估",
-      "titleEn": "Voltage Stability Assessment of Power Systems with FACTS Devices",
-      "journal": "电力系统自动化",
-      "journalEn": "Automation of Electric Power Systems",
-      "year": 2011,
-      "volume": 35,
-      "issue": 16,
-      "pages": "21-26",
-      "keywords": ["FACTS", "电压稳定", "电力系统", "稳定评估"],
-      "keywordsEn": ["FACTS", "Voltage stability", "Power system", "Stability assessment"],
-      "abstract": "研究了含FACTS元件的电力系统电压稳定评估问题。提出了一种考虑FACTS元件动态特性的电压稳定评估方法，通过建立扩展的潮流模型和稳定分析模型，实现了对含FACTS电力系统的电压稳定性准确评估。",
-      "abstractEn": "The voltage stability assessment problem of power systems with FACTS devices is studied. A voltage stability assessment method considering dynamic characteristics of FACTS devices is proposed. By establishing an extended power flow model and stability analysis model, accurate assessment of voltage stability of power systems with FACTS devices is achieved.",
-      "url": "http://www.aeps-info.com/aeps/ch/reader/view_abstract.aspx?file_no=20110507008&flag=1"
-    },
-    {
-      "type": "journal",
-      "authors": [
-        {
-          "name": "毛志强",
-          "nameEn": "Mao Zhiqiang"
-        },
-        {
-          "name": "蔡中勤",
-          "nameEn": "Cai Zhongqin"
-        },
-        {
-          "name": "周苏荃",
-          "nameEn": "Zhou Suquan"
-        }
-      ],
-      "title": "基于新息图法的电力系统负荷突变辨识",
-      "titleEn": "Power System Load Mutation Identification Based on Innovation Graph Method",
-      "journal": "电力系统自动化",
-      "journalEn": "Automation of Electric Power Systems",
-      "year": 2011,
-      "volume": 35,
-      "issue": 12,
-      "pages": "37-41",
-      "keywords": ["新息图法", "负荷突变", "辨识算法", "电力系统"],
-      "keywordsEn": ["Innovation graph method", "Load mutation", "Identification algorithm", "Power system"],
-      "abstract": "研究了基于新息图法的电力系统负荷突变辨识问题。提出了一种基于新息图法的负荷突变辨识算法，通过分析负荷变化的统计特性，实现了对电力系统负荷突变的快速检测和辨识。",
-      "abstractEn": "The power system load mutation identification problem based on innovation graph method is studied. A load mutation identification algorithm based on innovation graph method is proposed. By analyzing the statistical characteristics of load variations, rapid detection and identification of power system load mutations are achieved.",
-      "url": "http://www.aeps-info.com/aeps/ch/reader/view_abstract.aspx?file_no=20110506008&flag=1"
+      "year": 2004,
+      "volume": 23,
+      "issue": 4,
+      "pages": "10-12",
+      "keywords": ["旁路代", "识别算法", "配电系统", "故障诊断"],
+      "keywordsEn": ["Series capacitors", "Identification algorithm", "Distribution system", "Fault diagnosis"],
+      "abstract": "提出了一种旁路电容器组识别算法。针对传统识别方法在处理复杂配电系统时的局限性，通过分析电容器组的投切特性和电流特征，实现了对旁路电容器的准确识别。",
+      "abstractEn": "A series capacitor banks identification algorithm is proposed. To address the limitations of traditional identification methods when dealing with complex distribution systems, accurate identification of series capacitors is achieved by analyzing the switching characteristics and current features of capacitor banks.",
+      "url": "https://kns.cnki.net/kcms/detail/detail.aspx?doi=10.19464/j.cnki.cn32-1541/tm.2004.04.004"
     },
     {
       "type": "journal",
@@ -312,6 +45,14 @@
         {
           "name": "龚成明",
           "nameEn": "Gong Chengming"
+        },
+        {
+          "name": "高宗和",
+          "nameEn": "Gao Zonghe"
+        },
+        {
+          "name": "姚建国",
+          "nameEn": "Yao Jianguo"
         }
       ],
       "title": "基于节点注入量修正的改进补偿法",
@@ -343,6 +84,26 @@
         {
           "name": "於益军",
           "nameEn": "Yu Yijun"
+        },
+        {
+          "name": "冯树海",
+          "nameEn": "Feng Shuhai"
+        },
+        {
+          "name": "高宗和",
+          "nameEn": "Gao Zonghe"
+        },
+        {
+          "name": "罗建裕",
+          "nameEn": "Luo Jianyu"
+        },
+        {
+          "name": "钱玉妹",
+          "nameEn": "Qian Yumei"
+        },
+        {
+          "name": "徐田",
+          "nameEn": "Xu Tian"
         }
       ],
       "title": "EMS规划态应用软件的开发与应用",
@@ -363,6 +124,395 @@
       "type": "journal",
       "authors": [
         {
+          "name": "冯树海",
+          "nameEn": "Feng Shuhai"
+        },
+        {
+          "name": "於益军",
+          "nameEn": "Yu Yijun"
+        },
+        {
+          "name": "高伏英",
+          "nameEn": "Gao Fuying"
+        },
+        {
+          "name": "张国江",
+          "nameEn": "Zhang Guojiang"
+        },
+        {
+          "name": "龚成明",
+          "nameEn": "Gong Chengming"
+        },
+        {
+          "name": "李翔",
+          "nameEn": "Li Xiang"
+        }
+      ],
+      "title": "多级调度在线联合等值应用研究",
+      "titleEn": "Research on Online Joint Equivalence Application for Multi-Level Dispatch",
+      "journal": "华东电力",
+      "journalEn": "East China Electric Power",
+      "year": 2006,
+      "pages": "1841-1846",
+      "keywords": ["多级调度", "联合等值", "在线应用", "电力系统"],
+      "keywordsEn": ["Multi-level dispatch", "Joint equivalence", "Online application", "Power system"],
+      "abstract": "研究了多级调度在线联合等值应用问题。提出了一种适用于多级调度系统的在线等值方法，提高了大规模电力系统的计算效率和调度精度。",
+      "abstractEn": "The online joint equivalence application for multi-level dispatch is studied. An online equivalence method suitable for multi-level dispatch systems is proposed, improving the computational efficiency and dispatch accuracy of large-scale power systems.",
+      "url": "https://kns.cnki.net/"
+    },
+    {
+      "type": "journal",
+      "authors": [
+        {
+          "name": "许先锋",
+          "nameEn": "Xu Xianfeng"
+        },
+        {
+          "name": "龚成明",
+          "nameEn": "Gong Chengming"
+        },
+        {
+          "name": "杜红卫",
+          "nameEn": "Du Hongwei"
+        },
+        {
+          "name": "庄卫金",
+          "nameEn": "Zhuang Weijin"
+        }
+      ],
+      "title": "EMS中系统拓扑五防的设计和实现",
+      "titleEn": "Design and Implementation of System Topology Five-Prevention in EMS",
+      "journal": "电网技术",
+      "journalEn": "Power System Technology",
+      "year": 2008,
+      "pages": "76-79",
+      "keywords": ["EMS", "系统拓扑", "五防", "电网安全"],
+      "keywordsEn": ["EMS", "System topology", "Five-prevention", "Power grid security"],
+      "abstract": "介绍了EMS中系统拓扑五防的设计和实现。该系统能够有效防止误操作，提高电网运行的安全性和可靠性。",
+      "abstractEn": "The design and implementation of system topology five-prevention in EMS are introduced. The system can effectively prevent misoperations and improve the safety and reliability of power grid operation.",
+      "url": "https://www.researchgate.net/"
+    },
+    {
+      "type": "journal",
+      "authors": [
+        {
+          "name": "赵晋泉",
+          "nameEn": "Zhao Jinquan"
+        },
+        {
+          "name": "孙晓明",
+          "nameEn": "Sun Xiaoming"
+        },
+        {
+          "name": "龚成明",
+          "nameEn": "Gong Chengming"
+        },
+        {
+          "name": "杨志宏",
+          "nameEn": "Yang Zhihong"
+        }
+      ],
+      "title": "含FACTS元件的电力系统电压稳定评估",
+      "titleEn": "Voltage Stability Assessment of Power Systems with FACTS Devices",
+      "journal": "电力系统自动化",
+      "journalEn": "Automation of Electric Power Systems",
+      "year": 2011,
+      "volume": 35,
+      "issue": 16,
+      "pages": "21-26",
+      "keywords": ["FACTS", "电压稳定", "电力系统", "稳定评估"],
+      "keywordsEn": ["FACTS", "Voltage stability", "Power system", "Stability assessment"],
+      "abstract": "研究了含FACTS元件的电力系统电压稳定评估问题。提出了一种考虑FACTS元件动态特性的电压稳定评估方法，通过建立扩展的潮流模型和稳定分析模型，实现了对含FACTS电力系统的电压稳定性准确评估。",
+      "abstractEn": "The voltage stability assessment problem of power systems with FACTS devices is studied. A voltage stability assessment method considering dynamic characteristics of FACTS devices is proposed. By establishing an extended power flow model and stability analysis model, accurate assessment of voltage stability of power systems with FACTS devices is achieved.",
+      "url": "http://www.aeps-info.com/aeps/ch/reader/view_abstract.aspx?file_no=20110507008&flag=1"
+    },
+    {
+      "type": "journal",
+      "authors": [
+        {
+          "name": "毛志强",
+          "nameEn": "Mao Zhiqiang"
+        },
+        {
+          "name": "蔡中勤",
+          "nameEn": "Cai Zhongqin"
+        },
+        {
+          "name": "周苏荃",
+          "nameEn": "Zhou Suquan"
+        },
+        {
+          "name": "李碧君",
+          "nameEn": "Li Bijun"
+        },
+        {
+          "name": "李雷",
+          "nameEn": "Li Lei"
+        },
+        {
+          "name": "龚成明",
+          "nameEn": "Gong Chengming"
+        }
+      ],
+      "title": "基于新息图法的电力系统负荷突变辨识",
+      "titleEn": "Power System Load Mutation Identification Based on Innovation Graph Method",
+      "journal": "电力系统自动化",
+      "journalEn": "Automation of Electric Power Systems",
+      "year": 2011,
+      "volume": 35,
+      "issue": 12,
+      "pages": "37-41",
+      "keywords": ["新息图法", "负荷突变", "辨识算法", "电力系统"],
+      "keywordsEn": ["Innovation graph method", "Load mutation", "Identification algorithm", "Power system"],
+      "abstract": "研究了基于新息图法的电力系统负荷突变辨识问题。提出了一种基于新息图法的负荷突变辨识算法，通过分析负荷变化的统计特性，实现了对电力系统负荷突变的快速检测和辨识。",
+      "abstractEn": "The power system load mutation identification problem based on innovation graph method is studied. A load mutation identification algorithm based on innovation graph method is proposed. By analyzing the statistical characteristics of load variations, rapid detection and identification of power system load mutations are achieved.",
+      "url": "http://www.aeps-info.com/aeps/ch/reader/view_abstract.aspx?file_no=20110506008&flag=1"
+    },
+    {
+      "type": "journal",
+      "authors": [
+        {
+          "name": "李熠",
+          "nameEn": "Li Yi"
+        },
+        {
+          "name": "龚成明",
+          "nameEn": "Gong Chengming"
+        },
+        {
+          "name": "何锐",
+          "nameEn": "He Rui"
+        },
+        {
+          "name": "朱丽嫒",
+          "nameEn": "Zhu Li'ai"
+        },
+        {
+          "name": "高剑",
+          "nameEn": "Gao Jian"
+        },
+        {
+          "name": "孙世明",
+          "nameEn": "Sun Shiming"
+        }
+      ],
+      "title": "智能电网调度控制系统变电站集中监控功能的几项实用化改进",
+      "titleEn": "Several Practical Improvements for Substation Centralized Monitoring Function in Smart Grid Dispatch Control System",
+      "journal": "四川电力技术",
+      "journalEn": "Sichuan Electric Power Technology",
+      "year": 2012,
+      "volume": 35,
+      "issue": 5,
+      "keywords": ["智能电网", "调度控制", "变电站监控", "实用化改进"],
+      "keywordsEn": ["Smart grid", "Dispatch control", "Substation monitoring", "Practical improvements"],
+      "abstract": "介绍了智能电网调度控制系统中变电站集中监控功能的几项实用化改进。通过优化监控界面和功能设计，提高了系统的实用性和操作效率。",
+      "abstractEn": "Several practical improvements for substation centralized monitoring function in smart grid dispatch control system are introduced. By optimizing the monitoring interface and functional design, the practicality and operational efficiency of the system are improved.",
+      "url": "https://kns.cnki.net/"
+    },
+    {
+      "type": "journal",
+      "authors": [
+        {
+          "name": "丁宏恩",
+          "nameEn": "Ding Hong'en"
+        },
+        {
+          "name": "高宗和",
+          "nameEn": "Gao Zonghe"
+        },
+        {
+          "name": "苏大威",
+          "nameEn": "Su Dawei"
+        },
+        {
+          "name": "赵家庆",
+          "nameEn": "Zhao Jiaqing"
+        },
+        {
+          "name": "常乃超",
+          "nameEn": "Chang Naichao"
+        },
+        {
+          "name": "龚成明",
+          "nameEn": "Gong Chengming"
+        }
+      ],
+      "title": "混合量测状态估计相角参考点坏数据问题的处理方法",
+      "titleEn": "Processing Method for Bad Data Problems in Mixed Measurement State Estimation Phase Angle Reference Points",
+      "journal": "电力系统自动化",
+      "journalEn": "Automation of Electric Power Systems",
+      "year": 2014,
+      "volume": 38,
+      "issue": 9,
+      "pages": "132-136",
+      "doi": "10.7500/AEPS20130415006",
+      "keywords": ["混合量测", "状态估计", "相角参考点", "坏数据处理"],
+      "keywordsEn": ["Mixed measurement", "State estimation", "Phase angle reference", "Bad data processing"],
+      "abstract": "研究了混合量测状态估计中相角参考点坏数据问题的处理方法。提出了一种基于相角参考点一致性检验的坏数据检测方法，通过分析不同参考点之间的相角关系，实现了对相角参考点坏数据的快速检测和识别。",
+      "abstractEn": "The processing method for bad data problems in mixed measurement state estimation phase angle reference points is studied. A bad data detection method based on phase angle reference point consistency check is proposed. By analyzing the phase angle relationship between different reference points, rapid detection and identification of phase angle reference point bad data are achieved.",
+      "url": "http://www.aeps-info.com/aeps/ch/reader/view_abstract.aspx?file_no=20140507008&flag=1"
+    },
+    {
+      "type": "journal",
+      "authors": [
+        {
+          "name": "张婷",
+          "nameEn": "Zhang Ting"
+        },
+        {
+          "name": "翟明玉",
+          "nameEn": "Zhai Mingyu"
+        },
+        {
+          "name": "张海滨",
+          "nameEn": "Zhang Haibin"
+        },
+        {
+          "name": "齐苗苗",
+          "nameEn": "Qi Miaomiao"
+        },
+        {
+          "name": "龚成明",
+          "nameEn": "Gong Chengming"
+        },
+        {
+          "name": "李雷",
+          "nameEn": "Li Lei"
+        }
+      ],
+      "title": "基于不确定性推理的变电站拓扑错误辨识",
+      "titleEn": "Substation Topology Error Identification Based on Uncertainty Reasoning",
+      "journal": "电力系统自动化",
+      "journalEn": "Automation of Electric Power Systems",
+      "year": 2014,
+      "volume": 38,
+      "issue": 6,
+      "pages": "49-54",
+      "keywords": ["不确定性推理", "变电站", "拓扑错误辨识", "状态估计"],
+      "keywordsEn": ["Uncertainty reasoning", "Substation", "Topology error identification", "State estimation"],
+      "abstract": "研究了基于不确定性推理的变电站拓扑错误辨识问题。提出了一种结合贝叶斯推理和模糊逻辑的拓扑错误辨识方法，通过分析量测数据的不确定性，实现了对变电站拓扑错误的准确辨识。",
+      "abstractEn": "The substation topology error identification problem based on uncertainty reasoning is studied. A topology error identification method combining Bayesian reasoning and fuzzy logic is proposed. By analyzing the uncertainty of measurement data, accurate identification of substation topology errors is achieved.",
+      "url": "http://www.aeps-info.com/aeps/ch/reader/view_abstract.aspx?file_no=20140506008&flag=1"
+    },
+    {
+      "type": "journal",
+      "authors": [
+        {
+          "name": "罗玉春",
+          "nameEn": "Luo Yuchun"
+        },
+        {
+          "name": "龚成明",
+          "nameEn": "Gong Chengming"
+        },
+        {
+          "name": "王毅",
+          "nameEn": "Wang Yi"
+        },
+        {
+          "name": "李雷",
+          "nameEn": "Li Lei"
+        },
+        {
+          "name": "葛亮亮",
+          "nameEn": "Ge Liangliang"
+        }
+      ],
+      "title": "基于EMS的地区电网合环风险评估系统",
+      "titleEn": "Regional Power Grid Loop Closing Risk Assessment System Based on EMS",
+      "journal": "江苏电机工程",
+      "journalEn": "Jiangsu Electrical Engineering",
+      "year": 2014,
+      "volume": 33,
+      "issue": 2,
+      "pages": "30-33",
+      "doi": "10.19464/j.cnki.cn32-1541/tm.2014.02.009",
+      "keywords": ["EMS", "地区电网", "合环风险评估", "电网安全"],
+      "keywordsEn": ["EMS", "Regional power grid", "Loop closing risk assessment", "Power grid security"],
+      "abstract": "开发了一套基于EMS的地区电网合环风险评估系统。该系统能够实时分析电网运行状态，评估合环操作的风险等级，为调度人员提供决策支持。系统已在多个地区电网中成功应用。",
+      "abstractEn": "A regional power grid loop closing risk assessment system based on EMS is developed. The system can analyze power grid operation status in real time, evaluate the risk level of loop closing operations, and provide decision support for dispatch personnel. The system has been successfully applied in multiple regional power grids.",
+      "url": "https://kns.cnki.net/kcms/detail/detail.aspx?doi=10.19464/j.cnki.cn32-1541/tm.2014.02.009"
+    },
+    {
+      "type": "journal",
+      "authors": [
+        {
+          "name": "李骁",
+          "nameEn": "Li Xiao"
+        },
+        {
+          "name": "高宗和",
+          "nameEn": "Gao Zonghe"
+        },
+        {
+          "name": "龚成明",
+          "nameEn": "Gong Chengming"
+        },
+        {
+          "name": "王毅",
+          "nameEn": "Wang Yi"
+        },
+        {
+          "name": "邹德虎",
+          "nameEn": "Zou Dehu"
+        }
+      ],
+      "title": "多目标函数预抗差估计",
+      "titleEn": "Multi-Objective Function Pre-Robust Estimation",
+      "journal": "电气技术",
+      "journalEn": "Electrical Engineering",
+      "year": 2016,
+      "volume": 17,
+      "issue": 4,
+      "pages": "59-62",
+      "keywords": ["多目标函数", "预抗差估计", "状态估计", "鲁棒性"],
+      "keywordsEn": ["Multi-objective function", "Pre-robust estimation", "State estimation", "Robustness"],
+      "abstract": "研究了多目标函数预抗差估计方法。提出了一种结合多目标优化和抗差估计的算法，提高了状态估计的鲁棒性和计算效率。",
+      "abstractEn": "The multi-objective function pre-robust estimation method is studied. An algorithm combining multi-objective optimization and robust estimation is proposed, improving the robustness and computational efficiency of state estimation.",
+      "url": "https://kns.cnki.net/"
+    },
+    {
+      "type": "journal",
+      "authors": [
+        {
+          "name": "江伟",
+          "nameEn": "Jiang Wei"
+        },
+        {
+          "name": "陶文伟",
+          "nameEn": "Tao Wenwei"
+        },
+        {
+          "name": "黄颖祺",
+          "nameEn": "Huang Yingqi"
+        },
+        {
+          "name": "罗玉春",
+          "nameEn": "Luo Yuchun"
+        },
+        {
+          "name": "龚成明",
+          "nameEn": "Gong Chengming"
+        }
+      ],
+      "title": "基于EMS地区电网经济调度辅助决策系统研发",
+      "titleEn": "Research and Development of Economic Dispatch Auxiliary Decision System Based on EMS for Regional Power Grid",
+      "journal": "南方电网技术",
+      "journalEn": "Southern Power System Technology",
+      "year": 2013,
+      "volume": 7,
+      "issue": 3,
+      "pages": "53-57",
+      "keywords": ["EMS", "经济调度", "辅助决策", "地区电网"],
+      "keywordsEn": ["EMS", "Economic dispatch", "Auxiliary decision", "Regional power grid"],
+      "abstract": "开发了基于EMS的地区电网经济调度辅助决策系统。该系统能够为调度人员提供经济调度的决策支持，优化电网运行效率。",
+      "abstractEn": "An economic dispatch auxiliary decision system based on EMS for regional power grid is developed. The system can provide decision support for economic dispatch for dispatch personnel and optimize power grid operation efficiency.",
+      "url": "https://kns.cnki.net/"
+    },
+    {
+      "type": "journal",
+      "authors": [
+        {
           "name": "龚成明",
           "nameEn": "Gong Chengming"
         },
@@ -371,23 +521,342 @@
           "nameEn": "Yu Yijun"
         },
         {
-          "name": "梁小鹏",
-          "nameEn": "Liang Xiaopeng"
+          "name": "路轶",
+          "nameEn": "Lu Yi"
+        },
+        {
+          "name": "徐田",
+          "nameEn": "Xu Tian"
+        },
+        {
+          "name": "王丹",
+          "nameEn": "Wang Dan"
         }
       ],
-      "title": "旁路代的识别算法",
-      "titleEn": "Algorithm for Series Capacitor Banks Identification",
-      "journal": "江苏电机工程",
-      "journalEn": "Jiangsu Electrical Engineering",
-      "year": 2004,
-      "volume": 23,
+      "title": "加权最小二乘状态估计量测权值计算的实用方法",
+      "titleEn": "Practical Method for Measurement Weight Calculation in Weighted Least Squares State Estimation",
+      "journal": "电力系统自动化",
+      "journalEn": "Automation of Electric Power Systems",
+      "year": 2016,
+      "volume": 40,
+      "issue": 11,
+      "pages": "143-147",
+      "doi": "10.7500/AEPS20150615015",
+      "keywords": ["加权最小二乘", "状态估计", "量测权值", "实用方法"],
+      "keywordsEn": ["Weighted least squares", "State estimation", "Measurement weight", "Practical method"],
+      "abstract": "研究了加权最小二乘状态估计中量测权值计算的实用方法。针对传统权值计算方法的局限性，提出了一种基于量测精度和可靠性的权值计算方法。该方法能够根据量测设备的实际性能动态调整权值，提高了状态估计的准确性和鲁棒性。",
+      "abstractEn": "The practical method for measurement weight calculation in weighted least squares state estimation is studied. To address the limitations of traditional weight calculation methods, a weight calculation method based on measurement accuracy and reliability is proposed. The method can dynamically adjust weights according to the actual performance of measurement devices, improving the accuracy and robustness of state estimation.",
+      "url": "http://www.aeps-info.com/aeps/ch/reader/view_abstract.aspx?file_no=20160507008&flag=1"
+    },
+    {
+      "type": "journal",
+      "authors": [
+        {
+          "name": "陈荃韡",
+          "nameEn": "Chen Canhan"
+        },
+        {
+          "name": "龚成明",
+          "nameEn": "Gong Chengming"
+        },
+        {
+          "name": "赵晋泉",
+          "nameEn": "Zhao Jinquan"
+        },
+        {
+          "name": "王毅",
+          "nameEn": "Wang Yi"
+        },
+        {
+          "name": "邹德虎",
+          "nameEn": "Zou Dehu"
+        }
+      ],
+      "title": "并行稀疏系统直接求解库SuperLU_MT在状态估计中的应用",
+      "titleEn": "Application of Parallel Sparse System Direct Solver Library SuperLU_MT in State Estimation",
+      "journal": "电力系统自动化",
+      "journalEn": "Automation of Electric Power Systems",
+      "year": 2017,
+      "volume": 41,
+      "issue": 3,
+      "pages": "83-88",
+      "doi": "10.7500/AEPS20160607008",
+      "keywords": ["并行计算", "状态估计", "稀疏矩阵", "SuperLU"],
+      "keywordsEn": ["Parallel computing", "State estimation", "Sparse matrix", "SuperLU"],
+      "abstract": "针对电力系统状态估计中大规模稀疏线性方程组的求解问题，提出了一种基于并行稀疏系统直接求解库SuperLU_MT的快速求解方法。该方法充分利用了现代多核处理器的并行计算能力，通过任务并行和数据并行相结合的策略，显著提高了大规模电力系统状态估计的计算效率。仿真结果表明，与传统的串行求解方法相比，所提方法在8核处理器上可获得6倍以上的加速比。",
+      "abstractEn": "A fast solution method based on parallel sparse system direct solver library SuperLU_MT is proposed for solving large-scale sparse linear equations in power system state estimation. The method makes full use of the parallel computing capabilities of modern multi-core processors through a combination of task parallelism and data parallelism, significantly improving the computational efficiency of large-scale power system state estimation. Simulation results show that compared with traditional serial solution methods, the proposed method can achieve more than 6x speedup on 8-core processors.",
+      "url": "http://www.aeps-info.com/aeps/ch/reader/view_abstract.aspx?file_no=20160607008&flag=1"
+    },
+    {
+      "type": "conference",
+      "authors": [
+        {
+          "name": "邹德虎",
+          "nameEn": "Zou Dehu"
+        },
+        {
+          "name": "王毅",
+          "nameEn": "Wang Yi"
+        },
+        {
+          "name": "龚成明",
+          "nameEn": "Gong Chengming"
+        }
+      ],
+      "title": "基于PQ解耦的支路参数估计",
+      "titleEn": "Branch Parameter Estimation Based on PQ Decoupling",
+      "conference": "2013年中国电机工程学会年会论文集",
+      "location": "中国",
+      "year": 2013,
+      "pages": "1943-1946",
+      "keywords": ["PQ解耦", "支路参数估计", "电力系统", "参数辨识"],
+      "keywordsEn": ["PQ decoupling", "Branch parameter estimation", "Power system", "Parameter identification"],
+      "abstract": "提出了一种基于PQ解耦的支路参数估计方法。通过解耦有功和无功功率的计算，提高了参数估计的效率和精度。该方法适用于大规模电力系统的在线参数辨识。",
+      "abstractEn": "A branch parameter estimation method based on PQ decoupling is proposed. By decoupling the calculation of active and reactive power, the efficiency and accuracy of parameter estimation are improved. The method is suitable for online parameter identification of large-scale power systems.",
+      "url": "https://www.cnki.net/"
+    },
+    {
+      "type": "conference",
+      "authors": [
+        {
+          "name": "徐秀之",
+          "nameEn": "Xu Xiuzhi"
+        },
+        {
+          "name": "龚成明",
+          "nameEn": "Gong Chengming"
+        },
+        {
+          "name": "李雷",
+          "nameEn": "Li Lei"
+        },
+        {
+          "name": "邹德虎",
+          "nameEn": "Zou Dehu"
+        }
+      ],
+      "title": "电力系统状态估计中杠杆量测的特性及检测方法综述",
+      "titleEn": "Review of Characteristics and Detection Methods of Leverage Measurements in Power System State Estimation",
+      "conference": "2013年中国电机工程学会年会论文集",
+      "location": "中国",
+      "year": 2013,
+      "pages": "2088-2091",
+      "keywords": ["杠杆量测", "状态估计", "检测方法", "综述"],
+      "keywordsEn": ["Leverage measurements", "State estimation", "Detection method", "Review"],
+      "abstract": "综述了电力系统状态估计中杠杆量测的特性及检测方法。分析了杠杆量测对状态估计结果的影响，总结了现有的杠杆量测检测算法，并提出了未来的研究方向。",
+      "abstractEn": "The characteristics and detection methods of leverage measurements in power system state estimation are reviewed. The impact of leverage measurements on state estimation results is analyzed, existing leverage measurement detection algorithms are summarized, and future research directions are proposed.",
+      "url": "https://www.cnki.net/"
+    },
+    {
+      "type": "conference",
+      "authors": [
+        {
+          "name": "Chengming Gong",
+          "nameEn": "Chengming Gong"
+        },
+        {
+          "name": "Shuhai Feng",
+          "nameEn": "Shuhai Feng"
+        },
+        {
+          "name": "Xianfeng Xu",
+          "nameEn": "Xianfeng Xu"
+        },
+        {
+          "name": "Yuefeng Liang",
+          "nameEn": "Yuefeng Liang"
+        },
+        {
+          "name": "Hongwei Du",
+          "nameEn": "Hongwei Du"
+        }
+      ],
+      "title": "A General Power System Topology Analysis Package and Its Applications",
+      "titleEn": "A General Power System Topology Analysis Package and Its Applications",
+      "conference": "ICEE 2006",
+      "location": "International",
+      "year": 2006,
+      "keywords": ["Power system topology", "Analysis package", "Applications", "Software"],
+      "keywordsEn": ["Power system topology", "Analysis package", "Applications", "Software"],
+      "abstract": "介绍了一个通用的电力系统拓扑分析软件包及其应用。该软件包能够处理各种复杂的电力系统拓扑结构，为电网分析和优化提供技术支持。",
+      "abstractEn": "A general power system topology analysis package and its applications are introduced. The package can handle various complex power system topologies and provide technical support for power grid analysis and optimization.",
+      "url": "https://ieeexplore.ieee.org/"
+    },
+    {
+      "type": "conference",
+      "authors": [
+        {
+          "name": "GONG Chengming",
+          "nameEn": "GONG Chengming"
+        }
+      ],
+      "title": "Implementation of Polar Form Algorithms with the Rectangular Form Complex Number",
+      "titleEn": "Implementation of Polar Form Algorithms with the Rectangular Form Complex Number",
+      "conference": "IEEE PES General Meeting (PESGM 2010)",
+      "location": "International",
+      "year": 2010,
+      "keywords": ["Polar form", "Rectangular form", "Complex number", "Algorithm implementation"],
+      "keywordsEn": ["Polar form", "Rectangular form", "Complex number", "Algorithm implementation"],
+      "abstract": "研究了极坐标形式算法在直角坐标复数环境下的实现问题。提出了一种高效的坐标转换和算法实现方法，提高了电力系统计算的效率。",
+      "abstractEn": "The implementation of polar form algorithms in rectangular form complex number environment is studied. An efficient coordinate conversion and algorithm implementation method is proposed, improving the efficiency of power system calculations.",
+      "url": "https://ieeexplore.ieee.org/"
+    },
+    {
+      "type": "conference",
+      "authors": [
+        {
+          "name": "GONG Chengming",
+          "nameEn": "GONG Chengming"
+        },
+        {
+          "name": "LI Lei",
+          "nameEn": "LI Lei"
+        },
+        {
+          "name": "XU Xiuzhi",
+          "nameEn": "XU Xiuzhi"
+        }
+      ],
+      "title": "A Design Pattern for Power System Steady State Analysis Software",
+      "titleEn": "A Design Pattern for Power System Steady State Analysis Software",
+      "conference": "ICEE 2015",
+      "location": "International",
+      "year": 2015,
+      "pages": "1-6",
+      "keywords": ["Design pattern", "Steady state analysis", "Software architecture", "Power system"],
+      "keywordsEn": ["Design pattern", "Steady state analysis", "Software architecture", "Power system"],
+      "abstract": "提出了一种电力系统稳态分析软件的设计模式。该设计模式能够提高软件的可维护性和扩展性，为电力系统分析软件的开发提供指导。",
+      "abstractEn": "A design pattern for power system steady state analysis software is proposed. The design pattern can improve software maintainability and extensibility, providing guidance for the development of power system analysis software.",
+      "url": "https://ieeexplore.ieee.org/"
+    },
+    {
+      "type": "conference",
+      "authors": [
+        {
+          "name": "Ding Zhaohao",
+          "nameEn": "Ding Zhaohao"
+        },
+        {
+          "name": "Lu Qiyuan",
+          "nameEn": "Lu Qiyuan"
+        },
+        {
+          "name": "Wei Xuan",
+          "nameEn": "Wei Xuan"
+        },
+        {
+          "name": "Li Xinran",
+          "nameEn": "Li Xinran"
+        },
+        {
+          "name": "Guo Shan",
+          "nameEn": "Guo Shan"
+        },
+        {
+          "name": "Gong Chengming",
+          "nameEn": "Gong Chengming"
+        },
+        {
+          "name": "Hu Yingjian",
+          "nameEn": "Hu Yingjian"
+        },
+        {
+          "name": "Han Yaning",
+          "nameEn": "Han Yaning"
+        }
+      ],
+      "title": "On Probabilistic Flexible Regulation Capability Forecasting for Electric Vehicles",
+      "titleEn": "On Probabilistic Flexible Regulation Capability Forecasting for Electric Vehicles",
+      "conference": "IEEE/IAS I&CPS 2024",
+      "location": "International",
+      "year": 2024,
+      "pages": "1-6",
+      "doi": "10.1109/ICPS60943.2024.10563654",
+      "keywords": ["Electric vehicles", "Flexible regulation", "Capability forecasting", "Probabilistic methods"],
+      "keywordsEn": ["Electric vehicles", "Flexible regulation", "Capability forecasting", "Probabilistic methods"],
+      "abstract": "研究了电动汽车灵活调节能力的概率预测方法。提出了一种考虑电动汽车充放电行为不确定性的预测模型，为电网调度提供了更准确的调节能力信息。",
+      "abstractEn": "The probabilistic flexible regulation capability forecasting for electric vehicles is studied. A forecasting model considering the uncertainty of electric vehicle charging and discharging behavior is proposed, providing more accurate regulation capability information for power grid dispatch.",
+      "url": "https://ieeexplore.ieee.org/document/10563654/"
+    },
+    {
+      "type": "journal",
+      "authors": [
+        {
+          "name": "Ding Zhaohao",
+          "nameEn": "Ding Zhaohao"
+        },
+        {
+          "name": "Lu Qiyuan",
+          "nameEn": "Lu Qiyuan"
+        },
+        {
+          "name": "Wei Xuan",
+          "nameEn": "Wei Xuan"
+        },
+        {
+          "name": "Xu Zhiyuan",
+          "nameEn": "Xu Zhiyuan"
+        },
+        {
+          "name": "Li Xinran",
+          "nameEn": "Li Xinran"
+        },
+        {
+          "name": "Guo Shan",
+          "nameEn": "Guo Shan"
+        },
+        {
+          "name": "Gong Chengming",
+          "nameEn": "Gong Chengming"
+        },
+        {
+          "name": "Hu Yingjian",
+          "nameEn": "Hu Yingjian"
+        },
+        {
+          "name": "Han Yaning",
+          "nameEn": "Han Yaning"
+        }
+      ],
+      "title": "Forecasting Flexible Regulation Capabilities of Electric Vehicles: A Probabilistic Approach With Bayesian Neural Networks and Transformer",
+      "titleEn": "Forecasting Flexible Regulation Capabilities of Electric Vehicles: A Probabilistic Approach With Bayesian Neural Networks and Transformer",
+      "journal": "IEEE Transactions on Industry Applications",
+      "journalEn": "IEEE Transactions on Industry Applications",
+      "year": 2025,
+      "volume": 61,
       "issue": 4,
-      "pages": "10-12",
-      "keywords": ["旁路代", "识别算法", "配电系统", "故障诊断"],
-      "keywordsEn": ["Series capacitors", "Identification algorithm", "Distribution system", "Fault diagnosis"],
-      "abstract": "提出了一种旁路电容器组识别算法。针对传统识别方法在处理复杂配电系统时的局限性，通过分析电容器组的投切特性和电流特征，实现了对旁路电容器的准确识别。",
-      "abstractEn": "A series capacitor banks identification algorithm is proposed. To address the limitations of traditional identification methods when dealing with complex distribution systems, accurate identification of series capacitors is achieved by analyzing the switching characteristics and current features of capacitor banks.",
-      "url": "https://kns.cnki.net/kcms/detail/detail.aspx?doi=10.19464/j.cnki.cn32-1541/tm.2004.04.004"
+      "pages": "5468-5478",
+      "doi": "10.1109/TIA.2025.3548578",
+      "keywords": ["Electric vehicles", "Bayesian neural networks", "Transformer", "Flexible regulation"],
+      "keywordsEn": ["Electric vehicles", "Bayesian neural networks", "Transformer", "Flexible regulation"],
+      "abstract": "提出了一种基于贝叶斯神经网络和Transformer的电动汽车灵活调节能力概率预测方法。该方法结合了深度学习和概率推理，提高了预测精度和可靠性。",
+      "abstractEn": "A probabilistic approach for forecasting flexible regulation capabilities of electric vehicles using Bayesian neural networks and Transformer is proposed. The method combines deep learning and probabilistic reasoning, improving prediction accuracy and reliability.",
+      "url": "https://ieeexplore.ieee.org/document/3548578/"
+    },
+    {
+      "type": "preprint",
+      "authors": [
+        {
+          "name": "Wang Jingsong",
+          "nameEn": "Wang Jingsong"
+        },
+        {
+          "name": "Gong Chengming",
+          "nameEn": "Gong Chengming"
+        }
+      ],
+      "title": "Flexible Control Strategy of DC Bus for AC-DC Hybrid Microgrid with Electric Vehicle",
+      "titleEn": "Flexible Control Strategy of DC Bus for AC-DC Hybrid Microgrid with Electric Vehicle",
+      "journal": "arXiv",
+      "journalEn": "arXiv",
+      "year": 2020,
+      "pages": "arXiv:2004.02096",
+      "doi": "arXiv:2004.02096",
+      "keywords": ["AC-DC混合微电网", "直流母线", "灵活控制", "电动汽车"],
+      "keywordsEn": ["AC-DC hybrid microgrid", "DC bus", "Flexible control", "Electric vehicle"],
+      "abstract": "研究了含电动汽车的AC-DC混合微电网直流母线灵活控制策略。提出了一种考虑电动汽车充放电特性的控制方法，提高了微电网的运行效率和稳定性。",
+      "abstractEn": "The flexible control strategy of DC bus for AC-DC hybrid microgrid with electric vehicle is studied. A control method considering electric vehicle charging and discharging characteristics is proposed, improving the operation efficiency and stability of the microgrid.",
+      "url": "https://arxiv.org/abs/2004.02096"
     }
   ]
 }
