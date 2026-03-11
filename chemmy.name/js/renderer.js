@@ -431,11 +431,15 @@ class ModularContentRenderer {
         
         let papersHTML = '';
         console.log('papers array length:', moduleData.papers.length);
+        console.log('initial papersHTML:', papersHTML);
         
         moduleData.papers.forEach((paper, index) => {
             console.log(`rendering paper ${index + 1}:`, paper.title);
             papersHTML += this.renderPaperItem(paper, index + 1);
+            console.log('papersHTML after paper ${index + 1}:', papersHTML);
         });
+        
+        console.log('final papersHTML before rendering:', papersHTML);
 
         main.innerHTML = `<section id="papers">
             <div class="papers-container">
