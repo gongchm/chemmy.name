@@ -5,6 +5,7 @@ class ModularContentRenderer {
         this.modules = new Map();
         this.isLoading = false;
         this.errorMessages = [];
+        this.currentModule = null; // 当前显示的模块
     }
 
     // 显示加载状态
@@ -122,9 +123,16 @@ class ModularContentRenderer {
 
         let navHTML = '';
         
-        // 根据启用的模块生成导航
-        this.modules.forEach((module, moduleId) => {
-            navHTML += `<li><a href="#${moduleId}">${module.title}</a></li>`;
+        // 按顺序渲染所有启用的模块
+        this.modules.forEach((moduleData, moduleId) => {
+            // 默认显示第一个模块
+            if (this.currentModule === null && moduleId === Array.from(this.modules.keys())[0]) {
+                this.currentModule = moduleId;
+            }
+            
+            const isActive = moduleId === this.currentModule;
+            const activeClass = isActive ? 'active' : '';
+            navHTML += `<li><a href="#${moduleId}" class="nav-link ${activeClass}" data-module="${moduleId}">${moduleData.title}</a></li>`;
         });
         
         // 添加英文链接
@@ -133,6 +141,69 @@ class ModularContentRenderer {
         }
 
         nav.innerHTML = navHTML;
+        
+        // 添加导航点击事件
+        this.setupNavigationEvents();
+    }
+
+    // 设置导航事件
+    setupNavigationEvents() {
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const moduleId = link.getAttribute('data-module');
+                this.showModule(moduleId);
+            });
+        });
+    }
+
+    // 显示指定模块
+    showModule(moduleId) {
+        this.currentModule = moduleId;
+        
+        // 更新导航高亮
+        this.updateNavigationHighlight();
+        
+        // 只显示选中的模块内容
+        const main = document.querySelector('main');
+        if (!main) return;
+        
+        const moduleData = this.modules.get(moduleId);
+        if (!moduleData) return;
+        
+        // 清空并重新渲染内容
+        main.innerHTML = '';
+        
+        if (moduleId === 'papers') {
+            this.renderPapersModule(moduleData);
+        } else {
+            this.renderModule(moduleId, moduleData);
+        }
+        
+        // 添加显示动画
+        setTimeout(() => {
+            const sections = main.querySelectorAll('section');
+            sections.forEach(section => {
+                section.classList.add('visible');
+            });
+        }, 100);
+        
+        // 滚动到顶部
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 更新导航高亮
+    updateNavigationHighlight() {
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            const moduleId = link.getAttribute('data-module');
+            if (moduleId === this.currentModule) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
     }
 
     // 渲染内容段落
