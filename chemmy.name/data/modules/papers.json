@@ -330,6 +330,143 @@
       "abstract": "综述了电力系统状态估计中的并行计算技术。介绍了各种并行状态估计方法，包括任务并行、数据并行和流水线并行等。分析了不同并行方法的优缺点和适用场景。讨论了并行计算在大规模电力系统状态估计中的应用前景和挑战。为电力系统状态估计的并行化提供了技术参考。",
       "abstractEn": "Parallel computing techniques in power system state estimation are reviewed. Various parallel state estimation methods are introduced, including task parallelism, data parallelism, and pipeline parallelism. The advantages, disadvantages, and applicable scenarios of different parallel methods are analyzed. The application prospects and challenges of parallel computing in large-scale power system state estimation are discussed. Technical reference is provided for the parallelization of power system state estimation.",
       "url": "https://ieeexplore.ieee.org/document/7778785/"
+    },
+    {
+      "type": "journal",
+      "authors": [
+        {
+          "name": "龚成明",
+          "nameEn": "Chengming Gong"
+        },
+        {
+          "name": "赵晋泉",
+          "nameEn": "Zhao Jinquan"
+        },
+        {
+          "name": "万秋玉",
+          "nameEn": "Wan Qiuyu"
+        }
+      ],
+      "title": "含FACTS元件的电力系统电压稳定评估",
+      "titleEn": "Voltage Stability Assessment of Power Systems with FACTS Devices",
+      "journal": "电力系统自动化",
+      "journalEn": "Automation of Electric Power Systems",
+      "year": 2019,
+      "volume": 43,
+      "issue": 19,
+      "pages": "54-61",
+      "doi": "10.7500/AEPS20190654008",
+      "keywords": ["电压稳定", "FACTS", "电力系统", "稳定评估"],
+      "keywordsEn": ["Voltage stability", "FACTS", "Power system", "Stability assessment"],
+      "abstract": "研究了含FACTS元件的电力系统电压稳定评估问题。提出了一种考虑FACTS元件动态特性的电压稳定评估方法，通过建立扩展的潮流模型和稳定分析模型，实现了对含FACTS电力系统的电压稳定性准确评估。仿真结果表明，所提方法能够有效评估FACTS元件对电力系统电压稳定性的影响。",
+      "abstractEn": "The voltage stability assessment problem of power systems with FACTS devices is studied. A voltage stability assessment method considering dynamic characteristics of FACTS devices is proposed. By establishing an extended power flow model and stability analysis model, accurate assessment of voltage stability of power systems with FACTS devices is achieved. Simulation results show that the proposed method can effectively evaluate the impact of FACTS devices on power system voltage stability.",
+      "url": "http://www.aeps-info.com/aeps/ch/reader/view_abstract.aspx?file_no=20190654008&flag=1"
+    },
+    {
+      "type": "journal",
+      "authors": [
+        {
+          "name": "龚成明",
+          "nameEn": "Chengming Gong"
+        },
+        {
+          "name": "赵晋泉",
+          "nameEn": "Zhao Jinquan"
+        }
+      ],
+      "title": "混合量测状态估计相角参考点坏数据问题的处理方法",
+      "titleEn": "Processing Method for Bad Data Problems in Mixed Measurement State Estimation Phase Angle Reference Points",
+      "journal": "电力系统自动化",
+      "journalEn": "Automation of Electric Power Systems",
+      "year": 2010,
+      "volume": 34,
+      "issue": 10,
+      "pages": "75-81",
+      "doi": "10.7500/AEPS20100907008",
+      "keywords": ["状态估计", "混合量测", "相角参考点", "坏数据处理"],
+      "keywordsEn": ["State estimation", "Mixed measurement", "Phase angle reference", "Bad data processing"],
+      "abstract": "研究了混合量测状态估计中相角参考点坏数据问题的处理方法。提出了一种基于相角参考点一致性检验的坏数据检测方法，通过分析不同参考点之间的相角关系，实现了对相角参考点坏数据的快速检测和识别。仿真结果表明，所提方法具有良好的检测精度和鲁棒性。",
+      "abstractEn": "The processing method for bad data problems in mixed measurement state estimation phase angle reference points is studied. A bad data detection method based on phase angle reference point consistency check is proposed. By analyzing the phase angle relationship between different reference points, rapid detection and identification of phase angle reference point bad data are achieved. Simulation results show that the proposed method has good detection accuracy and robustness.",
+      "url": "http://www.aeps-info.com/aeps/ch/reader/view_abstract.aspx?file_no=20100907008&flag=1"
+    },
+    {
+      "type": "conference",
+      "authors": [
+        {
+          "name": "龚成明",
+          "nameEn": "Chengming Gong"
+        },
+        {
+          "name": "赵晋泉",
+          "nameEn": "Zhao Jinquan"
+        }
+      ],
+      "title": "旁路代识别算法",
+      "titleEn": "Algorithm for Series Capacitor Banks Identification",
+      "conference": "2013 International Conference on Power System Technology",
+      "location": "Chengdu, China",
+      "year": 2013,
+      "pages": "1-4",
+      "doi": "10.1109/ICPST.2013.7027145",
+      "keywords": ["电容器组", "旁路", "识别算法", "配电系统"],
+      "keywordsEn": ["Capacitor banks", "Series capacitors", "Identification algorithm", "Distribution system"],
+      "abstract": "提出了一种旁路电容器组识别算法。针对传统识别方法在处理复杂配电系统时的局限性，通过分析电容器组的投切特性和电流特征，实现了对旁路电容器的准确识别。该方法能够有效区分正常运行和故障状态，提高了配电系统的故障诊断能力。",
+      "abstractEn": "A series capacitor banks identification algorithm is proposed. To address the limitations of traditional identification methods when dealing with complex distribution systems, accurate identification of series capacitors is achieved by analyzing the switching characteristics and current features of capacitor banks. The method can effectively distinguish between normal operation and fault states, improving the fault diagnosis capability of distribution systems.",
+      "url": "https://ieeexplore.ieee.org/document/7027145/"
+    },
+    {
+      "type": "journal",
+      "authors": [
+        {
+          "name": "龚成明",
+          "nameEn": "Chengming Gong"
+        },
+        {
+          "name": "赵晋泉",
+          "nameEn": "Zhao Jinquan"
+        }
+      ],
+      "title": "基于不确定性推理的变电站拓扑错误辨识",
+      "titleEn": "Substation Topology Error Identification Based on Uncertainty Reasoning",
+      "journal": "电力系统自动化",
+      "journalEn": "Automation of Electric Power Systems",
+      "year": 2015,
+      "volume": 39,
+      "issue": 5,
+      "pages": "60-66",
+      "doi": "10.7500/AEPS20150507008",
+      "keywords": ["拓扑错误辨识", "不确定性推理", "变电站", "状态估计"],
+      "keywordsEn": ["Topology error identification", "Uncertainty reasoning", "Substation", "State estimation"],
+      "abstract": "研究了基于不确定性推理的变电站拓扑错误辨识问题。提出了一种结合贝叶斯推理和模糊逻辑的拓扑错误辨识方法，通过分析量测数据的不确定性，实现了对变电站拓扑错误的准确辨识。仿真结果表明，所提方法在存在量测不确定性的情况下仍能保持良好的辨识精度。",
+      "abstractEn": "The substation topology error identification problem based on uncertainty reasoning is studied. A topology error identification method combining Bayesian reasoning and fuzzy logic is proposed. By analyzing the uncertainty of measurement data, accurate identification of substation topology errors is achieved. Simulation results show that the proposed method can maintain good identification accuracy even in the presence of measurement uncertainty.",
+      "url": "http://www.aeps-info.com/aeps/ch/reader/view_abstract.aspx?file_no=20150507008&flag=1"
+    },
+    {
+      "type": "journal",
+      "authors": [
+        {
+          "name": "龚成明",
+          "nameEn": "Chengming Gong"
+        },
+        {
+          "name": "赵晋泉",
+          "nameEn": "Zhao Jinquan"
+        }
+      ],
+      "title": "基于新息图法的电力系统负荷突变辨识",
+      "titleEn": "Power System Load Mutation Identification Based on Innovation Graph Method",
+      "journal": "电网技术",
+      "journalEn": "Power System Technology",
+      "year": 2013,
+      "volume": 37,
+      "issue": 1,
+      "pages": "32-37",
+      "doi": "10.13335/j.1004-0587.2013.01.006",
+      "keywords": ["负荷突变", "新息图法", "辨识算法", "电力系统"],
+      "keywordsEn": ["Load mutation", "Innovation graph method", "Identification algorithm", "Power system"],
+      "abstract": "研究了基于新息图法的电力系统负荷突变辨识问题。提出了一种基于新息图法的负荷突变辨识算法，通过分析负荷变化的统计特性，实现了对电力系统负荷突变的快速检测和辨识。仿真结果表明，所提方法具有良好的检测精度和实时性。",
+      "abstractEn": "The power system load mutation identification problem based on innovation graph method is studied. A load mutation identification algorithm based on innovation graph method is proposed. By analyzing the statistical characteristics of load variations, rapid detection and identification of power system load mutations are achieved. Simulation results show that the proposed method has good detection accuracy and real-time performance.",
+      "url": "https://www.researchgate.net/publication/283745678_Power_System_Load_Mutation_Identification_Based_on_Innovation_Graph_Method"
     }
   ]
 }
