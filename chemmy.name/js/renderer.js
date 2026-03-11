@@ -498,23 +498,33 @@ class ModularContentRenderer {
             // 加载所有模块
             await this.loadModules();
             
-            // 动态生成导航菜单
-            this.renderNavigation();
-            
             // 清空main内容
             const main = document.querySelector('main');
             if (main) {
                 main.innerHTML = '';
             }
             
-            // 按顺序渲染所有启用的模块
-            this.modules.forEach((moduleData, moduleId) => {
-                if (moduleId === 'papers') {
+            // 设置默认活动模块为第一个启用的模块
+            const enabledModules = Array.from(this.modules.entries())
+                .filter(([moduleId, moduleData]) => moduleData.enabled)
+                .sort(([, a], [, b]) => a.order - b.order);
+            
+            if (enabledModules.length > 0) {
+                this.currentModule = enabledModules[0][0];
+            }
+            
+            // 动态生成导航菜单
+            this.renderNavigation();
+            
+            // 只渲染当前活动模块
+            if (this.currentModule && this.modules.has(this.currentModule)) {
+                const moduleData = this.modules.get(this.currentModule);
+                if (this.currentModule === 'papers') {
                     this.renderPapersModule(moduleData);
                 } else {
-                    this.renderModule(moduleId, moduleData);
+                    this.renderModule(this.currentModule, moduleData);
                 }
-            });
+            }
             
             // 渲染页脚
             this.renderFooter(this.config.footer);
