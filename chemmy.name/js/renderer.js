@@ -46,11 +46,16 @@ class ModularContentRenderer {
     // 加载主配置文件
     async loadConfig() {
         try {
+            console.log('🔍 开始加载config.json...');
             const response = await fetch('data/config.json');
+            console.log('🔍 fetch响应:', response.status, response.statusText);
             if (!response.ok) {
                 throw new Error(`HTTP ${response.status}: ${response.statusText}`);
             }
-            this.config = await response.json();
+            const configData = await response.json();
+            console.log('🔍 config.json原始数据:', configData);
+            this.config = configData;
+            console.log('🔍 this.config设置完成:', this.config);
         } catch (error) {
             console.error('无法加载主配置文件:', error);
             this.showError('无法加载配置文件，请检查网络连接');
