@@ -471,8 +471,11 @@ class ModularContentRenderer {
                 .filter(([moduleId, moduleData]) => moduleData.enabled)
                 .sort(([, a], [, b]) => a.order - b.order);
             
+            console.log('🔍 启用的模块:', enabledModules);
+            
             if (enabledModules.length > 0) {
                 this.currentModule = enabledModules[0][0];
+                console.log('🔍 设置默认模块:', this.currentModule);
             }
             
             // 动态生成导航菜单
@@ -508,11 +511,13 @@ class ModularContentRenderer {
 
     // 渲染指定模块
     renderModule(moduleId, moduleData) {
+        console.log('🔍 renderModule 被调用:', moduleId, moduleData);
         const main = document.querySelector('main');
         if (!main) return;
 
         let sectionHTML = `<section id="${moduleId}">`;
         
+        console.log('🔍 模块内容:', moduleData.content);
         moduleData.content.forEach(item => {
             sectionHTML += this.renderContentItem(item);
         });
@@ -524,6 +529,7 @@ class ModularContentRenderer {
         
         sectionHTML += '</section>';
         
+        console.log('🔍 生成的HTML:', sectionHTML);
         main.innerHTML = sectionHTML;
     }
 
