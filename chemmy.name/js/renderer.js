@@ -561,6 +561,14 @@ class ModularContentRenderer {
         
         console.log('🔍 生成的HTML:', sectionHTML);
         main.innerHTML = sectionHTML;
+        
+        // 立即添加visible类，不依赖setTimeout
+        setTimeout(() => {
+            const section = document.querySelector(`#${moduleId}`);
+            if (section) {
+                section.classList.add('visible');
+            }
+        }, 50);
     }
 
     // 渲染论文模块
