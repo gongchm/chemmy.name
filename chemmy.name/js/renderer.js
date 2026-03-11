@@ -340,7 +340,6 @@ class ModularContentRenderer {
         });
 
         main.innerHTML = `<section id="papers">
-            <h2>${modulesData.title}</h2>
             <div class="papers-container">
                 ${papersHTML}
             </div>
@@ -495,7 +494,6 @@ class ModularContentRenderer {
         if (!main) return;
 
         let sectionHTML = `<section id="${moduleId}">`;
-        sectionHTML += `<h2>${moduleData.title}</h2>`;
         
         moduleData.content.forEach(item => {
             sectionHTML += this.renderContentItem(item);
