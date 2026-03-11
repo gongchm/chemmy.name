@@ -6,11 +6,55 @@
 }
 
 body {
-  font-family: 'Georgia', 'Times New Roman', 'STSong', 'SimSun', serif;
+  font-family: 'Georgia', 'Times New Roman', 'STSong', 'SimSun', '宋体', serif;
   line-height: 1.7;
   color: #2c3e50;
   background: #f8f9fa;
   text-decoration: none;
+  font-display: swap;
+}
+
+/* 通用链接样式 */
+a {
+  color: #2563eb;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-bottom: 1px;
+  border-bottom: 1px solid transparent;
+}
+
+a:hover {
+  color: #1a73e8;
+  border-bottom-color: #1a73e8;
+  text-decoration: underline;
+}
+
+/* 特殊链接样式 */
+.affiliation a {
+  color: #3498db;
+  border-bottom: 1px dotted #3498db;
+}
+
+.affiliation a:hover {
+  color: #2980b9;
+  border-bottom-style: solid;
+}
+
+.papers-container a,
+.paper-link {
+  color: #1976d2;
+  font-weight: 500;
+  border-bottom: 2px solid #1976d2;
+  padding-bottom: 2px;
+}
+
+.papers-container a:hover,
+.paper-link:hover {
+  color: #0d47a1;
+  border-bottom-color: #0d47a1;
+  text-decoration: underline;
+  transform: translateY(-1px);
 }
 
 /* 主容器 */
@@ -451,16 +495,6 @@ footer {
 footer p {
   margin: 8px 0;
   opacity: 0.8;
-}
-
-footer a {
-  color: #3498db;
-  text-decoration: none;
-}
-
-footer a:hover {
-  color: #2980b9;
-  text-decoration: underline;
 }
 
 /* 论文特殊样式 */
