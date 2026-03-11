@@ -184,7 +184,14 @@ class ModularContentRenderer {
         
         if (moduleId === 'papers') {
             console.log('🔥🔥🔥 调用 renderPapersModule! 🔥🔥🔥');
-            this.renderPapersModule(moduleData);
+            try {
+                this.renderPapersModule(moduleData);
+                console.log('🔥🔥🔥 renderPapersModule 调用成功! 🔥🔥🔥');
+            } catch (error) {
+                console.error('🔥🔥🔥 renderPapersModule 调用失败! 🔥🔥🔥');
+                console.error('🔥 错误详情:', error);
+                console.error('🔥 错误堆栈:', error.stack);
+            }
         } else {
             console.log('🔥 调用 renderModule for:', moduleId);
             this.renderModule(moduleId, moduleData);
