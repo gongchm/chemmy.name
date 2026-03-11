@@ -109,13 +109,36 @@ class ModularContentRenderer {
 
     // 渲染导航
     renderNavigation() {
+        console.log('🔥🔥🔥 renderNavigation 被调用了! 🔥🔥🔥');
+        
         const nav = document.querySelector('nav ul');
-        if (!nav) return;
+        console.log('🔥 nav element:', nav);
+        console.log('🔥 document.querySelector("nav"):', document.querySelector('nav'));
+        console.log('🔥 document.querySelector("nav ul"):', document.querySelector('nav ul'));
+        console.log('🔥 document.querySelectorAll("nav ul"):', document.querySelectorAll('nav ul'));
+        
+        if (!nav) {
+            console.log('🔥 ERROR: nav element not found! 创建nav元素...');
+            // 创建nav元素
+            const header = document.querySelector('header');
+            if (header) {
+                const newNav = document.createElement('nav');
+                newNav.innerHTML = '<ul></ul>';
+                header.appendChild(newNav);
+                console.log('🔥 创建了新的nav元素:', newNav);
+            }
+            return;
+        }
+        
+        console.log('🔥 this.modules:', this.modules);
+        console.log('🔥 this.modules.size:', this.modules.size);
+        console.log('🔥 this.currentModule:', this.currentModule);
 
         let navHTML = '<li class="nav-brand">龚成明@DERI</li>';
         navHTML += '<div class="nav-menu">';
         
         this.modules.forEach((moduleData, moduleId) => {
+            console.log(`🔥 处理模块 ${moduleId}:`, moduleData);
             const isActive = moduleId === this.currentModule;
             const activeClass = isActive ? 'active' : '';
             navHTML += `<li><a href="#${moduleId}" class="nav-link ${activeClass}" data-module="${moduleId}">${moduleData.title}</a></li>`;
@@ -124,7 +147,11 @@ class ModularContentRenderer {
             navHTML += `<li><a href="${this.config.englishLink.url}" class="english-link">${this.config.englishLink.text}</a></li>`;
         }
         navHTML += '</div>';
+        
+        console.log('🔥 生成的navHTML:', navHTML);
         nav.innerHTML = navHTML;
+        console.log('🔥 nav.innerHTML 设置完成');
+        
         this.setupNavigationEvents();
     }
 
