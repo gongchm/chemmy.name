@@ -164,7 +164,7 @@ class ModularContentRenderer {
         let navHTML = '<li class="nav-brand">龚成明@DERI</li>';
         navHTML += '<div class="nav-menu">';
         
-        this.modules.forEach((moduleData, moduleId) => {
+        this.modules.forEach((moduleId, moduleData) => {
             console.log(`🔥 处理模块 ${moduleId}:`, moduleData);
             const isActive = moduleId === this.currentModule;
             const activeClass = isActive ? 'active' : '';
@@ -707,7 +707,7 @@ class ModularContentRenderer {
     // 获取模块列表
     getModuleList() {
         const moduleList = [];
-        this.modules.forEach((moduleData, moduleId) => {
+        this.modules.forEach((moduleId, moduleData) => {
             moduleList.push({
                 id: moduleId,
                 title: moduleData.title,
