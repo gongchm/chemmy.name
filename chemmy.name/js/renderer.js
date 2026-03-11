@@ -554,9 +554,10 @@ class ModularContentRenderer {
         
         // 第二步：创建简单的测试内容
         console.log('🔥 步骤2: 创建简单测试内容');
-        const testHTML = '<div style="background: yellow !important; padding: 20px !important; margin: 10px !important; font-size: 24px !important; font-weight: bold !important; border: 5px solid blue !important;">测试内容：论文模块</div>';
+        const testHTML = '<div style="background: yellow !important; padding: 20px !important; margin: 10px !important; font-size: 24px !important; font-weight: bold !important; border:5px solid blue !important;">测试内容：论文模块</div>';
         main.innerHTML = testHTML;
         console.log('🔥 main.innerHTML after test:', main.innerHTML);
+        console.log('🔥 main的完整HTML结构:', main.outerHTML);
         
         // 第三步：检查是否可见
         setTimeout(() => {
@@ -568,6 +569,7 @@ class ModularContentRenderer {
                 console.log('🔥 测试div是否可见:', testDiv.offsetWidth > 0 && testDiv.offsetHeight > 0);
                 console.log('🔥 测试div尺寸:', testDiv.offsetWidth, 'x', testDiv.offsetHeight);
                 console.log('🔥 测试div计算样式:', window.getComputedStyle(testDiv).cssText);
+                console.log('🔥 main元素计算样式:', window.getComputedStyle(main).cssText);
             }
         }, 100);
         
