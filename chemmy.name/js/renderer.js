@@ -446,8 +446,24 @@ class ModularContentRenderer {
         console.log('🔥🔥🔥 renderPapersModule 被调用了! 🔥🔥🔥');
         console.log('🔥 moduleData:', moduleData);
         
-        // 立即创建一个明显的测试元素
-        document.body.innerHTML += '<div style="position: fixed; top: 0; left: 0; background: red; color: white; padding: 20px; z-index: 9999;">RENDER_PAPERS_MODULE_CALLED</div>';
+        // 创建绝对定位的测试元素，绕过所有CSS
+        const absoluteTest = document.createElement('div');
+        absoluteTest.style.cssText = `
+            position: fixed !important;
+            top: 50px !important;
+            left: 50px !important;
+            width: 300px !important;
+            height: 100px !important;
+            background: lime !important;
+            color: black !important;
+            padding: 20px !important;
+            z-index: 99999 !important;
+            font-size: 18px !important;
+            font-weight: bold !important;
+            border: 3px solid red !important;
+        `;
+        absoluteTest.textContent = 'ABSOLUTE TEST - 论文模块';
+        document.body.appendChild(absoluteTest);
         
         const main = document.querySelector('main');
         console.log('🔥 main element:', main);
@@ -464,7 +480,7 @@ class ModularContentRenderer {
         
         // 第二步：创建简单的测试内容
         console.log('🔥 步骤2: 创建简单测试内容');
-        const testHTML = '<div style="background: yellow; padding: 20px; margin: 10px; font-size: 24px; font-weight: bold;">测试内容：论文模块</div>';
+        const testHTML = '<div style="background: yellow !important; padding: 20px !important; margin: 10px !important; font-size: 24px !important; font-weight: bold !important; border: 5px solid blue !important;">测试内容：论文模块</div>';
         main.innerHTML = testHTML;
         console.log('🔥 main.innerHTML after test:', main.innerHTML);
         
@@ -477,6 +493,7 @@ class ModularContentRenderer {
                 console.log('🔥 测试div样式:', testDiv.style.cssText);
                 console.log('🔥 测试div是否可见:', testDiv.offsetWidth > 0 && testDiv.offsetHeight > 0);
                 console.log('🔥 测试div尺寸:', testDiv.offsetWidth, 'x', testDiv.offsetHeight);
+                console.log('🔥 测试div计算样式:', window.getComputedStyle(testDiv).cssText);
             }
         }, 100);
         
