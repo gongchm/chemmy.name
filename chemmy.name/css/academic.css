@@ -70,9 +70,7 @@ header {
   background: #f8f9fa;
   color: #2c3e50;
   padding: 40px 60px;
-  position: sticky;
-  top: 0;
-  z-index: 90;
+  position: relative;
   border-bottom: 1px solid #e9ecef;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
@@ -101,8 +99,28 @@ header {
   font-weight: 300;
   margin-bottom: 15px;
   letter-spacing: 1px;
-  position: sticky;
-  top: 20px;
+}
+
+/* 固定姓名显示 */
+.fixed-name {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #f8f9fa;
+  padding: 8px 20px;
+  border-radius: 25px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  border: 1px solid #e9ecef;
+  z-index: 95;
+  font-weight: 300;
+  letter-spacing: 1px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.fixed-name.visible {
+  opacity: 1;
 }
 
 .affiliation {
