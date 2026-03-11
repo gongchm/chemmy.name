@@ -418,6 +418,28 @@ class ModularContentRenderer {
         }
     }
 
+    // 渲染模块
+    renderModule(moduleId, moduleData) {
+        const main = document.querySelector('main');
+        if (!main) return;
+
+        let sectionHTML = `<section id="${moduleId}">`;
+        sectionHTML += `<h2>${moduleData.title}</h2>`;
+        
+        moduleData.content.forEach(item => {
+            sectionHTML += this.renderContentItem(item);
+        });
+        
+        // 处理模块底部的链接（如论文页面的Google Scholar链接）
+        if (moduleData.footerLink) {
+            sectionHTML += `<a href="${moduleData.footerLink.url}">${moduleData.footerLink.text}</a>`;
+        }
+        
+        sectionHTML += '</section>';
+        
+        main.innerHTML += sectionHTML;
+    }
+
     // 获取模块列表（用于调试）
     getModuleList() {
         const moduleList = [];
