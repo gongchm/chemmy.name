@@ -349,7 +349,8 @@ class ModularContentRenderer {
     // 渲染单个论文项
     renderPaperItem(paper, index) {
         const authorsHTML = this.renderAuthors(paper.authors);
-        const keywordsDisplay = this.getKeywordsDisplay(paper.keywords, paper.keywordsEn);
+        const keywordsHTML = this.renderKeywords(paper.keywords);
+        const keywordsEnHTML = this.renderKeywords(paper.keywordsEn);
         
         let citationHTML = '';
         
@@ -370,7 +371,8 @@ class ModularContentRenderer {
                         <em>${paper.journalEn}</em> (${paper.journal}), ${paper.year}, <strong>${paper.volume}</strong>(${paper.issue}): ${paper.pages}. 
                         ${doiLink}
                     </div>
-                    ${keywordsDisplay ? `<div class="paper-keywords"><strong>关键词:</strong> ${keywordsDisplay}</div>` : ''}
+                    ${keywordsHTML ? `<div class="paper-keywords"><strong>关键词:</strong> ${keywordsHTML}</div>` : ''}
+                    ${keywordsEnHTML ? `<div class="paper-keywords-en"><strong>Keywords:</strong> ${keywordsEnHTML}</div>` : ''}
                     <div class="paper-abstract">
                         <strong>摘要:</strong> ${paper.abstract}
                     </div>
@@ -394,7 +396,8 @@ class ModularContentRenderer {
                         <em>${paper.conference}</em>, ${paper.location}, ${paper.year}, pp. ${paper.pages}. 
                         ${doiLink}
                     </div>
-                    ${keywordsDisplay ? `<div class="paper-keywords"><strong>关键词:</strong> ${keywordsDisplay}</div>` : ''}
+                    ${keywordsHTML ? `<div class="paper-keywords"><strong>关键词:</strong> ${keywordsHTML}</div>` : ''}
+                    ${keywordsEnHTML ? `<div class="paper-keywords-en"><strong>Keywords:</strong> ${keywordsEnHTML}</div>` : ''}
                     <div class="paper-abstract">
                         <strong>摘要:</strong> ${paper.abstract}
                     </div>
@@ -417,7 +420,8 @@ class ModularContentRenderer {
                         <em>${paper.journalEn}</em>, ${paper.year}, ${paper.pages}. 
                         ${paper.doi ? `arXiv: <a href="https://arxiv.org/abs/${paper.doi.replace('arXiv:', '')}" target="_blank">${paper.doi}</a>` : ''}
                     </div>
-                    ${keywordsDisplay ? `<div class="paper-keywords"><strong>关键词:</strong> ${keywordsDisplay}</div>` : ''}
+                    ${keywordsHTML ? `<div class="paper-keywords"><strong>关键词:</strong> ${keywordsHTML}</div>` : ''}
+                    ${keywordsEnHTML ? `<div class="paper-keywords-en"><strong>Keywords:</strong> ${keywordsEnHTML}</div>` : ''}
                     <div class="paper-abstract">
                         <strong>摘要:</strong> ${paper.abstract}
                     </div>
@@ -462,8 +466,15 @@ class ModularContentRenderer {
         const footerElement = document.querySelector('footer');
         if (!footerElement) return;
 
+        // 获取当前日期作为更新时间
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        const day = String(currentDate.getDate()).padStart(2, '0');
+        const updateDate = `${year}年${month}月${day}日`;
+
         footerElement.innerHTML = `
-            <p>${footer.updateDate}<a href="${footer.updateLink}">更新</a></p>
+            <p>${updateDate}<a href="${footer.updateLink}">更新</a></p>
             <p>${footer.createDate}</p>
             <p><a href="${footer.cssValidator.url}"><img style="border: 0; width: 88px; height: 31px" src="${footer.cssValidator.img}" alt="${footer.cssValidator.alt}" /></a></p>
         `;
