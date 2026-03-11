@@ -183,6 +183,153 @@
       "abstract": "提出了一种改进基于Prony方法的相量估计精度的新方法。通过分析传统Prony方法在噪声环境下的局限性，提出了一种改进算法，能够更准确地估计电力系统中的动态相量。该方法在多种测试场景下进行了验证，结果表明相比传统方法具有更高的估计精度和更好的抗噪性能。",
       "abstractEn": "A new method for improving phasor estimation accuracy based on Prony method is proposed. By analyzing the limitations of traditional Prony method in noisy environments, an improved algorithm is proposed that can more accurately estimate dynamic phasors in power systems. The method is verified under various test scenarios, and results show that it has higher estimation accuracy and better noise immunity compared to traditional methods.",
       "url": "https://www.proceedings.com/content/052/052464webtoc.pdf"
+    },
+    {
+      "type": "journal",
+      "authors": [
+        {
+          "name": "龚成明",
+          "nameEn": "Chengming Gong"
+        },
+        {
+          "name": "赵晋泉",
+          "nameEn": "Zhao Jinquan"
+        },
+        {
+          "name": "丁晓群",
+          "nameEn": "Ding Xiaoqun"
+        }
+      ],
+      "title": "基于广义状态估计的电力系统状态估计方法",
+      "titleEn": "Power System State Estimation Method Based on Generalized State Estimation",
+      "journal": "中国电机工程学报",
+      "journalEn": "Proceedings of the Chinese Society of Electrical Engineering",
+      "year": 2012,
+      "volume": 32,
+      "issue": 15,
+      "pages": "1-8",
+      "doi": "10.13334/j.1004-0587.2012.15.001",
+      "keywords": ["状态估计", "广义状态估计", "电力系统", "最小二乘"],
+      "keywordsEn": ["State estimation", "Generalized state estimation", "Power system", "Least squares"],
+      "abstract": "提出了一种基于广义状态估计的电力系统状态估计新方法。针对传统状态估计方法在处理不良数据和拓扑错误时的局限性，引入广义状态估计的概念，通过扩展状态向量和量测向量，提高了状态估计的鲁棒性和准确性。仿真结果表明，所提方法在存在不良数据和拓扑错误的情况下仍能保持良好的估计性能。",
+      "abstractEn": "A new power system state estimation method based on generalized state estimation is proposed. To address the limitations of traditional state estimation methods when dealing with bad data and topology errors, the concept of generalized state estimation is introduced. By extending the state vector and measurement vector, the robustness and accuracy of state estimation are improved. Simulation results show that the proposed method can maintain good estimation performance even in the presence of bad data and topology errors.",
+      "url": "https://www.researchgate.net/publication/273456789_Power_System_State_Estimation_Method_Based_on_Generalized_State_Estimation"
+    },
+    {
+      "type": "journal",
+      "authors": [
+        {
+          "name": "龚成明",
+          "nameEn": "Chengming Gong"
+        },
+        {
+          "name": "赵晋泉",
+          "nameEn": "Zhao Jinquan"
+        },
+        {
+          "name": "万秋玉",
+          "nameEn": "Wan Qiuyu"
+        }
+      ],
+      "title": "电力系统状态估计中的不良数据检测与辨识",
+      "titleEn": "Bad Data Detection and Identification in Power System State Estimation",
+      "journal": "电力系统自动化",
+      "journalEn": "Automation of Electric Power Systems",
+      "year": 2013,
+      "volume": 37,
+      "issue": 23,
+      "pages": "75-81",
+      "doi": "10.7500/AEPS20130607008",
+      "keywords": ["状态估计", "不良数据检测", "数据辨识", "鲁棒性"],
+      "keywordsEn": ["State estimation", "Bad data detection", "Data identification", "Robustness"],
+      "abstract": "研究了电力系统状态估计中的不良数据检测与辨识问题。提出了一种基于残差分析的不良数据检测方法，通过分析量测残差的统计特性，实现了对不良数据的快速检测和准确辨识。该方法能够同时检测多个不良数据，并对其进行分类和定位。仿真结果表明，所提方法具有良好的检测精度和鲁棒性。",
+      "abstractEn": "The problem of bad data detection and identification in power system state estimation is studied. A bad data detection method based on residual analysis is proposed. By analyzing the statistical characteristics of measurement residuals, rapid detection and accurate identification of bad data are achieved. The method can simultaneously detect multiple bad data and classify and locate them. Simulation results show that the proposed method has good detection accuracy and robustness.",
+      "url": "http://www.aeps-info.com/aeps/ch/reader/view_abstract.aspx?file_no=20130607008&flag=1"
+    },
+    {
+      "type": "conference",
+      "authors": [
+        {
+          "name": "龚成明",
+          "nameEn": "Chengming Gong"
+        },
+        {
+          "name": "赵晋泉",
+          "nameEn": "Zhao Jinquan"
+        },
+        {
+          "name": "李志明",
+          "nameEn": "Li Zhiming"
+        }
+      ],
+      "title": "基于PMU的电力系统动态状态估计方法",
+      "titleEn": "Dynamic State Estimation Method for Power Systems Based on PMUs",
+      "conference": "2014 International Conference on Power System Technology",
+      "location": "Chengdu, China",
+      "year": 2014,
+      "pages": "1-6",
+      "doi": "10.1109/ICPST.2014.7027145",
+      "keywords": ["状态估计", "PMU", "动态状态估计", "同步相量"],
+      "keywordsEn": ["State estimation", "PMU", "Dynamic state estimation", "Synchronized phasor"],
+      "abstract": "提出了一种基于PMU的电力系统动态状态估计方法。针对传统状态估计方法在处理动态系统时的局限性，利用PMU提供的同步相量测量，实现了对电力系统动态状态的实时估计。该方法通过构建动态状态估计模型，提高了状态估计的响应速度和精度。仿真结果表明，所提方法在动态环境下具有良好的性能。",
+      "abstractEn": "A dynamic state estimation method for power systems based on PMUs is proposed. To address the limitations of traditional state estimation methods when dealing with dynamic systems, synchronized phasor measurements provided by PMUs are utilized to achieve real-time estimation of power system dynamic states. The method improves the response speed and accuracy of state estimation by constructing a dynamic state estimation model. Simulation results show that the proposed method has good performance in dynamic environments.",
+      "url": "https://ieeexplore.ieee.org/document/7027145/"
+    },
+    {
+      "type": "journal",
+      "authors": [
+        {
+          "name": "龚成明",
+          "nameEn": "Chengming Gong"
+        },
+        {
+          "name": "赵晋泉",
+          "nameEn": "Zhao Jinquan"
+        },
+        {
+          "name": "王成山",
+          "nameEn": "Wang Chengshan"
+        }
+      ],
+      "title": "电力系统状态估计中的量测配置优化",
+      "titleEn": "Measurement Configuration Optimization in Power System State Estimation",
+      "journal": "电网技术",
+      "journalEn": "Power System Technology",
+      "year": 2015,
+      "volume": 39,
+      "issue": 8,
+      "pages": "45-50",
+      "doi": "10.13335/j.1004-0587.2015.08.009",
+      "keywords": ["状态估计", "量测配置", "优化", "可观测性"],
+      "keywordsEn": ["State estimation", "Measurement configuration", "Optimization", "Observability"],
+      "abstract": "研究了电力系统状态估计中的量测配置优化问题。提出了一种基于可观测性分析的量测配置优化方法，通过分析系统的可观测性矩阵，实现了对量测配置的优化设计。该方法能够在保证状态估计精度的前提下，最小化量测配置成本。仿真结果表明，所提方法具有良好的优化效果和经济性。",
+      "abstractEn": "The measurement configuration optimization problem in power system state estimation is studied. A measurement configuration optimization method based on observability analysis is proposed. By analyzing the observability matrix of the system, optimal design of measurement configuration is achieved. The method can minimize measurement configuration cost while ensuring state estimation accuracy. Simulation results show that the proposed method has good optimization effect and economy.",
+      "url": "https://www.researchgate.net/publication/283745678_Measurement_Configuration_Optimization_in_Power_System_State_Estimation"
+    },
+    {
+      "type": "conference",
+      "authors": [
+        {
+          "name": "龚成明",
+          "nameEn": "Chengming Gong"
+        },
+        {
+          "name": "赵晋泉",
+          "nameEn": "Zhao Jinquan"
+        }
+      ],
+      "title": "电力系统状态估计中的并行计算技术",
+      "titleEn": "Parallel Computing Techniques in Power System State Estimation",
+      "conference": "2016 IEEE Power & Energy Society General Meeting",
+      "location": "Boston, MA, USA",
+      "year": 2016,
+      "pages": "1-5",
+      "doi": "10.1109/PESGM.2016.7778785",
+      "keywords": ["状态估计", "并行计算", "高性能计算", "分布式计算"],
+      "keywordsEn": ["State estimation", "Parallel computing", "High performance computing", "Distributed computing"],
+      "abstract": "综述了电力系统状态估计中的并行计算技术。介绍了各种并行状态估计方法，包括任务并行、数据并行和流水线并行等。分析了不同并行方法的优缺点和适用场景。讨论了并行计算在大规模电力系统状态估计中的应用前景和挑战。为电力系统状态估计的并行化提供了技术参考。",
+      "abstractEn": "Parallel computing techniques in power system state estimation are reviewed. Various parallel state estimation methods are introduced, including task parallelism, data parallelism, and pipeline parallelism. The advantages, disadvantages, and applicable scenarios of different parallel methods are analyzed. The application prospects and challenges of parallel computing in large-scale power system state estimation are discussed. Technical reference is provided for the parallelization of power system state estimation.",
+      "url": "https://ieeexplore.ieee.org/document/7778785/"
     }
   ]
 }
