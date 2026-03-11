@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gong Chengming – CV</title>
+  <style>
+    /* ── Reset & Base ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #222;
+      background: #f0f4f8;
+    }
+
+    .page {
+      max-width: 860px;
+      margin: 36px auto 60px;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    /* ── Header banner ─────────────────────────────────────────── */
+    .banner {
+      background: #1F4E79;
+      padding: 36px 44px 30px;
+      color: #fff;
+    }
+    .banner h1 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    .banner .title-line {
+      font-size: 14px;
+      color: #BDD7EE;
+      margin-bottom: 6px;
+    }
+    .banner .org-line {
+      font-size: 13px;
+      color: #9DC3E6;
+      margin-bottom: 4px;
+    }
+
+    /* ── Content wrapper ───────────────────────────────────────── */
+    .content { padding: 0 44px 44px; }
+
+    /* ── Section heading ───────────────────────────────────────── */
+    .sec-head {
+      background: #1F4E79;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 9px 16px;
+      margin: 36px -44px 0;
+      letter-spacing: 0.4px;
+    }
+
+    /* ── Timeline table ────────────────────────────────────────── */
+    .timeline {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 4px;
+    }
+    .timeline tr {
+      border-top: 1px solid #BDD7EE;
+    }
+    .timeline tr:first-child { border-top: none; }
+
+    .timeline td {
+      padding: 14px 12px 14px 0;
+      vertical-align: top;
+    }
+    .timeline td.period {
+      width: 178px;
+      min-width: 178px;
+      font-weight: 700;
+      font-size: 12px;
+      color: #2E75B6;
+      padding-right: 18px;
+      white-space: nowrap;
+    }
+    .timeline tr.alt { background: #EBF3FB; }
+    .timeline tr.alt td { background: #EBF3FB; }
+
+    /* ── Entry typography ──────────────────────────────────────── */
+    .org   { font-weight: 700; font-size: 14px; margin-bottom: 3px; }
+    .role  { font-size: 13px; color: #2E75B6; margin-bottom: 5px; }
+    .desc  { font-size: 12.5px; color: #595959; margin-bottom: 4px; }
+    .note  { font-size: 12px; color: #595959; font-style: italic; }
+    .gap   { height: 10px; }
+
+    /* ── Certifications ────────────────────────────────────────── */
+    .cert-name { font-weight: 700; font-size: 13.5px; }
+    .cert-sub  { font-size: 12.5px; color: #595959; }
+
+    /* ── Footer ────────────────────────────────────────────────── */
+    .footer {
+      text-align: center;
+      font-size: 11px;
+      color: #aaa;
+      font-style: italic;
+      padding: 24px 0 8px;
+      border-top: 1px solid #e8eef4;
+      margin-top: 32px;
+    }
+
+    /* ── Print ─────────────────────────────────────────────────── */
+    @media print {
+      body { background: #fff; }
+      .page { box-shadow: none; margin: 0; border-radius: 0; }
+      .sec-head { margin: 28px 0 0; }
+      .content { padding: 0 0 32px; }
+      .banner { padding: 28px 32px 24px; }
+    }
+
+    @media (max-width: 640px) {
+      .content { padding: 0 20px 32px; }
+      .banner  { padding: 24px 20px 20px; }
+      .sec-head { margin: 28px -20px 0; }
+      .timeline td.period { width: 120px; min-width: 120px; font-size: 11px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── Banner ─────────────────────────────────────────────────── -->
+  <div class="banner">
+    <h1>Gong Chengming &nbsp;<span style="font-weight:400;font-size:22px;opacity:.85">龚成明</span></h1>
+    <p class="title-line">Senior Engineer (Research Fellow Level)</p>
+    <p class="org-line">TELD New Energy Co., Ltd. &nbsp;|&nbsp; Vice President &middot; Chief Scientist &middot; Chief Engineer</p>
+    <p class="org-line">Nanjing DERI-TELD Energy Research Institute Co., Ltd. &nbsp;|&nbsp; Chairman &amp; Founder</p>
+  </div>
+
+  <div class="content">
+
+    <!-- ── Education ───────────────────────────────────────────── -->
+    <div class="sec-head">Education</div>
+    <table class="timeline">
+      <tbody>
+        <tr class="alt">
+          <td class="period">1994 &ndash; 1998</td>
+          <td>
+            <p class="org">Nanjing University</p>
+            <p class="role">B.Sc. in Dynamic Meteorology &nbsp;(Major)</p>
+            <p class="desc">Electronic Engineering &nbsp;(Minor)</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="period">1998 &ndash; 2001</td>
+          <td>
+            <p class="org">State Power Corporation Electric Power Automation Research Institute, Nanjing</p>
+            <p class="role">M.Eng. in Power System Automation</p>
+            <p class="note">(now State Grid Electric Power Research Institute / NARI Group)</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- ── Professional Experience ─────────────────────────────── -->
+    <div class="sec-head">Professional Experience</div>
+    <table class="timeline">
+      <tbody>
+        <tr class="alt">
+          <td class="period">Mar 2001 &ndash; Aug 2016</td>
+          <td>
+            <p class="org">NARI Technology Co., Ltd. &mdash; Grid Division</p>
+            <p class="role">Engineer &rarr; Deputy Manager / Manager &rarr; Deputy Chief Engineer &rarr; Chief Engineer &rarr; Deputy General Manager</p>
+            <p class="desc">Led R&amp;D and engineering deployment of power system dispatching automation software (EMS / D5000), covering state estimation, topology analysis, voltage stability assessment, and automatic bus-transfer (backup auto-switching). Also responsible for product development, field engineering services, and international business including smart grid projects in Africa on behalf of State Grid Corporation of China.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="period">May 2015 &ndash; Feb 2016</td>
+          <td>
+            <p class="org">State Grid Sichuan Electric Power Co., Ltd. &mdash; Dispatch &amp; Control Centre</p>
+            <p class="role">Deputy Director &nbsp;(Secondment)</p>
+            <p class="desc">Embedded in provincial grid dispatch operations; gained hands-on experience in large-scale grid control. Delivered a concluding lecture at the Sichuan Dispatch Weekly Forum (Jan 2016) on practical insights and industry trends.</p>
+          </td>
+        </tr>
+        <tr class="alt">
+          <td class="period">Aug 2016 &ndash; Aug 2017</td>
+          <td>
+            <p class="org">NARI Technology Co., Ltd. &mdash; Distribution &amp; Rural Grid Division</p>
+            <p class="role">Deputy General Manager</p>
+            <p class="desc">Oversaw R&amp;D and commercialisation of distribution network and rural grid automation product lines.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="period">Sep 2017 &ndash; Present</td>
+          <td>
+            <p class="org">Nanjing DERI-TELD Energy Research Institute Co., Ltd.</p>
+            <p class="role">Chairman &amp; Founder</p>
+            <p class="desc">Founded an interdisciplinary research institute integrating power engineering, computer software, and atmospheric science. Focus areas include AC/DC hybrid microgrid systems, energy management, economic dispatch, market trading, and IoT data bridging.</p>
+            <div class="gap"></div>
+            <p class="org">TELD New Energy Co., Ltd.</p>
+            <p class="role">Vice President &middot; Chief Scientist &middot; Chief Engineer</p>
+            <p class="desc">Leads strategic R&amp;D in EV charging infrastructure and probabilistic forecasting of electric vehicle flexible regulation capability; drives technology industrialisation for new-energy mobility.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- ── Qualifications ──────────────────────────────────────── -->
+    <div class="sec-head">Qualifications &amp; Certifications</div>
+    <table class="timeline">
+      <tbody>
+        <tr class="alt">
+          <td class="period">2010</td>
+          <td>
+            <p><span class="cert-name">IEEE Computer Society CSDP</span>&ensp;<span class="cert-sub">(Certified Software Development Professional)</span></p>
+            <p class="note">One of only 3 professionals in China to pass the examination that year.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="period">&mdash;</td>
+          <td>
+            <p class="cert-name">Professional qualification in Computer Software</p>
+            <p class="cert-name" style="margin-top:4px">Professional qualification in Electrical Power Engineering</p>
+            <p class="cert-sub" style="margin-top:4px">Senior Engineer title at Research-Fellow level</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- ── Academic Activities ─────────────────────────────────── -->
+    <div class="sec-head">Academic Activities &amp; Public Engagement</div>
+    <table class="timeline">
+      <tbody>
+        <tr class="alt">
+          <td class="period">May 2014</td>
+          <td>
+            <p class="desc">Delivered the closing address at the 1st Africa Smart Grid Forum (C&ocirc;te d&rsquo;Ivoire) as the official representative of State Grid Corporation of China.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="period">Jan 2016</td>
+          <td>
+            <p class="desc">Presented a public lecture at the Sichuan Dispatch Weekly Forum on power industry development trends and reform outlook.</p>
+          </td>
+        </tr>
+        <tr class="alt">
+          <td class="period">Aug 2017</td>
+          <td>
+            <p class="desc">Invited talk at the Zijin-2017 International Forum on Smart Grid Protection and Control:</p>
+            <p class="note">&ldquo;Estimation of the Random Error Variance of Measurements on Time-Varying Values&rdquo;</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="period">May 2018</td>
+          <td>
+            <p class="desc">Panelist at the 2018 China New Energy Vehicle International Cooperation Conference (NEVCC&nbsp;2018) roundtable on energy transition scenarios.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="footer">
+      Last updated: March 2025 &nbsp;&nbsp;&bull;&nbsp;&nbsp;
+      Sources: gongchm.github.io &middot; CNKI &middot; IEEE Xplore &middot; Google Scholar
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /page -->
+</body>
+</html>
