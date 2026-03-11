@@ -104,10 +104,10 @@ header {
 /* 固定姓名显示 */
 .fixed-name {
   position: fixed;
-  top: 10px;
+  top: 80px;
   left: 50%;
   transform: translateX(-50%);
-  background: #f8f9fa;
+  background: rgba(248, 249, 250, 0.95);
   padding: 8px 20px;
   border-radius: 25px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -117,6 +117,8 @@ header {
   letter-spacing: 1px;
   opacity: 0;
   transition: opacity 0.3s ease;
+  font-size: 1.2rem;
+  backdrop-filter: blur(10px);
 }
 
 .fixed-name.visible {
