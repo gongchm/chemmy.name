@@ -447,6 +447,19 @@ class ModularContentRenderer {
             </div>
         </section>`;
         console.log('papers module rendered successfully');
+        console.log('main.innerHTML after rendering:', main.innerHTML);
+        console.log('main element exists:', !!main);
+        console.log('papers section exists:', !!document.querySelector('#papers'));
+        console.log('papers-container exists:', !!document.querySelector('.papers-container'));
+        
+        // 添加一个简单的测试元素来验证DOM操作是否工作
+        setTimeout(() => {
+            const testDiv = document.createElement('div');
+            testDiv.style.cssText = 'background: red; color: white; padding: 10px; margin: 10px;';
+            testDiv.textContent = '测试：DOM操作正常工作';
+            main.appendChild(testDiv);
+            console.log('Test element added to main');
+        }, 1000);
     }
 
     // 渲染单个论文项
