@@ -355,6 +355,7 @@ class ModularContentRenderer {
         let citationHTML = '';
         
         if (paper.type === 'journal') {
+            const doiLink = paper.doi ? `DOI: <a href="https://doi.org/${paper.doi}" target="_blank">${paper.doi}</a>` : '';
             citationHTML = `
                 <div class="paper-item journal-paper">
                     <div class="paper-header">
@@ -367,8 +368,8 @@ class ModularContentRenderer {
                     </div>
                     <div class="paper-authors">${authorsHTML}</div>
                     <div class="paper-journal">
-                        <em>${paper.journalEn}</em>, ${paper.year}, <strong>${paper.volume}</strong>(${paper.issue}): ${paper.pages}. 
-                        DOI: <a href="https://doi.org/${paper.doi}" target="_blank">${paper.doi}</a>
+                        <em>${paper.journalEn}</em> (${paper.journal}), ${paper.year}, <strong>${paper.volume}</strong>(${paper.issue}): ${paper.pages}. 
+                        ${doiLink}
                     </div>
                     ${keywordsHTML ? `<div class="paper-keywords"><strong>关键词:</strong> ${keywordsHTML}</div>` : ''}
                     ${keywordsEnHTML ? `<div class="paper-keywords-en"><strong>Keywords:</strong> ${keywordsEnHTML}</div>` : ''}
@@ -376,12 +377,10 @@ class ModularContentRenderer {
                         <strong>摘要:</strong> ${paper.abstract}
                     </div>
                     ${paper.abstractEn ? `<div class="paper-abstract-en"><strong>Abstract:</strong> ${paper.abstractEn}</div>` : ''}
-                    <div class="paper-links">
-                        <a href="${paper.url}" target="_blank" class="paper-link">查看原文</a>
-                    </div>
                 </div>
             `;
         } else if (paper.type === 'conference') {
+            const doiLink = paper.doi ? `DOI: <a href="https://doi.org/${paper.doi}" target="_blank">${paper.doi}</a>` : '';
             citationHTML = `
                 <div class="paper-item conference-paper">
                     <div class="paper-header">
@@ -395,7 +394,7 @@ class ModularContentRenderer {
                     <div class="paper-authors">${authorsHTML}</div>
                     <div class="paper-conference">
                         <em>${paper.conference}</em>, ${paper.location}, ${paper.year}, pp. ${paper.pages}. 
-                        DOI: <a href="https://doi.org/${paper.doi}" target="_blank">${paper.doi}</a>
+                        ${doiLink}
                     </div>
                     ${keywordsHTML ? `<div class="paper-keywords"><strong>关键词:</strong> ${keywordsHTML}</div>` : ''}
                     ${keywordsEnHTML ? `<div class="paper-keywords-en"><strong>Keywords:</strong> ${keywordsEnHTML}</div>` : ''}
@@ -403,9 +402,30 @@ class ModularContentRenderer {
                         <strong>摘要:</strong> ${paper.abstract}
                     </div>
                     ${paper.abstractEn ? `<div class="paper-abstract-en"><strong>Abstract:</strong> ${paper.abstractEn}</div>` : ''}
-                    <div class="paper-links">
-                        <a href="${paper.url}" target="_blank" class="paper-link">查看原文</a>
+                </div>
+            `;
+        } else if (paper.type === 'preprint') {
+            citationHTML = `
+                <div class="paper-item preprint-paper">
+                    <div class="paper-header">
+                        <span class="paper-index">${index}.</span>
+                        <div class="paper-title">
+                            ${paper.titleEn}
+                            <br>
+                            <span class="paper-title-zh">${paper.title}</span>
+                        </div>
                     </div>
+                    <div class="paper-authors">${authorsHTML}</div>
+                    <div class="paper-journal">
+                        <em>${paper.journalEn}</em>, ${paper.year}, ${paper.pages}. 
+                        ${paper.doi ? `arXiv: <a href="https://arxiv.org/abs/${paper.doi.replace('arXiv:', '')}" target="_blank">${paper.doi}</a>` : ''}
+                    </div>
+                    ${keywordsHTML ? `<div class="paper-keywords"><strong>关键词:</strong> ${keywordsHTML}</div>` : ''}
+                    ${keywordsEnHTML ? `<div class="paper-keywords-en"><strong>Keywords:</strong> ${keywordsEnHTML}</div>` : ''}
+                    <div class="paper-abstract">
+                        <strong>摘要:</strong> ${paper.abstract}
+                    </div>
+                    ${paper.abstractEn ? `<div class="paper-abstract-en"><strong>Abstract:</strong> ${paper.abstractEn}</div>` : ''}
                 </div>
             `;
         }
