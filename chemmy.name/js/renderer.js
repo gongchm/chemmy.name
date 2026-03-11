@@ -59,10 +59,14 @@ class ModularContentRenderer {
         });
 
         header.innerHTML = `
-            <img src="${profile.photo}" alt="${profile.name}" class="profile-img" />
-            <h1>${profile.name}</h1>
-            <div class="affiliation">
-                ${affiliationsHTML}
+            <div class="header-content">
+                <img src="${profile.photo}" alt="${profile.name}" class="profile-img" />
+                <div class="header-info">
+                    <h1>${profile.name}</h1>
+                    <div class="affiliation">
+                        ${affiliationsHTML}
+                    </div>
+                </div>
             </div>
         `;
     }

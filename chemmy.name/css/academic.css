@@ -1,0 +1,548 @@
+/* 学术风格样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Georgia', 'Times New Roman', 'STSong', 'SimSun', serif;
+  line-height: 1.7;
+  color: #2c3e50;
+  background: #f8f9fa;
+  text-decoration: none;
+}
+
+/* 主容器 */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+/* 头部区域 */
+header {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  color: white;
+  padding: 40px 60px;
+  position: relative;
+}
+
+header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #3498db, #2ecc71, #f39c12, #e74c3c);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.profile-img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 4px solid rgba(255,255,255,0.2);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  object-fit: cover;
+}
+
+.header-info h1 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.affiliation {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.affiliation p {
+  margin: 8px 0;
+}
+
+.affiliation a {
+  color: #3498db;
+  text-decoration: none;
+  border-bottom: 1px dotted #3498db;
+  transition: all 0.3s ease;
+}
+
+.affiliation a:hover {
+  color: #2980b9;
+  border-bottom-style: solid;
+}
+
+/* 导航区域 */
+nav {
+  background: #34495e;
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  margin: 0;
+}
+
+nav a {
+  display: block;
+  padding: 15px 25px;
+  color: white;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+  font-weight: 300;
+}
+
+nav a:hover {
+  background: rgba(255,255,255,0.1);
+  border-bottom-color: #3498db;
+}
+
+nav a.english-link {
+  background: #e74c3c;
+  margin-left: 10px;
+  border-radius: 0;
+}
+
+nav a.english-link:hover {
+  background: #c0392b;
+}
+
+/* 主要内容区域 */
+main {
+  padding: 40px 60px;
+  min-height: 400px;
+}
+
+section {
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+section:last-child {
+  border-bottom: none;
+}
+
+section h2 {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #3498db;
+  font-weight: 400;
+  position: relative;
+}
+
+section h2::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: #e74c3c;
+}
+
+/* 段落样式 */
+section p {
+  margin-bottom: 15px;
+  text-align: justify;
+  font-size: 1.05rem;
+}
+
+/* 列表样式 */
+section ul, section ol {
+  margin: 20px 0 20px 30px;
+}
+
+section li {
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+/* 论文特殊样式 */
+#papers ol {
+  list-style: none;
+  counter-reset: paper-counter;
+}
+
+#papers li {
+  counter-increment: paper-counter;
+  margin-bottom: 20px;
+  padding-left: 30px;
+  position: relative;
+  line-height: 1.6;
+}
+
+#papers li::before {
+  content: counter(paper-counter) ".";
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+  color: #3498db;
+}
+
+#papers li a {
+  color: #3498db;
+  text-decoration: none;
+  border-bottom: 1px dotted #3498db;
+}
+
+#papers li a:hover {
+  color: #2980b9;
+  border-bottom-style: solid;
+}
+
+/* 工作经历样式 */
+#employment ul {
+  list-style: none;
+}
+
+#employment li {
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+#employment li::before {
+  content: "▶";
+  position: absolute;
+  left: 0;
+  color: #e74c3c;
+  font-size: 0.8rem;
+}
+
+/* 教育经历样式 */
+#education ul {
+  list-style: none;
+}
+
+#education > ul > li {
+  margin-bottom: 20px;
+  padding-left: 0;
+}
+
+#education > ul > li::before {
+  display: none;
+}
+
+#education li ul {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+#education li ul li {
+  font-size: 0.95rem;
+  color: #7f8c8d;
+}
+
+/* 资格获奖样式 */
+#cert ul {
+  list-style: none;
+}
+
+#cert li {
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  background: #f8f9fa;
+  border-left: 4px solid #3498db;
+  border-radius: 0 4px 4px 0;
+  transition: all 0.3s ease;
+}
+
+#cert li:hover {
+  background: #e8f4f8;
+  transform: translateX(5px);
+}
+
+/* 专利样式 */
+#patents ul {
+  list-style: none;
+}
+
+#patents li {
+  padding: 15px;
+  margin-bottom: 15px;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 4px;
+  position: relative;
+}
+
+#patents li::before {
+  content: "📋";
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 1.2rem;
+}
+
+#patents li {
+  padding-left: 40px;
+}
+
+/* 社团样式 */
+#community ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  list-style: none;
+  margin-left: 0;
+}
+
+#community li {
+  padding: 8px 16px;
+  background: #3498db;
+  color: white;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+/* 学生指导样式 */
+#students ul {
+  list-style: none;
+}
+
+#students li {
+  padding: 15px;
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 8px;
+  position: relative;
+}
+
+#students li::before {
+  content: "👨‍🎓";
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 1.2rem;
+}
+
+#students li {
+  padding-left: 40px;
+}
+
+/* 联系方式样式 */
+#contacts ul {
+  list-style: none;
+}
+
+#contacts li {
+  padding: 12px 0;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+#contacts li:last-child {
+  border-bottom: none;
+}
+
+#contacts li::before {
+  content: "📧";
+  margin-right: 10px;
+}
+
+#contacts li:nth-child(1)::before {
+  content: "📍";
+}
+
+#contacts li:nth-child(2)::before {
+  content: "📞";
+}
+
+/* 工具提示样式 */
+.tip {
+  position: relative;
+  text-decoration: none;
+  color: #3498db;
+  border-bottom: 1px dotted #3498db;
+}
+
+.tip:hover {
+  color: #2980b9;
+}
+
+.tip span {
+  display: none;
+}
+
+.tip:hover span {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  max-width: 90vw;
+  color: #333;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  z-index: 1000;
+  background: white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  font-size: 14px;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+/* 页脚样式 */
+footer {
+  background: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 30px 60px;
+  font-size: 0.9rem;
+}
+
+footer p {
+  margin: 8px 0;
+  opacity: 0.8;
+}
+
+footer a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+/* 响应式设计 */
+@media screen and (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  header {
+    padding: 30px 20px;
+  }
+  
+  .header-info h1 {
+    font-size: 2rem;
+  }
+  
+  .profile-img {
+    width: 120px;
+    height: 120px;
+  }
+  
+  nav ul {
+    flex-direction: column;
+  }
+  
+  nav a {
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  main {
+    padding: 30px 20px;
+  }
+  
+  section h2 {
+    font-size: 1.5rem;
+  }
+  
+  #community ul {
+    justify-content: center;
+  }
+  
+  .tip:hover span {
+    width: 300px;
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  header {
+    padding: 20px 15px;
+  }
+  
+  .header-info h1 {
+    font-size: 1.8rem;
+  }
+  
+  .profile-img {
+    width: 100px;
+    height: 100px;
+  }
+  
+  main {
+    padding: 20px 15px;
+  }
+  
+  section h2 {
+    font-size: 1.3rem;
+  }
+  
+  section p {
+    font-size: 1rem;
+  }
+  
+  .tip:hover span {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 300px;
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+}
+
+/* 打印样式 */
+@media print {
+  body {
+    background: white;
+    font-size: 12pt;
+  }
+  
+  header {
+    background: none;
+    color: black;
+    -webkit-print-color-adjust: exact;
+  }
+  
+  nav {
+    display: none;
+  }
+  
+  section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  
+  .tip:hover span {
+    display: none;
+  }
+}
