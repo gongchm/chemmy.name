@@ -474,13 +474,21 @@ class ModularContentRenderer {
             
             // 设置默认活动模块为第一个启用的模块
             const enabledModules = Array.from(this.modules.entries())
-                .filter(([moduleId, moduleData]) => moduleData.enabled)
-                .sort(([, a], [, b]) => a.order - b.order);
+                .filter(([moduleId, moduleData]) => {
+                    console.log(`🔍 检查模块 ${moduleId}: enabled=${moduleData.enabled}, order=${moduleData.order}`);
+                    return moduleData.enabled;
+                })
+                .sort(([, a], [, b]) => {
+                    console.log(`🔍 排序比较: ${a.order} vs ${b.order}`);
+                    return a.order - b.order;
+                });
             
-            console.log('🔍 启用的模块:', enabledModules);
+            console.log('🔍 排序后的启用模块:', enabledModules);
             
             if (enabledModules.length > 0) {
-                this.currentModule = enabledModules[0][0];
+                const firstModule = enabledModules[0];
+                console.log('🔍 选择第一个模块:', firstModule);
+                this.currentModule = firstModule[0];  // moduleId是第一个元素
                 console.log('🔍 设置默认模块:', this.currentModule);
             }
             
