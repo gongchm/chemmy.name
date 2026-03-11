@@ -434,6 +434,154 @@ footer a:hover {
   text-decoration: underline;
 }
 
+/* 论文特殊样式 */
+.papers-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.paper-item {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.paper-item:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
+}
+
+.paper-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.paper-index {
+  background: #3498db;
+  color: white;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  min-width: 30px;
+  text-align: center;
+}
+
+.paper-title {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.paper-title-zh {
+  color: #6c757d;
+  font-style: italic;
+  font-size: 0.95rem;
+  margin-top: 5px;
+}
+
+.paper-authors {
+  margin-bottom: 10px;
+  color: #495057;
+  font-size: 0.95rem;
+}
+
+.author {
+  background: #f8f9fa;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.paper-journal,
+.paper-conference {
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+  color: #2c3e50;
+}
+
+.paper-journal em,
+.paper-conference em {
+  color: #3498db;
+  font-style: italic;
+}
+
+.paper-keywords,
+.paper-keywords-en {
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.paper-keywords strong,
+.paper-keywords-en strong {
+  color: #495057;
+}
+
+.paper-abstract,
+.paper-abstract-en {
+  margin-bottom: 15px;
+  text-align: justify;
+  line-height: 1.6;
+  font-size: 0.9rem;
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 4px;
+  border-left: 4px solid #e9ecef;
+}
+
+.paper-abstract strong,
+.paper-abstract-en strong {
+  color: #3498db;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.paper-links {
+  text-align: right;
+  margin-top: 15px;
+}
+
+.paper-link {
+  background: #3498db;
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.paper-link:hover {
+  background: #2980b9;
+  transform: translateY(-1px);
+}
+
+/* 期刊论文特殊样式 */
+.journal-paper {
+  border-left: 4px solid #28a745;
+}
+
+.journal-paper .paper-index {
+  background: #28a745;
+}
+
+/* 会议论文特殊样式 */
+.conference-paper {
+  border-left: 4px solid #dc3545;
+}
+
+.conference-paper .paper-index {
+  background: #dc3545;
+}
+
 /* 响应式设计 */
 @media screen and (max-width: 768px) {
   .header-content {

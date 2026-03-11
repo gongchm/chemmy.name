@@ -250,26 +250,103 @@ class ModularContentRenderer {
         return content;
     }
 
-    // 渲染模块
-    renderModule(moduleId, moduleData) {
+    // 渲染论文模块
+    renderPapersModule(modulesData) {
         const main = document.querySelector('main');
-        if (!main) return;
+        if (!main || !modulesData.papers) return;
 
-        let sectionHTML = `<section id="${moduleId}">`;
-        sectionHTML += `<h2>${moduleData.title}</h2>`;
+        let papersHTML = '';
         
-        moduleData.content.forEach(item => {
-            sectionHTML += this.renderContentItem(item);
+        modulesData.papers.forEach((paper, index) => {
+            papersHTML += this.renderPaperItem(paper, index + 1);
         });
+
+        main.innerHTML = `<section id="papers">
+            <h2>${modulesData.title}</h2>
+            <div class="papers-container">
+                ${papersHTML}
+            </div>
+        </section>`;
+    }
+
+    // 渲染单个论文项
+    renderPaperItem(paper, index) {
+        const authorsHTML = this.renderAuthors(paper.authors);
+        const keywordsHTML = this.renderKeywords(paper.keywords);
+        const keywordsEnHTML = this.renderKeywords(paper.keywordsEn);
         
-        // 处理模块底部的链接（如论文页面的Google Scholar链接）
-        if (moduleData.footerLink) {
-            sectionHTML += `<a href="${moduleData.footerLink.url}">${moduleData.footerLink.text}</a>`;
+        let citationHTML = '';
+        
+        if (paper.type === 'journal') {
+            citationHTML = `
+                <div class="paper-item journal-paper">
+                    <div class="paper-header">
+                        <span class="paper-index">${index}.</span>
+                        <div class="paper-title">
+                            ${paper.titleEn}
+                            <br>
+                            <span class="paper-title-zh">${paper.title}</span>
+                        </div>
+                    </div>
+                    <div class="paper-authors">${authorsHTML}</div>
+                    <div class="paper-journal">
+                        <em>${paper.journalEn}</em>, ${paper.year}, <strong>${paper.volume}</strong>(${paper.issue}): ${paper.pages}. 
+                        DOI: <a href="https://doi.org/${paper.doi}" target="_blank">${paper.doi}</a>
+                    </div>
+                    ${keywordsHTML ? `<div class="paper-keywords"><strong>关键词:</strong> ${keywordsHTML}</div>` : ''}
+                    ${keywordsEnHTML ? `<div class="paper-keywords-en"><strong>Keywords:</strong> ${keywordsEnHTML}</div>` : ''}
+                    <div class="paper-abstract">
+                        <strong>摘要:</strong> ${paper.abstract}
+                    </div>
+                    ${paper.abstractEn ? `<div class="paper-abstract-en"><strong>Abstract:</strong> ${paper.abstractEn}</div>` : ''}
+                    <div class="paper-links">
+                        <a href="${paper.url}" target="_blank" class="paper-link">查看原文</a>
+                    </div>
+                </div>
+            `;
+        } else if (paper.type === 'conference') {
+            citationHTML = `
+                <div class="paper-item conference-paper">
+                    <div class="paper-header">
+                        <span class="paper-index">${index}.</span>
+                        <div class="paper-title">
+                            ${paper.titleEn}
+                            <br>
+                            <span class="paper-title-zh">${paper.title}</span>
+                        </div>
+                    </div>
+                    <div class="paper-authors">${authorsHTML}</div>
+                    <div class="paper-conference">
+                        <em>${paper.conference}</em>, ${paper.location}, ${paper.year}, pp. ${paper.pages}. 
+                        DOI: <a href="https://doi.org/${paper.doi}" target="_blank">${paper.doi}</a>
+                    </div>
+                    ${keywordsHTML ? `<div class="paper-keywords"><strong>关键词:</strong> ${keywordsHTML}</div>` : ''}
+                    ${keywordsEnHTML ? `<div class="paper-keywords-en"><strong>Keywords:</strong> ${keywordsEnHTML}</div>` : ''}
+                    <div class="paper-abstract">
+                        <strong>摘要:</strong> ${paper.abstract}
+                    </div>
+                    ${paper.abstractEn ? `<div class="paper-abstract-en"><strong>Abstract:</strong> ${paper.abstractEn}</div>` : ''}
+                    <div class="paper-links">
+                        <a href="${paper.url}" target="_blank" class="paper-link">查看原文</a>
+                    </div>
+                </div>
+            `;
         }
         
-        sectionHTML += '</section>';
-        
-        main.innerHTML += sectionHTML;
+        return citationHTML;
+    }
+
+    // 渲染作者列表
+    renderAuthors(authors) {
+        return authors.map(author => 
+            `<span class="author">${author.nameEn} (${author.name})</span>`
+        ).join(', ');
+    }
+
+    // 渲染关键词
+    renderKeywords(keywords) {
+        if (!keywords || keywords.length === 0) return '';
+        return keywords.join('; ');
     }
 
     // 渲染页脚
@@ -313,7 +390,11 @@ class ModularContentRenderer {
             
             // 按顺序渲染所有启用的模块
             this.modules.forEach((moduleData, moduleId) => {
-                this.renderModule(moduleId, moduleData);
+                if (moduleId === 'papers') {
+                    this.renderPapersModule(moduleData);
+                } else {
+                    this.renderModule(moduleId, moduleData);
+                }
             });
             
             // 渲染页脚
