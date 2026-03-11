@@ -4,12 +4,8 @@
     "photo": "pic/photo.jpg",
     "affiliations": [
       {
-        "name": "德睿能源研究院",
+        "name": "南京德睿特来电能源研究院有限公司",
         "url": "https://deri.org.cn"
-      },
-      {
-        "name": "特来电",
-        "url": "https://teld.cn"
       }
     ]
   },
