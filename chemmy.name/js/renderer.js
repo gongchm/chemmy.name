@@ -408,11 +408,32 @@ class ModularContentRenderer {
 
     // 渲染论文模块
     renderPapersModule(moduleData) {
+        console.log('renderPapersModule called with moduleData:', moduleData);
+        console.log('moduleData.papers:', moduleData?.papers);
+        console.log('moduleData type:', typeof moduleData);
+        console.log('moduleData keys:', moduleData ? Object.keys(moduleData) : 'moduleData is undefined');
+        
         const main = document.querySelector('main');
-        if (!main || !moduleData.papers) return;
+        if (!main) {
+            console.log('main element not found');
+            return;
+        }
+        
+        if (!moduleData) {
+            console.log('moduleData is undefined, returning');
+            return;
+        }
+        
+        if (!moduleData.papers) {
+            console.log('moduleData.papers is undefined or empty, returning');
+            return;
+        }
+        
         let papersHTML = '';
+        console.log('papers array length:', moduleData.papers.length);
         
         moduleData.papers.forEach((paper, index) => {
+            console.log(`rendering paper ${index + 1}:`, paper.title);
             papersHTML += this.renderPaperItem(paper, index + 1);
         });
 
@@ -421,6 +442,7 @@ class ModularContentRenderer {
                 ${papersHTML}
             </div>
         </section>`;
+        console.log('papers module rendered successfully');
     }
 
     // 渲染单个论文项
