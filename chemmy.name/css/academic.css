@@ -612,6 +612,46 @@ footer p {
   margin-top: 15px;
 }
 
+/* 自定义列表样式 */
+.custom-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 15px 0;
+}
+
+.custom-list li {
+  margin-bottom: 12px;
+  padding-left: 20px;
+  position: relative;
+  line-height: 1.6;
+}
+
+.custom-list li:before {
+  content: "•";
+  color: #3498db;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.custom-list li ul {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding-left: 20px;
+}
+
+.custom-list li ul li {
+  margin-bottom: 6px;
+  font-size: 0.95em;
+}
+
+.custom-list li ul li:before {
+  content: "◦";
+  color: #7f8c8d;
+  font-size: 0.8em;
+}
+
 .paper-link {
   background: #3498db;
   color: white;

@@ -243,13 +243,13 @@ class ModularContentRenderer {
     // 渲染有序列表
     renderOrderedList(listData) {
         const start = listData.start || 1;
-        let html = `<ol start="${start}" type="1">`;
+        let html = `<ul class="custom-list">`;
         
         listData.items.forEach(item => {
             html += `<li>${this.renderComplexItemContent(item)}</li>`;
         });
         
-        html += '</ol>';
+        html += '</ul>';
         return html;
     }
 
@@ -286,11 +286,11 @@ class ModularContentRenderer {
         
         let content = item.text || '';
         
-        // 处理主要链接
+        // 处理主要链接 - 使用更精确的替换
         if (item.links) {
             item.links.forEach(link => {
                 const linkHTML = `<a href="${link.url}"${link.target ? ` target="${link.target}"` : ''}>${link.text}</a>`;
-                content = content.replace(link.text, linkHTML);
+                content = content.replace(new RegExp(link.text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), linkHTML);
             });
         }
         
@@ -303,7 +303,7 @@ class ModularContentRenderer {
         if (item.links2) {
             item.links2.forEach(link => {
                 const linkHTML = `<a href="${link.url}">${link.text}</a>`;
-                content = content.replace(link.text, linkHTML);
+                content = content.replace(new RegExp(link.text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), linkHTML);
             });
         }
         
