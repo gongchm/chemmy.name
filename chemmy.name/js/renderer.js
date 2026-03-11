@@ -490,18 +490,23 @@ class ModularContentRenderer {
             // 只渲染当前活动模块
             if (this.currentModule && this.modules.has(this.currentModule)) {
                 const moduleData = this.modules.get(this.currentModule);
-                if (moduleData.renderer === 'papers') {
-                    this.renderPapersModule(moduleData);
-                } else {
-                    this.renderModule(this.currentModule, moduleData);
-                    // 为默认模块添加visible类
-                    setTimeout(() => {
-                        const section = document.querySelector(`#${this.currentModule}`);
-                        if (section) {
-                            section.classList.add('visible');
-                        }
-                    }, 100);
-                }
+                console.log(`🔍 准备渲染默认模块: ${this.currentModule}`, moduleData);
+                
+                // 使用setTimeout确保DOM完全准备好
+                setTimeout(() => {
+                    if (moduleData.renderer === 'papers') {
+                        this.renderPapersModule(moduleData);
+                    } else {
+                        this.renderModule(this.currentModule, moduleData);
+                        // 为默认模块添加visible类
+                        setTimeout(() => {
+                            const section = document.querySelector(`#${this.currentModule}`);
+                            if (section) {
+                                section.classList.add('visible');
+                            }
+                        }, 50);
+                    }
+                }, 100);
             }
             
             // 渲染页脚
