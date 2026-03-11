@@ -644,9 +644,33 @@ class ModularContentRenderer {
 
 // 初始化模块化渲染器
 document.addEventListener('DOMContentLoaded', async () => {
-    const renderer = new ModularContentRenderer();
-    await renderer.renderAll();
+    console.log('🔥🔥🔥 DOMContentLoaded 事件触发! 🔥🔥🔥');
     
-    // 在控制台输出模块信息（调试用）
-    console.log('已加载的模块:', renderer.getModuleList());
+    // 立即创建绝对定位测试元素
+    const immediateTest = document.createElement('div');
+    immediateTest.style.cssText = `
+        position: fixed !important;
+        top: 10px !important;
+        left: 10px !important;
+        width: 400px !important;
+        height: 80px !important;
+        background: red !important;
+        color: white !important;
+        padding: 15px !important;
+        z-index: 999999 !important;
+        font-size: 20px !important;
+        font-weight: bold !important;
+        border: 5px solid yellow !important;
+        border-radius: 10px !important;
+    `;
+    immediateTest.textContent = 'IMMEDIATE TEST - 页面加载成功';
+    document.body.appendChild(immediateTest);
+    
+    console.log('🔥 立即测试元素已创建并添加到body');
+    
+    const renderer = new ModularContentRenderer();
+    console.log('🔥 ModularContentRenderer 实例已创建');
+    
+    await renderer.renderAll();
+    console.log('🔥 renderAll 调用完成');
 });
