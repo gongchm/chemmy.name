@@ -877,23 +877,27 @@ button:focus {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 40px;
-  padding: 20px 0;
+  gap: 60px;
+  padding: 30px 0;
   border-top: 1px solid #e9ecef;
+}
+
+.footer-contacts {
+  flex: 1;
+  max-width: 500px;
 }
 
 .footer-info {
   flex: 0 0 auto;
+  text-align: right;
+  min-width: 200px;
 }
 
 .footer-info p {
-  margin: 5px 0;
+  margin: 8px 0;
   font-size: 14px;
   color: #6c757d;
-}
-
-.footer-contacts {
-  flex: 0 0 auto;
+  line-height: 1.4;
 }
 
 .footer-contacts h3 {

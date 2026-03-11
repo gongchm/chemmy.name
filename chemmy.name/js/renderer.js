@@ -205,16 +205,22 @@ class ModularContentRenderer {
 
     // 切换模块
     async switchModule(moduleId) {
-        if (moduleId === this.currentModule) return;
+        const moduleData = this.modules.get(moduleId);
+        if (!moduleData) return;
+        
+        // 如果是当前模块且已经有内容，则返回
+        if (moduleId === this.currentModule) {
+            const existingSection = document.querySelector(`#${moduleId}`);
+            if (existingSection && existingSection.innerHTML.trim() !== '') {
+                return;
+            }
+        }
         
         this.currentModule = moduleId;
         this.updateNavigationHighlight();
         
         const main = document.querySelector('main');
         if (!main) return;
-        
-        const moduleData = this.modules.get(moduleId);
-        if (!moduleData) return;
         
         // 清空并重新渲染内容
         main.innerHTML = '';
