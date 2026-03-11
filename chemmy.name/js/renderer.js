@@ -126,6 +126,33 @@ class ModularContentRenderer {
                 newNav.innerHTML = '<ul></ul>';
                 header.appendChild(newNav);
                 console.log('🔥 创建了新的nav元素:', newNav);
+                
+                // 重新获取nav元素并设置内容
+                const createdNav = document.querySelector('nav ul');
+                if (createdNav) {
+                    console.log('🔥 重新获取到创建的nav元素:', createdNav);
+                    
+                    let navHTML = '<li class="nav-brand">龚成明@DERI</li>';
+                    navHTML += '<div class="nav-menu">';
+                    
+                    this.modules.forEach((moduleData, moduleId) => {
+                        console.log(`🔥 处理模块 ${moduleId}:`, moduleData);
+                        const isActive = moduleId === this.currentModule;
+                        const activeClass = isActive ? 'active' : '';
+                        navHTML += `<li><a href="#${moduleId}" class="nav-link ${activeClass}" data-module="${moduleId}">${moduleData.title}</a></li>`;
+                    });
+                    if (this.config.englishLink) {
+                        navHTML += `<li><a href="${this.config.englishLink.url}" class="english-link">${this.config.englishLink.text}</a></li>`;
+                    }
+                    navHTML += '</div>';
+                    
+                    console.log('🔥 生成的navHTML:', navHTML);
+                    createdNav.innerHTML = navHTML;
+                    console.log('🔥 nav.innerHTML 设置完成');
+                    
+                    // 在nav元素创建后设置事件
+                    this.setupNavigationEvents();
+                }
             }
             return;
         }
