@@ -82,6 +82,9 @@ class ModularContentRenderer {
                     console.log(`🔍 模块 ${moduleId} 已禁用，跳过`);
                 }
             }
+            
+            console.log('🔍 loadModules完成，this.modules内容:', Array.from(this.modules.entries()));
+            console.log('🔍 this.modules.size:', this.modules.size);
         } catch (error) {
             console.error('加载模块时发生错误:', error);
             this.showError('模块加载失败，请刷新页面重试');
