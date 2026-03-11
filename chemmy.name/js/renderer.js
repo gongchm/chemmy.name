@@ -130,11 +130,22 @@ class ModularContentRenderer {
 
     // 设置导航事件
     setupNavigationEvents() {
+        console.log('🔥🔥🔥 setupNavigationEvents 被调用了! 🔥🔥🔥');
+        
         const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
+        console.log('🔥 找到的navLinks数量:', navLinks.length);
+        
+        navLinks.forEach((link, index) => {
+            console.log(`🔥 navLink ${index}:`, link.textContent, '->', link.getAttribute('data-module'));
+            
             link.addEventListener('click', (e) => {
+                console.log('🔥🔥🔥 导航链接被点击! 🔥🔥🔥');
+                console.log('🔥 点击的链接:', link.textContent);
+                console.log('🔥 目标模块:', link.getAttribute('data-module'));
+                
                 e.preventDefault();
                 const moduleId = link.getAttribute('data-module');
+                console.log('🔥 调用 switchModule:', moduleId);
                 this.switchModule(moduleId);
             });
         });
@@ -142,23 +153,40 @@ class ModularContentRenderer {
 
     // 切换模块
     async switchModule(moduleId) {
-        if (moduleId === this.currentModule) return;
+        console.log('🔥🔥🔥 switchModule 被调用了! 🔥🔥🔥');
+        console.log('🔥 moduleId:', moduleId);
+        console.log('🔥 currentModule:', this.currentModule);
+        
+        if (moduleId === this.currentModule) {
+            console.log('🔥 模块相同，返回');
+            return;
+        }
         
         this.currentModule = moduleId;
         this.updateNavigationHighlight();
         
         const main = document.querySelector('main');
-        if (!main) return;
+        if (!main) {
+            console.log('🔥 ERROR: main element not found in switchModule!');
+            return;
+        }
         
         const moduleData = this.modules.get(moduleId);
-        if (!moduleData) return;
+        if (!moduleData) {
+            console.log('🔥 ERROR: moduleData not found for:', moduleId);
+            return;
+        }
+        
+        console.log('🔥 moduleData:', moduleData);
         
         // 清空并重新渲染内容
         main.innerHTML = '';
         
         if (moduleId === 'papers') {
+            console.log('🔥🔥🔥 调用 renderPapersModule! 🔥🔥🔥');
             this.renderPapersModule(moduleData);
         } else {
+            console.log('🔥 调用 renderModule for:', moduleId);
             this.renderModule(moduleId, moduleData);
         }
         
