@@ -3,6 +3,35 @@ class ModularContentRenderer {
     constructor() {
         this.config = null;
         this.modules = new Map();
+        this.isLoading = false;
+        this.errorMessages = [];
+    }
+
+    // 显示加载状态
+    showLoading() {
+        const main = document.querySelector('main');
+        if (main) {
+            main.innerHTML = `
+                <div class="loading-container">
+                    <div class="loading-spinner"></div>
+                    <p>正在加载内容...</p>
+                </div>
+            `;
+        }
+    }
+
+    // 显示错误信息
+    showError(message) {
+        const main = document.querySelector('main');
+        if (main) {
+            main.innerHTML = `
+                <div class="error-container">
+                    <h2>加载失败</h2>
+                    <p>${message}</p>
+                    <button onclick="location.reload()">重新加载</button>
+                </div>
+            `;
+        }
     }
 
     // 加载主配置文件
@@ -37,15 +66,23 @@ class ModularContentRenderer {
             .filter(module => module.enabled)
             .sort((a, b) => a.order - b.order);
 
-        for (const module of enabledModules) {
+        // 并行加载所有模块
+        const modulePromises = enabledModules.map(async (module) => {
             const moduleData = await this.loadModule(module.file);
             if (moduleData) {
-                this.modules.set(module.id, {
-                    ...module,
-                    ...moduleData
-                });
+                return { id: module.id, ...module, ...moduleData };
             }
-        }
+            return null;
+        });
+
+        const results = await Promise.all(modulePromises);
+        
+        // 存储成功加载的模块
+        results.forEach(result => {
+            if (result) {
+                this.modules.set(result.id, result);
+            }
+        });
     }
 
     // 渲染个人信息头部
@@ -162,6 +199,10 @@ class ModularContentRenderer {
     // 渲染复杂项内容（包含链接等）
     renderComplexItemContent(item) {
         if (typeof item === 'string') {
+            // 如果字符串包含HTML标签，直接返回
+            if (item.includes('<a href=')) {
+                return item;
+            }
             return item;
         }
         
@@ -245,38 +286,48 @@ class ModularContentRenderer {
 
     // 渲染所有内容
     async renderAll() {
-        // 加载主配置
-        await this.loadConfig();
-        if (!this.config) {
-            console.error('无法加载主配置文件');
-            return;
-        }
+        try {
+            this.isLoading = true;
+            this.showLoading();
+            
+            // 加载主配置
+            await this.loadConfig();
+            if (!this.config) {
+                throw new Error('无法加载主配置文件');
+            }
 
-        // 渲染个人信息
-        this.renderProfile(this.config.profile);
-        
-        // 加载所有模块
-        await this.loadModules();
-        
-        // 动态生成导航菜单
-        this.renderNavigation();
-        
-        // 清空main内容
-        const main = document.querySelector('main');
-        if (main) {
-            main.innerHTML = '';
+            // 渲染个人信息
+            this.renderProfile(this.config.profile);
+            
+            // 加载所有模块
+            await this.loadModules();
+            
+            // 动态生成导航菜单
+            this.renderNavigation();
+            
+            // 清空main内容
+            const main = document.querySelector('main');
+            if (main) {
+                main.innerHTML = '';
+            }
+            
+            // 按顺序渲染所有启用的模块
+            this.modules.forEach((moduleData, moduleId) => {
+                this.renderModule(moduleId, moduleData);
+            });
+            
+            // 渲染页脚
+            this.renderFooter(this.config.footer);
+            
+            this.isLoading = false;
+            console.log('模块化内容渲染完成');
+            console.log(`已加载 ${this.modules.size} 个模块`);
+            
+        } catch (error) {
+            this.isLoading = false;
+            console.error('渲染过程中发生错误:', error);
+            this.showError('内容加载失败，请刷新页面重试');
         }
-        
-        // 按顺序渲染所有启用的模块
-        this.modules.forEach((moduleData, moduleId) => {
-            this.renderModule(moduleId, moduleData);
-        });
-        
-        // 渲染页脚
-        this.renderFooter(this.config.footer);
-        
-        console.log('模块化内容渲染完成');
-        console.log(`已加载 ${this.modules.size} 个模块`);
     }
 
     // 获取模块列表（用于调试）
