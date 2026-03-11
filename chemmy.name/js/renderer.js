@@ -1,18 +1,50 @@
-// 内容渲染引擎
-class ContentRenderer {
+﻿// 模块化内容渲染引擎
+class ModularContentRenderer {
     constructor() {
-        this.content = null;
+        this.config = null;
+        this.modules = new Map();
     }
 
-    // 加载内容配置
-    async loadContent() {
+    // 加载主配置文件
+    async loadConfig() {
         try {
-            const response = await fetch('data/content.json');
-            this.content = await response.json();
-            return this.content;
+            const response = await fetch('data/config.json');
+            this.config = await response.json();
+            return this.config;
         } catch (error) {
-            console.error('加载内容配置失败:', error);
+            console.error('加载主配置文件失败:', error);
             return null;
+        }
+    }
+
+    // 加载模块内容
+    async loadModule(moduleFile) {
+        try {
+            const response = await fetch(`data/modules/${moduleFile}`);
+            const moduleData = await response.json();
+            return moduleData;
+        } catch (error) {
+            console.error(`加载模块 ${moduleFile} 失败:`, error);
+            return null;
+        }
+    }
+
+    // 加载所有启用的模块
+    async loadModules() {
+        if (!this.config) return;
+
+        const enabledModules = this.config.modules
+            .filter(module => module.enabled)
+            .sort((a, b) => a.order - b.order);
+
+        for (const module of enabledModules) {
+            const moduleData = await this.loadModule(module.file);
+            if (moduleData) {
+                this.modules.set(module.id, {
+                    ...module,
+                    ...moduleData
+                });
+            }
         }
     }
 
@@ -35,18 +67,22 @@ class ContentRenderer {
         `;
     }
 
-    // 渲染导航菜单
-    renderNavigation(navigation, englishLink) {
+    // 动态生成导航菜单
+    renderNavigation() {
         const nav = document.querySelector('nav ul');
         if (!nav) return;
 
         let navHTML = '';
-        navigation.forEach(item => {
-            navHTML += `<li><a href="${item.href}">${item.title}</a></li>`;
+        
+        // 根据启用的模块生成导航
+        this.modules.forEach((module, moduleId) => {
+            navHTML += `<li><a href="#${moduleId}">${module.title}</a></li>`;
         });
         
         // 添加英文链接
-        navHTML += `<li><a href="${englishLink.url}" class="english-link">${englishLink.text}</a></li>`;
+        if (this.config.englishLink) {
+            navHTML += `<li><a href="${this.config.englishLink.url}" class="english-link">${this.config.englishLink.text}</a></li>`;
+        }
 
         nav.innerHTML = navHTML;
     }
@@ -169,21 +205,21 @@ class ContentRenderer {
         return content;
     }
 
-    // 渲染section
-    renderSection(sectionId, sectionData) {
+    // 渲染模块
+    renderModule(moduleId, moduleData) {
         const main = document.querySelector('main');
         if (!main) return;
 
-        let sectionHTML = `<section id="${sectionId}">`;
-        sectionHTML += `<h2>${sectionData.title}</h2>`;
+        let sectionHTML = `<section id="${moduleId}">`;
+        sectionHTML += `<h2>${moduleData.title}</h2>`;
         
-        sectionData.content.forEach(item => {
+        moduleData.content.forEach(item => {
             sectionHTML += this.renderContentItem(item);
         });
         
-        // 处理section底部的链接（如论文页面的Google Scholar链接）
-        if (sectionData.footerLink) {
-            sectionHTML += `<a href="${sectionData.footerLink.url}">${sectionData.footerLink.text}</a>`;
+        // 处理模块底部的链接（如论文页面的Google Scholar链接）
+        if (moduleData.footerLink) {
+            sectionHTML += `<a href="${moduleData.footerLink.url}">${moduleData.footerLink.text}</a>`;
         }
         
         sectionHTML += '</section>';
@@ -205,18 +241,21 @@ class ContentRenderer {
 
     // 渲染所有内容
     async renderAll() {
-        if (!this.content) {
-            await this.loadContent();
-        }
-        
-        if (!this.content) {
-            console.error('无法加载内容配置');
+        // 加载主配置
+        await this.loadConfig();
+        if (!this.config) {
+            console.error('无法加载主配置文件');
             return;
         }
 
-        // 渲染各个部分
-        this.renderProfile(this.content.profile);
-        this.renderNavigation(this.content.navigation, this.content.englishLink);
+        // 渲染个人信息
+        this.renderProfile(this.config.profile);
+        
+        // 加载所有模块
+        await this.loadModules();
+        
+        // 动态生成导航菜单
+        this.renderNavigation();
         
         // 清空main内容
         const main = document.querySelector('main');
@@ -224,20 +263,38 @@ class ContentRenderer {
             main.innerHTML = '';
         }
         
-        // 渲染所有section
-        Object.keys(this.content.sections).forEach(sectionId => {
-            this.renderSection(sectionId, this.content.sections[sectionId]);
+        // 按顺序渲染所有启用的模块
+        this.modules.forEach((moduleData, moduleId) => {
+            this.renderModule(moduleId, moduleData);
         });
         
         // 渲染页脚
-        this.renderFooter(this.content.footer);
+        this.renderFooter(this.config.footer);
         
-        console.log('内容渲染完成');
+        console.log('模块化内容渲染完成');
+        console.log(`已加载 ${this.modules.size} 个模块`);
+    }
+
+    // 获取模块列表（用于调试）
+    getModuleList() {
+        const moduleList = [];
+        this.modules.forEach((module, moduleId) => {
+            moduleList.push({
+                id: moduleId,
+                title: module.title,
+                order: module.order,
+                file: module.file
+            });
+        });
+        return moduleList.sort((a, b) => a.order - b.order);
     }
 }
 
-// 初始化渲染器
+// 初始化模块化渲染器
 document.addEventListener('DOMContentLoaded', async () => {
-    const renderer = new ContentRenderer();
+    const renderer = new ModularContentRenderer();
     await renderer.renderAll();
+    
+    // 在控制台输出模块信息（调试用）
+    console.log('已加载的模块:', renderer.getModuleList());
 });

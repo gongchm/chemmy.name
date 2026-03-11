@@ -1,0 +1,23 @@
+{
+  "title": "联系方式",
+  "content": [
+    {
+      "type": "list",
+      "items": [
+        {
+          "text": "地址：南京市江宁区诚信大道19号（",
+          "links": [
+            {
+              "text": "31.9029, 118.7707",
+              "url": "https://www.google.com/maps/preview/place/%2B31%C2%B054'10.44%22,+%2B118%C2%B046'14.52%22/@31.9029,118.7707,590m/data=!3m2!1e3!4b1!4m2!3m1!1s0x0:0x0",
+              "target": "_blank"
+            }
+          ],
+          "suffix": "），211106"
+        },
+        "电话：+86 25 81089198",
+        "电子邮件：gongchengming at sgepri dot sgcc dot com dot cn, gongchm at gmail dot com"
+      ]
+    }
+  ]
+}

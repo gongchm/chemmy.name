@@ -1,0 +1,95 @@
+{
+  "profile": {
+    "name": "龚成明",
+    "photo": "pic/photo.jpg",
+    "affiliations": [
+      {
+        "name": "德睿能源研究院",
+        "url": "https://deri.org.cn"
+      },
+      {
+        "name": "特来电",
+        "url": "https://teld.cn"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "id": "interest",
+      "file": "interest.json",
+      "title": "方向和兴趣",
+      "enabled": true,
+      "order": 1
+    },
+    {
+      "id": "cert",
+      "file": "cert.json",
+      "title": "资格和获奖",
+      "enabled": true,
+      "order": 2
+    },
+    {
+      "id": "patents",
+      "file": "patents.json",
+      "title": "授权专利",
+      "enabled": true,
+      "order": 3
+    },
+    {
+      "id": "papers",
+      "file": "papers.json",
+      "title": "主要论文",
+      "enabled": true,
+      "order": 4
+    },
+    {
+      "id": "employment",
+      "file": "employment.json",
+      "title": "工作经历",
+      "enabled": true,
+      "order": 5
+    },
+    {
+      "id": "education",
+      "file": "education.json",
+      "title": "教育经历",
+      "enabled": true,
+      "order": 6
+    },
+    {
+      "id": "community",
+      "file": "community.json",
+      "title": "参与社团",
+      "enabled": true,
+      "order": 7
+    },
+    {
+      "id": "students",
+      "file": "students.json",
+      "title": "指导学生",
+      "enabled": true,
+      "order": 8
+    },
+    {
+      "id": "contacts",
+      "file": "contacts.json",
+      "title": "联系方式",
+      "enabled": true,
+      "order": 9
+    }
+  ],
+  "footer": {
+    "updateDate": "2025年03月10日",
+    "updateLink": "https://github.com/gongchm/homepage/commits/master",
+    "createDate": "2008年2月15日创建",
+    "cssValidator": {
+      "url": "http://jigsaw.w3.org/css-validator/check/referer",
+      "img": "http://jigsaw.w3.org/css-validator/images/vcss",
+      "alt": "Valid CSS!"
+    }
+  },
+  "englishLink": {
+    "url": "index_english.htm",
+    "text": "English"
+  }
+}

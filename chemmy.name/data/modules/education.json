@@ -1,0 +1,43 @@
+{
+  "title": "教育经历",
+  "content": [
+    {
+      "type": "list",
+      "items": [
+        {
+          "text": "继续教育",
+          "sublist": [
+            "2015.1-2015.4 Heterogeneous Parallel Programming, UIUC@Coursera"
+          ]
+        },
+        {
+          "text": "1998.9-2001.4 国家电力公司电力自动化研究院（现",
+          "links": [
+            {
+              "text": "国家电网公司国网电力科学研究院",
+              "url": "http://www.sgepri.sgcc.com.cn"
+            }
+          ],
+          "suffix": "），电力系统及其自动化工学硕士（导师：薛禹胜院士）"
+        },
+        {
+          "text": "1994.9-1998.7 ",
+          "links": [
+            {
+              "text": "南京大学",
+              "url": "http://www.nju.edu.cn"
+            }
+          ],
+          "suffix": "大气科学系（现",
+          "links2": [
+            {
+              "text": "大气科学学院",
+              "url": "http://as.nju.edu.cn/"
+            }
+          ],
+          "suffix2": "），天气动力学理学学士；副修专业：电子科学与工程"
+        }
+      ]
+    }
+  ]
+}

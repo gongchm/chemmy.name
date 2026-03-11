@@ -1,0 +1,68 @@
+{
+  "title": "主要论文",
+  "content": [
+    {
+      "type": "orderedList",
+      "start": 1,
+      "items": [
+        {
+          "text": "龚成明, 於益军, 路轶, 徐田, 王丹. 加权最小二乘状态估计量测权值计算的实用方法. 电力系统自动化, 2016,40(11):143-147. DOI: 10.7500/AEPS20150615015.",
+          "links": [
+            {
+              "text": "加权最小二乘状态估计量测权值计算的实用方法",
+              "url": "http://www.aeps-info.com/aeps/ch/reader/view_abstract.aspx?file_no=20150615015&flag=1"
+            }
+          ]
+        },
+        {
+          "text": "Gong Chengming, Li Lei, Xu Xiuzhi. A Design Pattern for Power System Steady State Analysis Software. ICEE 2015, July 2015, Hong Kong ",
+          "links": [
+            {
+              "text": "全文",
+              "url": "paper/ICEE15A-163-FP.pdf"
+            }
+          ]
+        },
+        {
+          "text": "Gong Chengming. Implementation of Polar Form Algorithms with the Rectangular Form Complex Number. IEEE PES GM2010. July, 2010. Minneapolis, US ",
+          "class": "tip",
+          "abstract": "Power system analysis algorithms under polar coordinates are traditionally implemented with the polar form complex number, which is abstracted as phase and magnitude. This paper addresses a method to implement the polar form algorithms with the common rectangular form complex number, which is abstracted as real and imaginary parts. The key points of the addressed method are to express the derivatives to polar components under rectangular coordinates, and to rotate and stretch a complex number under rectangular coordinates. With the addressed method, the polar form algorithms can be implemented with direct complex operations and will share more components with rectangular form algorithms.",
+          "links": [
+            {
+              "text": "全文",
+              "url": "paper/gong-pesgm2010.pdf"
+            }
+          ]
+        },
+        {
+          "text": "龚成明, 高宗和, 李鹏, 李峰, 於益军. 快速解耦交直流状态估计",
+          "class": "tip",
+          "abstract": "将交直流系统中的直流相关量测扩充到交流有功量测部分,将换流器无功和控制角量测扩充到交流无功量测部分,忽略换流器无功及控制角量测和直流电压之间的关系,用正常工况下的参量对保留的各元素常数化,得到了快速解耦的交直流系统状态估计算法。用实际系统上的算例验证了该算法的正确性和有效性。",
+          "suffix": ". 电力系统自动化, 2007, 31(增刊): 6-10",
+          "links": [
+            {
+              "text": "快速解耦交直流状态估计",
+              "url": "http://www.ilib2.com/A-%E4%BC%9A%E8%AE%AE%E8%AE%B0%E5%BD%95ID~6495841.html"
+            }
+          ]
+        },
+        {
+          "text": "龚成明, 冯树海, 冯永青, 梁寿愚, 王礼文, 李雷. 基于直流潮流模型的支路电抗估计",
+          "class": "tip",
+          "abstract": "正确的网络参数是状态估计正常运行的基础。对于高压输电网络,环网上支路的电抗对系统有功潮流分布的影响最为明显。文中针对这一问题提出了一个基于直流潮流模型的电抗参数估计算法,利用支路所在的冗余环路信息对其电抗值进行估计,冗余信息可以来自单个断面,也可以来自多个历史数据断面。用一个实际系统上的算例验证了该算法的正确性和实用性。",
+          "suffix": ". 电力系统自动化, 2007,31(增刊):36-39",
+          "links": [
+            {
+              "text": "基于直流潮流模型的支路电抗估计",
+              "url": "http://www.ilib2.com/A-%E4%BC%9A%E8%AE%AE%E8%AE%B0%E5%BD%95ID~6495848.html"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "footerLink": {
+    "text": "Google Scholar Citation上的页面",
+    "url": "http://scholar.google.com/citations?user=jVuWb3QAAAAJ&hl=en"
+  }
+}
