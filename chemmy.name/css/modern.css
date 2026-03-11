@@ -1,0 +1,364 @@
+/* 现代化样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* 头部样式 */
+header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.profile-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.profile-img:hover {
+  transform: scale(1.05);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+header .affiliation {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  margin-bottom: 20px;
+}
+
+header .affiliation a {
+  color: #3498db;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+header .affiliation a:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+/* 导航菜单 */
+nav {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+nav li {
+  padding: 0;
+}
+
+nav a {
+  display: inline-block;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+nav a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* 主要内容区域 */
+main {
+  display: grid;
+  gap: 30px;
+}
+
+section {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+section h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #667eea;
+}
+
+section p {
+  margin-bottom: 15px;
+  color: #555;
+}
+
+section ul, section ol {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+section li {
+  margin-bottom: 8px;
+  padding: 5px 0;
+  color: #555;
+}
+
+/* 链接样式 */
+a {
+  color: #3498db;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+/* 工具提示样式 */
+.tip {
+  position: relative;
+  text-decoration: none;
+  color: #3498db;
+  border-bottom: 1px dotted #3498db;
+}
+
+.tip:hover {
+  color: #2980b9;
+}
+
+.tip span {
+  display: none;
+}
+
+.tip:hover span {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  max-width: 90vw;
+  color: #333;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  z-index: 1000;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+/* 页脚 */
+footer {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 30px;
+  text-align: center;
+  color: #7f8c8d;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+  margin: 5px 0;
+}
+
+footer a {
+  color: #3498db;
+}
+
+/* 响应式设计 */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+  
+  header {
+    padding: 20px;
+  }
+  
+  header h1 {
+    font-size: 2rem;
+  }
+  
+  .profile-img {
+    width: 120px;
+    height: 120px;
+  }
+  
+  nav ul {
+    gap: 10px;
+  }
+  
+  nav a {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  
+  section {
+    padding: 20px;
+  }
+  
+  section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .tip:hover span {
+    width: 250px;
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+  
+  header {
+    padding: 15px;
+  }
+  
+  header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .profile-img {
+    width: 100px;
+    height: 100px;
+  }
+  
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  nav a {
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+  }
+  
+  section {
+    padding: 15px;
+  }
+  
+  section h2 {
+    font-size: 1.3rem;
+  }
+  
+  .tip:hover span {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 300px;
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* 动画效果 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* 英文链接样式 */
+.english-link {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background: #e74c3c;
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.english-link:hover {
+  background: #c0392b;
+  transform: translateY(-2px);
+  text-decoration: none;
+  color: white;
+}
