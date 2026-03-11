@@ -37,8 +37,10 @@ class ModularContentRenderer {
     // 加载主配置文件
     async loadConfig() {
         try {
+            console.log('开始加载主配置文件...');
             const response = await fetch('data/config.json');
             this.config = await response.json();
+            console.log('主配置文件加载成功:', this.config);
             return this.config;
         } catch (error) {
             console.error('加载主配置文件失败:', error);
@@ -66,10 +68,14 @@ class ModularContentRenderer {
             .filter(module => module.enabled)
             .sort((a, b) => a.order - b.order);
 
+        console.log('启用的模块:', enabledModules);
+
         // 并行加载所有模块
         const modulePromises = enabledModules.map(async (module) => {
+            console.log(`正在加载模块: ${module.file}`);
             const moduleData = await this.loadModule(module.file);
             if (moduleData) {
+                console.log(`模块 ${module.file} 加载成功:`, moduleData);
                 return { id: module.id, ...module, ...moduleData };
             }
             return null;
@@ -81,6 +87,7 @@ class ModularContentRenderer {
         results.forEach(result => {
             if (result) {
                 this.modules.set(result.id, result);
+                console.log(`模块 ${result.id} 已存储:`, result);
             }
         });
     }

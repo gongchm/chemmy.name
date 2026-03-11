@@ -5,16 +5,8 @@
       "type": "journal",
       "authors": [
         {
-          "name": "陈荃韡",
-          "nameEn": "Chen Canhan"
-        },
-        {
           "name": "龚成明",
           "nameEn": "Gong Chengming"
-        },
-        {
-          "name": "赵晋泉",
-          "nameEn": "Zhao Jinquan"
         }
       ],
       "title": "并行稀疏系统直接求解库SuperLU_MT在状态估计中的应用",
@@ -26,51 +18,11 @@
       "issue": 3,
       "pages": "83-88",
       "doi": "10.7500/AEPS20160607008",
-      "keywords": ["并行计算", "状态估计", "稀疏矩阵", "SuperLU"],
-      "keywordsEn": ["Parallel computing", "State estimation", "Sparse matrix", "SuperLU"],
-      "abstract": "针对电力系统状态估计中大规模稀疏线性方程组的求解问题，提出了一种基于并行稀疏系统直接求解库SuperLU_MT的快速求解方法。该方法充分利用了现代多核处理器的并行计算能力，通过任务并行和数据并行相结合的策略，显著提高了大规模电力系统状态估计的计算效率。仿真结果表明，与传统的串行求解方法相比，所提方法在8核处理器上可获得6倍以上的加速比。",
-      "abstractEn": "A fast solution method based on parallel sparse system direct solver library SuperLU_MT is proposed for solving large-scale sparse linear equations in power system state estimation. The method makes full use of the parallel computing capabilities of modern multi-core processors through a combination of task parallelism and data parallelism, significantly improving the computational efficiency of large-scale power system state estimation. Simulation results show that compared with traditional serial solution methods, the proposed method can achieve more than 6x speedup on 8-core processors.",
+      "keywords": ["并行计算", "状态估计"],
+      "keywordsEn": ["Parallel computing", "State estimation"],
+      "abstract": "针对电力系统状态估计中大规模稀疏线性方程组的求解问题，提出了一种基于并行稀疏系统直接求解库SuperLU_MT的快速求解方法。",
+      "abstractEn": "A fast solution method based on parallel sparse system direct solver library SuperLU_MT is proposed for solving large-scale sparse linear equations in power system state estimation.",
       "url": "http://www.aeps-info.com/aeps/ch/reader/view_abstract.aspx?file_no=20160607008&flag=1"
-    },
-    {
-      "type": "conference",
-      "authors": [
-        {
-          "name": "Mingyu Zhai",
-          "nameEn": "Mingyu Zhai"
-        },
-        {
-          "name": "Ting Zhang",
-          "nameEn": "Ting Zhang"
-        },
-        {
-          "name": "Haibin Zhang",
-          "nameEn": "Haibin Zhang"
-        },
-        {
-          "name": "Miaomiao Qi",
-          "nameEn": "Miaomiao Qi"
-        },
-        {
-          "name": "龚成明",
-          "nameEn": "Chengming Gong"
-        },
-        {
-          "name": "Lei Li",
-          "nameEn": "Lei Li"
-        }
-      ],
-      "title": "A new substation linear state estimation method",
-      "conference": "2015 IEEE Power & Energy Society General Meeting",
-      "location": "Denver, CO, USA",
-      "year": 2015,
-      "pages": "1-5",
-      "doi": "10.1109/PESGM.2015.7285677",
-      "keywords": ["状态估计", "变电站", "线性估计", "量测不确定度", "最大标准化残差检验"],
-      "keywordsEn": ["State estimation", "Substation", "Linear estimation", "Measurement uncertainty", "Largest normalized residual test"],
-      "abstract": "提出了一种新的变电站线性状态估计方法，用于快速有效地处理模拟坏数据和拓扑错误。该方法充分利用三相多源量测来建立量测方程和伪量测方程，并在变电站内一起计算。这样，模拟坏数据和拓扑错误可以通过最大标准化残差检验同步识别。由于这是一个线性估计问题，因此它将简单快速，无需迭代。仿真结果表明，即使在同时存在多个模拟坏数据和拓扑错误的情况下，该方法也能简单有效地识别坏数据和拓扑错误。",
-      "abstractEn": "A new substation linear state estimation method is proposed to deal with analog bad data and topology errors fast and effectively. This method makes full use of three-phase multi-source measurements to establish measurement equations and pseudo measurement equations, and calculate them together in substation. This way, analog bad data and topology errors can be identified synchronously using the largest normalized residual test. As it is a linear estimation problem, it will be simple and fast without iteration. Simulation results show that, this method can easily and effectively identify bad data and topology errors even in case where multiple analog bad data and topology errors exist simultaneously.",
-      "url": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7285677&isnumber=7285590"
     }
   ]
 }
