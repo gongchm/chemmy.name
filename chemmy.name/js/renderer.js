@@ -69,8 +69,8 @@ class ModularContentRenderer {
                 console.log(`🔍 处理模块配置: ${moduleId}`, moduleConfig);
                 if (moduleConfig.enabled) {
                     try {
-                        console.log(`🔍 加载模块文件: data/modules/${moduleConfig.file}`);
-                        const response = await fetch(`data/modules/${moduleConfig.file}`);
+                        console.log(`🔍 加载模块文件: chemmy.name/data/modules/${moduleConfig.file}`);
+                        const response = await fetch(`chemmy.name/data/modules/${moduleConfig.file}`);
                         if (!response.ok) {
                             throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                         }
