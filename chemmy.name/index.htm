@@ -58,34 +58,6 @@
 </div>
 
 <!-- 引入内容渲染引擎 -->
-<script>
-    console.log('🔥🔥🔥 内联JavaScript开始执行! 🔥🔥🔥');
-    
-    // 立即创建测试元素
-    const inlineTest = document.createElement('div');
-    inlineTest.style.cssText = `
-        position: fixed !important;
-        top: 100px !important;
-        left: 100px !important;
-        width: 500px !important;
-        height: 100px !important;
-        background: orange !important;
-        color: white !important;
-        padding: 20px !important;
-        z-index: 999999 !important;
-        font-size: 24px !important;
-        font-weight: bold !important;
-        border: 5px solid blue !important;
-        border-radius: 15px !important;
-    `;
-    inlineTest.textContent = 'INLINE JS TEST - 内联JavaScript成功执行!';
-    document.body.appendChild(inlineTest);
-    
-    console.log('🔥 内联测试元素已创建');
-    
-    // 测试外部脚本加载
-    console.log('🔥 开始加载外部脚本...');
-</script>
 <script src="js/renderer.js"></script>
 
 </body>
