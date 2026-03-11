@@ -1,4 +1,4 @@
-﻿// 模块化内容渲染引擎
+// 模块化内容渲染引擎
 class ModularContentRenderer {
     constructor() {
         this.config = null;
@@ -21,15 +21,23 @@ class ModularContentRenderer {
         }
     }
 
+    // 隐藏加载状态
+    hideLoading() {
+        const main = document.querySelector('main');
+        if (main) {
+            main.innerHTML = '';
+        }
+    }
+
     // 显示错误信息
     showError(message) {
+        this.errorMessages.push(message);
         const main = document.querySelector('main');
         if (main) {
             main.innerHTML = `
                 <div class="error-container">
-                    <h2>加载失败</h2>
+                    <h2>加载错误</h2>
                     <p>${message}</p>
-                    <button onclick="location.reload()">重新加载</button>
                 </div>
             `;
         }
@@ -38,111 +46,78 @@ class ModularContentRenderer {
     // 加载主配置文件
     async loadConfig() {
         try {
-            console.log('开始加载主配置文件...');
             const response = await fetch('data/config.json');
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
             this.config = await response.json();
-            console.log('主配置文件加载成功:', this.config);
-            return this.config;
+            console.log('主配置加载成功:', this.config);
         } catch (error) {
-            console.error('加载主配置文件失败:', error);
-            return null;
+            console.error('无法加载主配置文件:', error);
+            this.showError('无法加载配置文件，请检查网络连接');
         }
     }
 
-    // 加载模块内容
-    async loadModule(moduleFile) {
-        try {
-            const response = await fetch(`data/modules/${moduleFile}`);
-            const moduleData = await response.json();
-            return moduleData;
-        } catch (error) {
-            console.error(`加载模块 ${moduleFile} 失败:`, error);
-            return null;
-        }
-    }
-
-    // 加载所有启用的模块
+    // 加载模块数据
     async loadModules() {
-        if (!this.config) return;
-
-        const enabledModules = this.config.modules
-            .filter(module => module.enabled)
-            .sort((a, b) => a.order - b.order);
-
-        console.log('启用的模块:', enabledModules);
-
-        // 并行加载所有模块
-        const modulePromises = enabledModules.map(async (module) => {
-            console.log(`正在加载模块: ${module.file}`);
-            const moduleData = await this.loadModule(module.file);
-            if (moduleData) {
-                console.log(`模块 ${module.file} 加载成功:`, moduleData);
-                return { id: module.id, ...module, ...moduleData };
+        try {
+            for (const [moduleId, moduleConfig] of Object.entries(this.config.modules)) {
+                if (moduleConfig.enabled) {
+                    try {
+                        const response = await fetch(`data/modules/${moduleConfig.file}`);
+                        if (!response.ok) {
+                            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                        }
+                        const moduleData = await response.json();
+                        this.modules.set(moduleId, { ...moduleConfig, ...moduleData });
+                        console.log(`模块 ${moduleId} 加载成功:`, moduleData);
+                    } catch (error) {
+                        console.error(`无法加载模块 ${moduleId}:`, error);
+                        this.showError(`无法加载模块 ${moduleId}: ${error.message}`);
+                    }
+                }
             }
-            return null;
-        });
-
-        const results = await Promise.all(modulePromises);
-        
-        // 存储成功加载的模块
-        results.forEach(result => {
-            if (result) {
-                this.modules.set(result.id, result);
-                console.log(`模块 ${result.id} 已存储:`, result);
-            }
-        });
+        } catch (error) {
+            console.error('加载模块时发生错误:', error);
+            this.showError('模块加载失败，请刷新页面重试');
+        }
     }
 
-    // 渲染个人信息头部
+    // 渲染个人信息
     renderProfile(profile) {
         const header = document.querySelector('header');
         if (!header) return;
 
-        let affiliationsHTML = '';
-        profile.affiliations.forEach(aff => {
-            affiliationsHTML += `<p><a href="${aff.url}">${aff.name}</a></p>`;
-        });
-
         header.innerHTML = `
             <div class="header-content">
-                <img src="${profile.photo}" alt="${profile.name}" class="profile-img" />
+                <img src="${profile.photo}" alt="${profile.name}" class="profile-img">
                 <div class="header-info">
                     <h1>${profile.name}</h1>
                     <div class="affiliation">
-                        ${affiliationsHTML}
+                        ${profile.affiliations.map(aff => 
+                            `<p><a href="${aff.url}" target="_blank">${aff.name}</a></p>`
+                        ).join('')}
                     </div>
                 </div>
             </div>
         `;
     }
 
-    // 动态生成导航菜单
+    // 渲染导航
     renderNavigation() {
         const nav = document.querySelector('nav ul');
         if (!nav) return;
 
         let navHTML = '';
-        
-        // 按顺序渲染所有启用的模块
         this.modules.forEach((moduleData, moduleId) => {
-            // 默认显示第一个模块
-            if (this.currentModule === null && moduleId === Array.from(this.modules.keys())[0]) {
-                this.currentModule = moduleId;
-            }
-            
             const isActive = moduleId === this.currentModule;
             const activeClass = isActive ? 'active' : '';
             navHTML += `<li><a href="#${moduleId}" class="nav-link ${activeClass}" data-module="${moduleId}">${moduleData.title}</a></li>`;
         });
-        
-        // 添加英文链接
         if (this.config.englishLink) {
             navHTML += `<li><a href="${this.config.englishLink.url}" class="english-link">${this.config.englishLink.text}</a></li>`;
         }
-
         nav.innerHTML = navHTML;
-        
-        // 添加导航点击事件
         this.setupNavigationEvents();
     }
 
@@ -153,19 +128,18 @@ class ModularContentRenderer {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const moduleId = link.getAttribute('data-module');
-                this.showModule(moduleId);
+                this.switchModule(moduleId);
             });
         });
     }
 
-    // 显示指定模块
-    showModule(moduleId) {
-        this.currentModule = moduleId;
+    // 切换模块
+    async switchModule(moduleId) {
+        if (moduleId === this.currentModule) return;
         
-        // 更新导航高亮
+        this.currentModule = moduleId;
         this.updateNavigationHighlight();
         
-        // 只显示选中的模块内容
         const main = document.querySelector('main');
         if (!main) return;
         
@@ -325,11 +299,113 @@ class ModularContentRenderer {
         return content;
     }
 
+    // 渲染页脚
+    renderFooter(footer) {
+        const footerElement = document.querySelector('footer');
+        if (!footerElement) return;
+
+        // 获取当前日期作为更新时间
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        const day = String(currentDate.getDate()).padStart(2, '0');
+        const updateDate = `${year}年${month}月${day}日`;
+
+        footerElement.innerHTML = `
+            <p>${updateDate}<a href="${footer.updateLink}">更新</a></p>
+            <p>${footer.createDate}</p>
+            <p><a href="${footer.cssValidator.url}"><img style="border: 0; width: 88px; height: 31px" src="${footer.cssValidator.img}" alt="${footer.cssValidator.alt}" /></a></p>
+        `;
+    }
+
+    // 渲染所有内容
+    async renderAll() {
+        try {
+            this.isLoading = true;
+            this.showLoading();
+            
+            // 加载主配置
+            await this.loadConfig();
+            if (!this.config) {
+                throw new Error('无法加载主配置文件');
+            }
+
+            // 渲染个人信息
+            this.renderProfile(this.config.profile);
+            
+            // 加载所有模块
+            await this.loadModules();
+            
+            // 清空main内容
+            const main = document.querySelector('main');
+            if (main) {
+                main.innerHTML = '';
+            }
+            
+            // 设置默认活动模块为第一个启用的模块
+            const enabledModules = Array.from(this.modules.entries())
+                .filter(([moduleId, moduleData]) => moduleData.enabled)
+                .sort(([, a], [, b]) => a.order - b.order);
+            
+            if (enabledModules.length > 0) {
+                this.currentModule = enabledModules[0][0];
+            }
+            
+            // 动态生成导航菜单
+            this.renderNavigation();
+            
+            // 只渲染当前活动模块
+            if (this.currentModule && this.modules.has(this.currentModule)) {
+                const moduleData = this.modules.get(this.currentModule);
+                if (this.currentModule === 'papers') {
+                    this.renderPapersModule(moduleData);
+                } else {
+                    this.renderModule(this.currentModule, moduleData);
+                }
+            }
+            
+            // 渲染页脚
+            this.renderFooter(this.config.footer);
+            
+            this.isLoading = false;
+            console.log('模块化内容渲染完成');
+            console.log(`已加载 ${this.modules.size} 个模块`);
+            
+            // 添加滚动监听
+            this.setupScrollListener();
+            
+        } catch (error) {
+            this.isLoading = false;
+            console.error('渲染过程中发生错误:', error);
+            this.showError('内容加载失败，请刷新页面重试');
+        }
+    }
+
+    // 渲染指定模块
+    renderModule(moduleId, moduleData) {
+        const main = document.querySelector('main');
+        if (!main) return;
+
+        let sectionHTML = `<section id="${moduleId}">`;
+        
+        moduleData.content.forEach(item => {
+            sectionHTML += this.renderContentItem(item);
+        });
+        
+        // 处理模块底部的链接（如论文页面的Google Scholar链接）
+        if (moduleData.footerLink) {
+            sectionHTML += `<a href="${moduleData.footerLink.url}">${moduleData.footerLink.text}</a>`;
+        }
+        
+        sectionHTML += '</section>';
+        
+        main.innerHTML += sectionHTML;
+    }
+
     // 渲染论文模块
     renderPapersModule(modulesData) {
         const main = document.querySelector('main');
         if (!main || !modulesData.papers) return;
-
         let papersHTML = '';
         
         modulesData.papers.forEach((paper, index) => {
@@ -458,79 +534,7 @@ class ModularContentRenderer {
         return '';
     }
 
-    // 渲染页脚
-    renderFooter(footer) {
-        const footerElement = document.querySelector('footer');
-        if (!footerElement) return;
-
-        // 获取当前日期作为更新时间
-        const currentDate = new Date();
-        const year = currentDate.getFullYear();
-        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
-        const day = String(currentDate.getDate()).padStart(2, '0');
-        const updateDate = `${year}年${month}月${day}日`;
-
-        footerElement.innerHTML = `
-            <p>${updateDate}<a href="${footer.updateLink}">更新</a></p>
-            <p>${footer.createDate}</p>
-            <p><a href="${footer.cssValidator.url}"><img style="border: 0; width: 88px; height: 31px" src="${footer.cssValidator.img}" alt="${footer.cssValidator.alt}" /></a></p>
-        `;
-    }
-
-    // 渲染所有内容
-    async renderAll() {
-        try {
-            this.isLoading = true;
-            this.showLoading();
-            
-            // 加载主配置
-            await this.loadConfig();
-            if (!this.config) {
-                throw new Error('无法加载主配置文件');
-            }
-
-            // 渲染个人信息
-            this.renderProfile(this.config.profile);
-            
-            // 加载所有模块
-            await this.loadModules();
-            
-            // 清空main内容
-            const main = document.querySelector('main');
-            if (main) {
-                main.innerHTML = '';
-            }
-            
-            // 设置默认活动模块为第一个启用的模块
-            const enabledModules = Array.from(this.modules.entries())
-                .filter(([moduleId, moduleData]) => moduleData.enabled)
-                .sort(([, a], [, b]) => a.order - b.order);
-            
-            if (enabledModules.length > 0) {
-                this.currentModule = enabledModules[0][0];
-            }
-            
-            // 动态生成导航菜单
-            this.renderNavigation();
-            
-            // 只渲染当前活动模块
-            if (this.currentModule && this.modules.has(this.currentModule)) {
-                const moduleData = this.modules.get(this.currentModule);
-                if (this.currentModule === 'papers') {
-                    this.renderPapersModule(moduleData);
-                } else {
-                    this.renderModule(this.currentModule, moduleData);
-                }
-            }
-            
-            // 渲染页脚
-            this.renderFooter(this.config.footer);
-            
-            this.isLoading = false;
-            console.log('模块化内容渲染完成');
-            console.log(`已加载 ${this.modules.size} 个模块`);
-            
-            // 设置滚动监听
+    // 设置滚动监听
     setupScrollListener() {
         const header = document.querySelector('header');
         const headerInfo = document.querySelector('.header-info h1');
@@ -557,77 +561,20 @@ class ModularContentRenderer {
             lastScrollTop = scrollTop;
         });
     }
-            
-        } catch (error) {
-            this.isLoading = false;
-            console.error('渲染过程中发生错误:', error);
-            this.showError('内容加载失败，请刷新页面重试');
-        }
-    }
 
-    // 渲染模块
-    renderModule(moduleId, moduleData) {
-        const main = document.querySelector('main');
-        if (!main) return;
-
-        let sectionHTML = `<section id="${moduleId}">`;
-        
-        moduleData.content.forEach(item => {
-            sectionHTML += this.renderContentItem(item);
-        });
-        
-        // 处理模块底部的链接（如论文页面的Google Scholar链接）
-        if (moduleData.footerLink) {
-            sectionHTML += `<a href="${moduleData.footerLink.url}">${moduleData.footerLink.text}</a>`;
-        }
-        
-        sectionHTML += '</section>';
-        
-        main.innerHTML += sectionHTML;
-    }
-
-    // 获取模块列表（用于调试）
+    // 获取模块列表
     getModuleList() {
         const moduleList = [];
-        this.modules.forEach((module, moduleId) => {
+        this.modules.forEach((moduleData, moduleId) => {
             moduleList.push({
                 id: moduleId,
-                title: module.title,
-                order: module.order,
-                file: module.file
+                title: moduleData.title,
+                order: moduleData.order,
+                file: moduleData.file
             });
         });
         return moduleList.sort((a, b) => a.order - b.order);
     }
-}
-
-// 设置滚动监听
-setupScrollListener() {
-    const header = document.querySelector('header');
-    const headerInfo = document.querySelector('.header-info h1');
-    if (!header || !headerInfo) return;
-    
-    // 创建固定姓名元素
-    const fixedName = document.createElement('div');
-    fixedName.className = 'fixed-name';
-    fixedName.textContent = headerInfo.textContent;
-    document.body.appendChild(fixedName);
-    
-    // 监听滚动事件
-    let lastScrollTop = 0;
-    window.addEventListener('scroll', () => {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-        // 当头部滚出视窗时显示固定姓名
-        if (scrollTop > header.offsetTop + 50) {
-            fixedName.classList.add('visible');
-        } else {
-            fixedName.classList.remove('visible');
-        }
-        
-        lastScrollTop = scrollTop;
-    });
-}
 }
 
 // 初始化模块化渲染器
