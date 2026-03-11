@@ -22,7 +22,8 @@
       "file": "papers.json",
       "title": "主要论文",
       "enabled": true,
-      "order": 2
+      "order": 2,
+      "renderer": "papers"
     },
     {
       "id": "awards",

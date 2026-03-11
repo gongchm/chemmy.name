@@ -262,7 +262,7 @@ class ModularContentRenderer {
         // 清空并重新渲染内容
         main.innerHTML = '';
         
-        if (moduleId === 'papers') {
+        if (moduleData.renderer === 'papers') {
             console.log('🔥🔥🔥 调用 renderPapersModule! 🔥🔥🔥');
             try {
                 this.renderPapersModule(moduleData);
@@ -480,7 +480,7 @@ class ModularContentRenderer {
             // 只渲染当前活动模块
             if (this.currentModule && this.modules.has(this.currentModule)) {
                 const moduleData = this.modules.get(this.currentModule);
-                if (this.currentModule === 'papers') {
+                if (moduleData.renderer === 'papers') {
                     this.renderPapersModule(moduleData);
                 } else {
                     this.renderModule(this.currentModule, moduleData);
