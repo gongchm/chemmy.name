@@ -407,12 +407,12 @@ class ModularContentRenderer {
     }
 
     // 渲染论文模块
-    renderPapersModule(modulesData) {
+    renderPapersModule(moduleData) {
         const main = document.querySelector('main');
-        if (!main || !modulesData.papers) return;
+        if (!main || !moduleData.papers) return;
         let papersHTML = '';
         
-        modulesData.papers.forEach((paper, index) => {
+        moduleData.papers.forEach((paper, index) => {
             papersHTML += this.renderPaperItem(paper, index + 1);
         });
 
