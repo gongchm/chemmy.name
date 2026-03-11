@@ -135,7 +135,7 @@ class ModularContentRenderer {
                     let navHTML = '<li class="nav-brand">龚成明@DERI</li>';
                     navHTML += '<div class="nav-menu">';
                     
-                    this.modules.forEach((moduleData, moduleId) => {
+                    this.modules.forEach((moduleId, moduleData) => {
                         console.log(`🔥 处理模块 ${moduleId}:`, moduleData);
                         const isActive = moduleId === this.currentModule;
                         const activeClass = isActive ? 'active' : '';
@@ -465,6 +465,7 @@ class ModularContentRenderer {
             
             if (enabledModules.length > 0) {
                 this.currentModule = enabledModules[0][0];
+                console.log('🔥 设置默认模块:', this.currentModule);
             }
             
             // 动态生成导航菜单
