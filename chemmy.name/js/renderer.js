@@ -414,10 +414,21 @@ class ModularContentRenderer {
         console.log('moduleData keys:', moduleData ? Object.keys(moduleData) : 'moduleData is undefined');
         
         const main = document.querySelector('main');
+        console.log('DOM main element check:');
+        console.log('- main element:', main);
+        console.log('- main element tagName:', main?.tagName);
+        console.log('- main element innerHTML before:', main?.innerHTML);
+        console.log('- document.querySelector("main") result:', document.querySelector('main'));
+        console.log('- document.getElementsByTagName("main") length:', document.getElementsByTagName('main').length);
+        
         if (!main) {
-            console.log('main element not found');
-            return;
+            console.log('ERROR: main element not found! Creating one...');
+            const newMain = document.createElement('main');
+            document.body.appendChild(newMain);
+            console.log('Created new main element:', newMain);
         }
+        
+        const currentMain = document.querySelector('main'); // 重新获取，可能是新创建的
         
         if (!moduleData) {
             console.log('moduleData is undefined, returning');
@@ -441,14 +452,14 @@ class ModularContentRenderer {
         
         console.log('final papersHTML before rendering:', papersHTML);
 
-        main.innerHTML = `<section id="papers">
+        currentMain.innerHTML = `<section id="papers">
             <div class="papers-container">
                 ${papersHTML}
             </div>
         </section>`;
         console.log('papers module rendered successfully');
-        console.log('main.innerHTML after rendering:', main.innerHTML);
-        console.log('main element exists:', !!main);
+        console.log('main.innerHTML after rendering:', currentMain.innerHTML);
+        console.log('main element exists:', !!currentMain);
         console.log('papers section exists:', !!document.querySelector('#papers'));
         console.log('papers-container exists:', !!document.querySelector('.papers-container'));
         
@@ -457,7 +468,7 @@ class ModularContentRenderer {
             const testDiv = document.createElement('div');
             testDiv.style.cssText = 'background: red; color: white; padding: 10px; margin: 10px;';
             testDiv.textContent = '测试：DOM操作正常工作';
-            main.appendChild(testDiv);
+            currentMain.appendChild(testDiv);
             console.log('Test element added to main');
         }, 1000);
     }
