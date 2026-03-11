@@ -408,40 +408,44 @@ class ModularContentRenderer {
 
     // 渲染论文模块
     renderPapersModule(moduleData) {
-        console.log('=== renderPapersModule 开始 ===');
-        console.log('moduleData:', moduleData);
+        console.log('🔥🔥🔥 renderPapersModule 被调用了! 🔥🔥🔥');
+        console.log('🔥 moduleData:', moduleData);
+        
+        // 立即创建一个明显的测试元素
+        document.body.innerHTML += '<div style="position: fixed; top: 0; left: 0; background: red; color: white; padding: 20px; z-index: 9999;">RENDER_PAPERS_MODULE_CALLED</div>';
         
         const main = document.querySelector('main');
-        console.log('main element:', main);
+        console.log('🔥 main element:', main);
         
         if (!main) {
-            console.log('ERROR: main element not found!');
+            console.log('🔥 ERROR: main element not found!');
             return;
         }
         
         // 第一步：清空main
-        console.log('步骤1: 清空main');
+        console.log('🔥 步骤1: 清空main');
         main.innerHTML = '';
-        console.log('main.innerHTML after clear:', main.innerHTML);
+        console.log('🔥 main.innerHTML after clear:', main.innerHTML);
         
         // 第二步：创建简单的测试内容
-        console.log('步骤2: 创建简单测试内容');
-        const testHTML = '<div style="background: yellow; padding: 20px; margin: 10px;">测试内容：论文模块</div>';
+        console.log('🔥 步骤2: 创建简单测试内容');
+        const testHTML = '<div style="background: yellow; padding: 20px; margin: 10px; font-size: 24px; font-weight: bold;">测试内容：论文模块</div>';
         main.innerHTML = testHTML;
-        console.log('main.innerHTML after test:', main.innerHTML);
+        console.log('🔥 main.innerHTML after test:', main.innerHTML);
         
         // 第三步：检查是否可见
         setTimeout(() => {
-            console.log('步骤3: 检查测试内容是否可见');
+            console.log('🔥 步骤3: 检查测试内容是否可见');
             const testDiv = main.querySelector('div');
             if (testDiv) {
-                console.log('测试div存在:', !!testDiv);
-                console.log('测试div样式:', testDiv.style.cssText);
-                console.log('测试div是否可见:', testDiv.offsetWidth > 0 && testDiv.offsetHeight > 0);
+                console.log('🔥 测试div存在:', !!testDiv);
+                console.log('🔥 测试div样式:', testDiv.style.cssText);
+                console.log('🔥 测试div是否可见:', testDiv.offsetWidth > 0 && testDiv.offsetHeight > 0);
+                console.log('🔥 测试div尺寸:', testDiv.offsetWidth, 'x', testDiv.offsetHeight);
             }
         }, 100);
         
-        console.log('=== renderPapersModule 结束 ===');
+        console.log('🔥🔥🔥 renderPapersModule 结束 🔥🔥🔥');
     }
 
     // 渲染单个论文项
