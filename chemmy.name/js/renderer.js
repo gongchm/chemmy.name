@@ -61,7 +61,9 @@ class ModularContentRenderer {
     // 加载模块数据
     async loadModules() {
         try {
+            console.log('开始加载模块，config.modules:', this.config.modules);
             for (const [moduleId, moduleConfig] of Object.entries(this.config.modules)) {
+                console.log(`处理模块 ${moduleId}, 配置:`, moduleConfig);
                 if (moduleConfig.enabled) {
                     try {
                         const response = await fetch(`data/modules/${moduleConfig.file}`);
@@ -75,6 +77,8 @@ class ModularContentRenderer {
                         console.error(`无法加载模块 ${moduleId}:`, error);
                         this.showError(`无法加载模块 ${moduleId}: ${error.message}`);
                     }
+                } else {
+                    console.log(`模块 ${moduleId} 已禁用，跳过加载`);
                 }
             }
         } catch (error) {
