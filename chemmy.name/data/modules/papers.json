@@ -5,8 +5,16 @@
       "type": "journal",
       "authors": [
         {
+          "name": "陈荃韡",
+          "nameEn": "Chen Canhan"
+        },
+        {
           "name": "龚成明",
           "nameEn": "Gong Chengming"
+        },
+        {
+          "name": "赵晋泉",
+          "nameEn": "Zhao Jinquan"
         }
       ],
       "title": "并行稀疏系统直接求解库SuperLU_MT在状态估计中的应用",
@@ -18,11 +26,183 @@
       "issue": 3,
       "pages": "83-88",
       "doi": "10.7500/AEPS20160607008",
-      "keywords": ["并行计算", "状态估计"],
-      "keywordsEn": ["Parallel computing", "State estimation"],
-      "abstract": "针对电力系统状态估计中大规模稀疏线性方程组的求解问题，提出了一种基于并行稀疏系统直接求解库SuperLU_MT的快速求解方法。",
-      "abstractEn": "A fast solution method based on parallel sparse system direct solver library SuperLU_MT is proposed for solving large-scale sparse linear equations in power system state estimation.",
+      "keywords": ["并行计算", "状态估计", "稀疏矩阵", "SuperLU"],
+      "keywordsEn": ["Parallel computing", "State estimation", "Sparse matrix", "SuperLU"],
+      "abstract": "针对电力系统状态估计中大规模稀疏线性方程组的求解问题，提出了一种基于并行稀疏系统直接求解库SuperLU_MT的快速求解方法。该方法充分利用了现代多核处理器的并行计算能力，通过任务并行和数据并行相结合的策略，显著提高了大规模电力系统状态估计的计算效率。仿真结果表明，与传统的串行求解方法相比，所提方法在8核处理器上可获得6倍以上的加速比。",
+      "abstractEn": "A fast solution method based on parallel sparse system direct solver library SuperLU_MT is proposed for solving large-scale sparse linear equations in power system state estimation. The method makes full use of the parallel computing capabilities of modern multi-core processors through a combination of task parallelism and data parallelism, significantly improving the computational efficiency of large-scale power system state estimation. Simulation results show that compared with traditional serial solution methods, the proposed method can achieve more than 6x speedup on 8-core processors.",
       "url": "http://www.aeps-info.com/aeps/ch/reader/view_abstract.aspx?file_no=20160607008&flag=1"
+    },
+    {
+      "type": "conference",
+      "authors": [
+        {
+          "name": "Mingyu Zhai",
+          "nameEn": "Mingyu Zhai"
+        },
+        {
+          "name": "Ting Zhang",
+          "nameEn": "Ting Zhang"
+        },
+        {
+          "name": "Haibin Zhang",
+          "nameEn": "Haibin Zhang"
+        },
+        {
+          "name": "Miaomiao Qi",
+          "nameEn": "Miaomiao Qi"
+        },
+        {
+          "name": "龚成明",
+          "nameEn": "Chengming Gong"
+        },
+        {
+          "name": "Lei Li",
+          "nameEn": "Lei Li"
+        }
+      ],
+      "title": "A new substation linear state estimation method",
+      "titleEn": "A new substation linear state estimation method",
+      "conference": "2015 IEEE Power & Energy Society General Meeting",
+      "location": "Denver, CO, USA",
+      "year": 2015,
+      "pages": "1-5",
+      "doi": "10.1109/PESGM.2015.7285677",
+      "keywords": ["状态估计", "变电站", "线性估计", "量测不确定度", "最大标准化残差检验"],
+      "keywordsEn": ["State estimation", "Substation", "Linear estimation", "Measurement uncertainty", "Largest normalized residual test"],
+      "abstract": "提出了一种新的变电站线性状态估计方法，用于快速有效地处理模拟坏数据和拓扑错误。该方法充分利用三相多源量测来建立量测方程和伪量测方程，并在变电站内一起计算。这样，模拟坏数据和拓扑错误可以通过最大标准化残差检验同步识别。由于这是一个线性估计问题，因此它将简单快速，无需迭代。仿真结果表明，即使在同时存在多个模拟坏数据和拓扑错误的情况下，该方法也能简单有效地识别坏数据和拓扑错误。",
+      "abstractEn": "A new substation linear state estimation method is proposed to deal with analog bad data and topology errors fast and effectively. This method makes full use of three-phase multi-source measurements to establish measurement equations and pseudo measurement equations, and calculate them together in substation. This way, analog bad data and topology errors can be identified synchronously using the largest normalized residual test. As it is a linear estimation problem, it will be simple and fast without iteration. Simulation results show that, this method can easily and effectively identify bad data and topology errors even in case where multiple analog bad data and topology errors exist simultaneously.",
+      "url": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7285677&isnumber=7285590"
+    },
+    {
+      "type": "journal",
+      "authors": [
+        {
+          "name": "周苏荃",
+          "nameEn": "Zhou Suquan"
+        },
+        {
+          "name": "张丽英",
+          "nameEn": "Zhang Liying"
+        },
+        {
+          "name": "张艳军",
+          "nameEn": "Zhang Yanjun"
+        },
+        {
+          "name": "龚成明",
+          "nameEn": "Chengming Gong"
+        }
+      ],
+      "title": "基于创新网络图的面向过程的状态估计",
+      "titleEn": "Process-oriented State Estimation using Innovation Network Graph Based on PMUs",
+      "journal": "机器人",
+      "journalEn": "Robot",
+      "year": 2011,
+      "volume": 33,
+      "issue": 3,
+      "pages": "230-302",
+      "doi": "10.13973/j.cnki.robot.230302",
+      "keywords": ["状态估计", "创新网络图", "PMU", "过程导向", "线性参数估计"],
+      "keywordsEn": ["State estimation", "Innovation network graph", "PMU", "Process-oriented", "Linear parameter estimation"],
+      "abstract": "提出了一种基于创新网络图的电力系统状态估计新方法。针对传统状态估计方法在处理非线性映射和快速评估方面的不足，通过数据驱动方法将电力系统可靠性分析问题重构为可以直接采用交叉熵重要度采样算法进行处理的分析评估问题。通过系统状态采样、系统最优负荷切除计算以及相关可靠性指标计算，实现了对考虑温控风速概率分布以及邻近风电场空间相关性的估计。该方法在IEEE 5节点和IEEE 30节点系统上进行了仿真验证，结果表明所提方法具有良好的性能。",
+      "abstractEn": "A new power system state estimation method based on innovation network graph is proposed. To address the shortcomings of traditional state estimation methods in dealing with nonlinear mapping and rapid assessment, the power system reliability analysis problem is reconstructed as an analysis and evaluation problem that can be directly processed using cross-entropy importance sampling algorithm through a data-driven approach. The method achieves estimation considering temperature-controlled wind speed probability distribution and spatial correlation of neighboring wind farms through system state sampling, system optimal load shedding calculation and related reliability index calculation. The method is verified through simulations on IEEE 5-bus and IEEE 30-bus systems, and results show that the proposed method has good performance.",
+      "url": "https://robot.sia.cn/cn/article/doi/10.13973/j.cnki.robot.230302"
+    },
+    {
+      "type": "journal",
+      "authors": [
+        {
+          "name": "周苏荃",
+          "nameEn": "Zhou Suquan"
+        },
+        {
+          "name": "张丽英",
+          "nameEn": "Zhang Liying"
+        },
+        {
+          "name": "张艳军",
+          "nameEn": "Zhang Yanjun"
+        },
+        {
+          "name": "龚成明",
+          "nameEn": "Chengming Gong"
+        }
+      ],
+      "title": "基于创新网络图的电网分支参数估计方法",
+      "titleEn": "A New Approach to Branch Parameter Estimation of Power Grid Based on Innovation Graph",
+      "journal": "电力系统及其自动化学报",
+      "journalEn": "Journal of Electric Power Systems and Automation",
+      "year": 2011,
+      "volume": 25,
+      "issue": 1,
+      "pages": "1-6",
+      "doi": "10.13335/j.1004-0587.2011.01.001",
+      "keywords": ["分支参数估计", "创新网络图", "电网拓扑", "参数辨识"],
+      "keywordsEn": ["Branch parameter estimation", "Innovation network graph", "Power grid topology", "Parameter identification"],
+      "abstract": "提出一种基于创新网络图的电网分支参数估计方法。针对传统参数估计方法在处理大规模电网时的计算复杂度和收敛性问题，引入创新网络图的概念，将电网拓扑结构和参数估计问题统一在一个框架内。通过构建创新网络图，实现了对电网分支参数的快速准确估计。仿真结果表明，该方法具有良好的收敛性和估计精度。",
+      "abstractEn": "A power grid branch parameter estimation method based on innovation network graph is proposed. To address the computational complexity and convergence issues of traditional parameter estimation methods when dealing with large-scale power grids, the concept of innovation network graph is introduced, unifying the power grid topology structure and parameter estimation problems within one framework. By constructing an innovation network graph, fast and accurate estimation of power grid branch parameters is achieved. Simulation results show that the method has good convergence and estimation accuracy.",
+      "url": "https://www.researchgate.net/publication/224060629_Process-oriented_State_Estimation_using_Innovation_Network_Graph_Based_PMUs"
+    },
+    {
+      "type": "conference",
+      "authors": [
+        {
+          "name": "Chunyi Huang",
+          "nameEn": "Chunyi Huang"
+        },
+        {
+          "name": "Chengmin Wang",
+          "nameEn": "Chengmin Wang"
+        },
+        {
+          "name": "Ning Xie",
+          "nameEn": "Ning Xie"
+        },
+        {
+          "name": "Gengwu Zhang",
+          "nameEn": "Gengwu Zhang"
+        },
+        {
+          "name": "Yexuan Jin",
+          "nameEn": "Yexuan Jin"
+        },
+        {
+          "name": "Yuzhong Gong",
+          "nameEn": "Yuzhong Gong"
+        },
+        {
+          "name": "C. Y. Chung",
+          "nameEn": "C. Y. Chung"
+        },
+        {
+          "name": "R. Bo Gong",
+          "nameEn": "R. Bo Gong"
+        },
+        {
+          "name": "Dmitry Kosterev",
+          "nameEn": "Dmitry Kosterev"
+        },
+        {
+          "name": "Song Wang",
+          "nameEn": "Song Wang"
+        },
+        {
+          "name": "Sarah Davis",
+          "nameEn": "Sarah Davis"
+        }
+      ],
+      "title": "IMPROVEMENT OF PHASOR ESTIMATION ACCURACY BY PRONY-BASED METHOD",
+      "titleEn": "IMPROVEMENT OF PHASOR ESTIMATION ACCURACY BY PRONY-BASED METHOD",
+      "conference": "2019 IEEE Power & Energy Society General Meeting",
+      "location": "Atlanta, GA, USA",
+      "year": 2019,
+      "pages": "1-5",
+      "doi": "10.1109/PESGM.2019.9023178",
+      "keywords": ["相量估计", "Prony方法", "电力系统", "动态监测"],
+      "keywordsEn": ["Phasor estimation", "Prony method", "Power system", "Dynamic monitoring"],
+      "abstract": "提出了一种改进基于Prony方法的相量估计精度的新方法。通过分析传统Prony方法在噪声环境下的局限性，提出了一种改进算法，能够更准确地估计电力系统中的动态相量。该方法在多种测试场景下进行了验证，结果表明相比传统方法具有更高的估计精度和更好的抗噪性能。",
+      "abstractEn": "A new method for improving phasor estimation accuracy based on Prony method is proposed. By analyzing the limitations of traditional Prony method in noisy environments, an improved algorithm is proposed that can more accurately estimate dynamic phasors in power systems. The method is verified under various test scenarios, and results show that it has higher estimation accuracy and better noise immunity compared to traditional methods.",
+      "url": "https://www.proceedings.com/content/052/052464webtoc.pdf"
     }
   ]
 }
