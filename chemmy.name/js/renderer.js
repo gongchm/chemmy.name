@@ -530,8 +530,33 @@ class ModularContentRenderer {
             console.log('模块化内容渲染完成');
             console.log(`已加载 ${this.modules.size} 个模块`);
             
-            // 添加滚动监听
-            this.setupScrollListener();
+            // 设置滚动监听
+    setupScrollListener() {
+        const header = document.querySelector('header');
+        const headerInfo = document.querySelector('.header-info h1');
+        if (!header || !headerInfo) return;
+        
+        // 创建固定姓名元素
+        const fixedName = document.createElement('div');
+        fixedName.className = 'fixed-name';
+        fixedName.textContent = headerInfo.textContent;
+        document.body.appendChild(fixedName);
+        
+        // 监听滚动事件
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // 当头部滚出视窗时显示固定姓名
+            if (scrollTop > header.offsetTop + 50) {
+                fixedName.classList.add('visible');
+            } else {
+                fixedName.classList.remove('visible');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+    }
             
         } catch (error) {
             this.isLoading = false;
@@ -602,6 +627,7 @@ setupScrollListener() {
         
         lastScrollTop = scrollTop;
     });
+}
 }
 
 // 初始化模块化渲染器
