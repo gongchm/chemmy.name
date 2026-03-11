@@ -451,13 +451,20 @@ class ModularContentRenderer {
 
     // 渲染单个论文项
     renderPaperItem(paper, index) {
+        console.log(`renderPaperItem called for paper ${index}:`, paper.title);
+        console.log(`paper type:`, paper.type);
+        
         const authorsHTML = this.renderAuthors(paper.authors);
         const keywordsHTML = this.renderKeywords(paper.keywords);
         const keywordsEnHTML = this.renderKeywords(paper.keywordsEn);
         
+        console.log(`authorsHTML:`, authorsHTML);
+        console.log(`keywordsHTML:`, keywordsHTML);
+        
         let citationHTML = '';
         
         if (paper.type === 'journal') {
+            console.log('Rendering journal paper');
             const doiLink = paper.doi ? `DOI: <a href="https://doi.org/${paper.doi}" target="_blank">${paper.doi}</a>` : '';
             citationHTML = `
                 <div class="paper-item journal-paper">
@@ -483,6 +490,7 @@ class ModularContentRenderer {
                 </div>
             `;
         } else if (paper.type === 'conference') {
+            console.log('Rendering conference paper');
             const doiLink = paper.doi ? `DOI: <a href="https://doi.org/${paper.doi}" target="_blank">${paper.doi}</a>` : '';
             citationHTML = `
                 <div class="paper-item conference-paper">
@@ -508,6 +516,7 @@ class ModularContentRenderer {
                 </div>
             `;
         } else if (paper.type === 'preprint') {
+            console.log('Rendering preprint paper');
             citationHTML = `
                 <div class="paper-item preprint-paper">
                     <div class="paper-header">
@@ -531,8 +540,11 @@ class ModularContentRenderer {
                     ${paper.abstractEn ? `<div class="paper-abstract-en"><strong>Abstract:</strong> ${paper.abstractEn}</div>` : ''}
                 </div>
             `;
+        } else {
+            console.log('Unknown paper type:', paper.type);
         }
         
+        console.log(`citationHTML for paper ${index}:`, citationHTML);
         return citationHTML;
     }
 
