@@ -84,11 +84,11 @@ header {
 }
 
 .profile-img {
-  width: 160px;
-  height: 180px;
-  border-radius: 50% / 60%;  /* 竖椭圆：水平50%，垂直60% */
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
   object-fit: cover;
-  object-position: top center;
+  object-position: center center;
   border: 1px solid var(--border-color);
   /* 放弃厚重阴影，改用极其微妙的弥散光 */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
@@ -119,6 +119,40 @@ header {
   color: var(--primary-color);
   border-bottom-color: var(--primary-color);
   text-decoration: none;
+}
+
+/* 个人简介样式 */
+.bio-text {
+  font-style: italic;
+  color: var(--text-muted);
+  margin: 16px 0;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* 头部联系方式 */
+.header-contacts {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.contact-email {
+  color: var(--primary-color);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 4px 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.contact-email:hover {
+  background-color: var(--bg-secondary);
+  border-color: var(--primary-color);
+  color: var(--primary-hover);
 }
 
 /* --- 5. 极简导航栏 (Navigation) --- */

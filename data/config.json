@@ -14,6 +14,17 @@
   "profile": {
     "name": "龚成明",
     "photo": "pic/photo.jpg",
+    "bio": "长期致力于电力系统运行与控制、交直流混合微电网、车网互动（V2G）技术研究。主持开发了多套省级/地区级电网调度自动化系统。",
+    "email": [
+      {
+        "display": "gongcm",
+        "domain": "@teld.cn"
+      },
+      {
+        "display": "gongchm", 
+        "domain": "@gmail.com"
+      }
+    ],
     "affiliations": [
       {
         "name": "南京德睿特来电能源研究院有限公司",

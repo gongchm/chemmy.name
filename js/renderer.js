@@ -204,6 +204,12 @@ class ModularContentRenderer {
     renderProfile(profile) {
         const header = document.querySelector('header');
         if (!header) return;
+        
+        // 生成邮箱HTML
+        const emailsHTML = profile.email ? profile.email.map(email => 
+            `<a href="mailto:${email.display}${email.domain}" class="contact-email">${email.display}${email.domain}</a>`
+        ).join(' | ') : '';
+        
         header.innerHTML = `
             <div class="header-content">
                 <img src="${profile.photo}" alt="${profile.name}" class="profile-img">
@@ -212,6 +218,8 @@ class ModularContentRenderer {
                     <div class="affiliation">
                         ${profile.affiliations.map(aff => `<p><a href="${aff.url}" target="_blank">${aff.name}</a></p>`).join('')}
                     </div>
+                    ${profile.bio ? `<p class="bio-text">${profile.bio}</p>` : ''}
+                    ${emailsHTML ? `<div class="header-contacts">${emailsHTML}</div>` : ''}
                 </div>
             </div>
         `;
