@@ -277,10 +277,10 @@ class ModularContentRenderer {
 
         footerElement.innerHTML = `
             <div class="footer-content">
+                ${contactsHTML}
                 <div class="footer-info">
                     <p>${footer.createDate}，${updateDate}<a href="${footer.updateLink}">更新</a></p>
                 </div>
-                ${contactsHTML}
             </div>
         `;
     }
