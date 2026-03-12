@@ -410,7 +410,7 @@ class ModularContentRenderer {
             
             // 智能提取角标：匹配年份 (如 2014) 或 专利前缀 (如 发明专利)
             const yearMatch = rawText.match(/^([0-9]{4})(?:\s+|-|年)/);
-            const patentMatch = rawText.match(/^(发明专利|实用新型)[\.。,，\s]*/);
+            const patentMatch = rawText.match(/^(发明专利|实用新型|外观设计)[\.。,，\s]*/);
             
             if (yearMatch) {
                 badgeHtml = yearMatch[1];
@@ -421,7 +421,7 @@ class ModularContentRenderer {
                 badgeClass = 'badge-patent';
                 contentHtml = contentHtml.replace(patentMatch[0], '');
                 // 把专利号单独高亮
-                const numMatch = contentHtml.match(/^([a-zA-Z0-9\.]+)(?:\.\s*)/);
+                const numMatch = contentHtml.match(/^([a-zA-Z0-9\.]+)(?:\.\s*|\s+)/);
                 if(numMatch) {
                    contentHtml = contentHtml.replace(numMatch[0], `<span class="patent-number">${numMatch[1]}</span> `);
                 }
