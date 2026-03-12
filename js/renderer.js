@@ -425,8 +425,8 @@ class ModularContentRenderer {
                 if(numMatch) {
                    contentHtml = contentHtml.replace(numMatch[0], `<span class="patent-number">${numMatch[1]}</span> `);
                 }
-                // 将"发明人"单独一行显示
-                contentHtml = contentHtml.replace(/(发明人[:：]\s*)([^，。]+)/g, '<br><strong>$1</strong>$2');
+                // 将"发明人"或"设计人"单独一行显示
+                contentHtml = contentHtml.replace(/(发明人|设计人)[:：]\s*([^，。]+)/g, '<br><strong>$1:</strong>$2');
             }
 
             html += `
