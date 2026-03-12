@@ -968,3 +968,20 @@ button:focus {
     display: none;
   }
 }
+
+/* 定义淡入动画关键帧 */
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 绑定到我们刚刚写入 HTML 的 .fade-in 类 */
+.fade-in {
+    animation: fadeInSlide 0.4s ease-out forwards;
+}
