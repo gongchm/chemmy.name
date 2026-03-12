@@ -88,7 +88,7 @@ header {
 .header-content {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 30px;
 }
 
 .profile-img {
@@ -113,7 +113,7 @@ header {
 .header-info h1 {
   font-size: 2.25rem;
   letter-spacing: -0.02em;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .affiliation {
@@ -122,7 +122,7 @@ header {
 }
 
 .affiliation p {
-  margin: 4px 0;
+  margin: 2px 0;
 }
 
 .affiliation a {
@@ -141,14 +141,14 @@ header {
 .bio-text {
   font-style: italic;
   color: var(--text-muted);
-  margin: 16px 0;
+  margin: 12px 0;
   line-height: 1.6;
   font-size: 0.95rem;
 }
 
 /* 头部联系方式 */
 .header-contacts {
-  margin-top: 16px;
+  margin-top: 12px;
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
