@@ -170,7 +170,8 @@ class ModularContentRenderer {
                                        style="text-decoration: none; color: inherit; cursor: pointer;"
                                        onmouseover="this.parentElement.querySelector('.tooltip').style.display='block';"
                                        onmouseout="this.parentElement.querySelector('.tooltip').style.display='none';">
-                                        德睿特来电
+                                        <span class="affiliation-full">${aff.name}</span>
+                                        <span class="affiliation-abbr" style="display: none;">${aff.abbr || aff.name}</span>
                                     </a>
                                     ${aff.tip ? `
                                     <span class="tooltip" 
@@ -192,6 +193,24 @@ class ModularContentRenderer {
                 ${contactHtml}
             </div>
         `;
+
+        // 响应式单位名称显示
+        this.updateAffiliationDisplay();
+        window.addEventListener('resize', () => this.updateAffiliationDisplay());
+    }
+
+    updateAffiliationDisplay() {
+        const isMobile = window.innerWidth <= 768;
+        const fullNames = document.querySelectorAll('.affiliation-full');
+        const abbrNames = document.querySelectorAll('.affiliation-abbr');
+        
+        fullNames.forEach(el => {
+            el.style.display = isMobile ? 'none' : 'inline';
+        });
+        
+        abbrNames.forEach(el => {
+            el.style.display = isMobile ? 'inline' : 'none';
+        });
     }
 
     renderNavigation() {
