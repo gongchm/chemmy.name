@@ -143,7 +143,7 @@ class ModularContentRenderer {
         const header = document.querySelector('header');
         if (!header) return;
         
-        const bioHtml = profile.bio ? `<p class="profile-bio" style="color: var(--text-muted); line-height: 1.6; margin-top: 12px; margin-bottom: 12px; max-width: 700px;">${profile.bio}</p>` : '';
+        const bioHtml = profile.bio ? `<p class="profile-bio" style="color: var(--text-muted); line-height: 1.6; margin-top: 12px; margin-bottom: 12px; max-width: 700px; font-style: italic;">${profile.bio}</p>` : '';
         
         let contactHtml = '';
         if (profile.email && Array.isArray(profile.email)) {
@@ -197,32 +197,49 @@ class ModularContentRenderer {
         });
     }
 
-    renderFooter(footer) {
+renderFooter(footer) {
         const footerElement = document.querySelector('footer');
         if (!footerElement) return;
-        
-        const now = new Date();
-        const updateDate = footer.updateDate || `${now.getFullYear()}年${String(now.getMonth() + 1).padStart(2, '0')}月${String(now.getDate()).padStart(2, '0')}日`;
 
+        // 1. 自动获取网页最后修改/发布时间
+        const lastMod = new Date(document.lastModified);
+        const autoUpdateDate = `${lastMod.getFullYear()}.${String(lastMod.getMonth() + 1).padStart(2, '0')}.${String(lastMod.getDate()).padStart(2, '0')}`;
+
+        // 2. 左侧：版本与自动更新信息
+        const createDateStr = footer.createDate || '';
+        const separator = footer.createDate ? '，' : '';
+        const updateDateStr = `${separator}${autoUpdateDate}`;
+        const updateLinkHtml = footer.updateLink ? `<a href="${footer.updateLink}" style="color: #9ca3af; text-decoration: none; border-bottom: 1px dotted #d1d5db; margin-left: 12px; transition: color 0.2s;" onmouseover="this.style.color='#4b5563'" onmouseout="this.style.color='#9ca3af'">更新</a>` : '';
+
+        // 3. 右侧：地址信息（彻底去掉W3C、电话、邮件）
         let contactsHTML = '';
-        if (footer.contacts) {
-            const c = footer.contacts;
-            const addrLink = c.address?.coordinates ? `<a href="${c.address.coordinates.url}" target="_blank">${c.address.coordinates.text}</a>` : '';
+        if (footer.contacts && footer.contacts.address && footer.contacts.address.text) {
+            const value = footer.contacts.address;
+            const targetAttr = value.coordinates?.target ? ` target="${value.coordinates.target}"` : '';
+            const addrLink = value.coordinates ? `<a href="${value.coordinates.url}"${targetAttr} style="color: var(--primary-color, #059669); text-decoration: none; font-weight: 500; margin-left: 6px;">${value.coordinates.text}</a>` : '';
             
-            contactsHTML = `<div class="footer-contacts">` +
-                (c.address ? `<div class="contact-item">${c.address.text}${addrLink}${c.address.suffix || ''}</div>` : '') +
-                `</div>`;
+            // 合并为纯粹的一行
+            contactsHTML = `${value.text}${addrLink}${value.suffix || ''}`;
         }
 
+        // 4. 极简响应式布局注入
+        // 去掉了 border-top 解决双横线问题。
+        // justify-content: space-between 和 flex-wrap: wrap 完美实现电脑端一行，手机端两行。
         footerElement.innerHTML = `
-            <div class="footer-content">
-                ${contactsHTML}
-                <div class="footer-info">
-                    <p>${footer.createDate}，${updateDate}<a href="${footer.updateLink}">更新</a></p>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; color: var(--text-muted, #6b7280); font-size: 0.85rem; line-height: 1.6;">
+                
+                <div style="white-space: nowrap;">
+                    ${createDateStr}${updateDateStr}${updateLinkHtml}
                 </div>
+
+                <div>
+                    ${contactsHTML}
+                </div>
+
             </div>
         `;
     }
+
 
     renderContentItem(item) {
         switch (item.type) {

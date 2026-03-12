@@ -1,9 +1,9 @@
 {
   "header": {
-    "title": "龚成明的个人主页",
+    "title": "龚成明@DERI",
     "meta": {
-      "description": "龚成明的个人主页 - 电力系统专家，研究方向包括配电网管理系统、状态估计、并行计算等",
-      "keywords": "龚成明,电力系统,状态估计,配电网,DMS,并行计算",
+      "description": "龚成明的个人主页 - 电力系统专家，研究方向包括电力系统运行控制、车网互动、微电网等",
+      "keywords": "龚成明,电力系统,状态估计,微电网,车网互动",
       "author": "龚成明"
     },
     "skipLink": {
@@ -14,7 +14,7 @@
   "profile": {
     "name": "龚成明",
     "photo": "pic/photo.jpg",
-    "bio": "长期致力于电力系统运行与控制、交直流混合微电网、车网互动（V2G）技术研究。主持开发了多套省级/地区级电网调度自动化系统。",
+    "bio": "长期致力于电力系统运行与控制、交直流混合微电网、车网互动（V2G）和虚拟电厂的技术研究。主持开发了电网调度自动化系统、微电网能量管理系统及虚拟电厂系统并获得了广泛应用。",
     "email": [
       {
         "display": "gongcm",
@@ -57,7 +57,7 @@
     }
   ],
   "footer": {
-    "createDate": "2008.2.15创建",
+    "createDate": "2008.2.15  创建",
     "updateDate": "2025.03.10",
     "updateLink": "https://github.com/gongchm/homepage/commits/master",
     "contacts": {
@@ -68,18 +68,7 @@
           "url": "https://map.baidu.com/search?query=南京德睿特来电能源研究院有限公司",
           "target": "_blank"
         }
-      },
-      "phone": "+86 25 58793001",
-      "email": [
-        {
-          "display": "gongcm",
-          "domain": "@teld.cn"
-        },
-        {
-          "display": "gongchm", 
-          "domain": "@gmail.com"
-        }
-      ]
+      }
     }
   },
   "englishLink": {
