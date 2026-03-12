@@ -196,7 +196,7 @@ class ModularContentRenderer {
         if (!header) return;
         
         // 解析新增加的 bio (简介) 和 email (头部联系方式)
-        const bioHtml = profile.bio ? `<p class="profile-bio" style="color: var(--text-muted); line-height: 1.6; margin-top: 12px; margin-bottom: 12px; max-width: 700px;">${profile.bio}</p>` : '';
+        const bioHtml = profile.bio ? `<p class="profile-bio" style="color: var(--text-muted); line-height: 1.6; margin-top: 12px; margin-bottom: 12px; max-width: 700px; font-style: italic;">${profile.bio}</p>` : '';
         
         let contactHtml = '';
         if (profile.email && Array.isArray(profile.email)) {
