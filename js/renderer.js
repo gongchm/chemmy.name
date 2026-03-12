@@ -421,7 +421,7 @@ class ModularContentRenderer {
                 badgeClass = 'badge-patent';
                 contentHtml = contentHtml.replace(patentMatch[0], '');
                 // 把专利号单独高亮
-                const numMatch = contentHtml.match(/^([a-zA-Z0-9\.]+)(?:\.\s*|\s+)/);
+                const numMatch = contentHtml.match(/^([a-zA-Z0-9\.]+)(?:\.\s*)/);
                 if(numMatch) {
                    contentHtml = contentHtml.replace(numMatch[0], `<span class="patent-number">${numMatch[1]}</span> `);
                 }
