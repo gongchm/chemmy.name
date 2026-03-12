@@ -3,7 +3,7 @@
   "content": [
     {
       "type": "paragraph",
-      "text": "教育经历"
+      "text": "教育"
     },
     {
       "type": "orderedList",
@@ -43,7 +43,7 @@
     },
     {
       "type": "paragraph",
-      "text": "工作经历"
+      "text": "工作"
     },
     {
       "type": "orderedList",
@@ -57,7 +57,7 @@
     },
     {
       "type": "paragraph",
-      "text": "资格职称"
+      "text": "资格"
     },
     {
       "type": "orderedList",
@@ -70,7 +70,7 @@
     },
     {
       "type": "paragraph",
-      "text": "学术和社会兼职"
+      "text": "兼职"
     },
     {
       "type": "orderedList",
