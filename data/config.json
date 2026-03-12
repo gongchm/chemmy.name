@@ -62,9 +62,9 @@
     "updateLink": "https://github.com/gongchm/homepage/commits/master",
     "contacts": {
       "address": {
-        "text": "南京市雨花台区文竹路8号四号楼五楼（",
+        "text": "南京市雨花台区文竹路8号四号楼五楼",
         "coordinates": {
-          "text": "31.9792°N, 118.7789°E",
+          "text": "（31.9792°N, 118.7789°E）",
           "url": "https://map.baidu.com/search?query=南京德睿特来电能源研究院有限公司",
           "target": "_blank"
         }

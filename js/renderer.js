@@ -1,11 +1,11 @@
-// 模块化内容渲染引擎 (优化重构版)
+// 模块化内容渲染引擎 (终极对齐与配置适配版)
 class ModularContentRenderer {
     constructor() {
         this.config = null;
         this.modules = new Map();
         this.isLoading = false;
         this.errorMessages = [];
-        this.currentModule = null; // 当前激活的模块ID
+        this.currentModule = null; 
     }
 
     // --- UI 状态管理 ---
@@ -28,7 +28,6 @@ class ModularContentRenderer {
     }
 
     async loadModules() {
-        // 优化：使用 Promise.all 实现模块配置的并行下载，大幅提升首屏加载速度
         const fetchPromises = Object.entries(this.config.modules)
             .filter(([_, config]) => config.enabled)
             .map(async ([moduleId, moduleConfig]) => {
@@ -41,7 +40,6 @@ class ModularContentRenderer {
                     console.error(`模块 ${moduleId} 加载失败:`, error);
                 }
             });
-        
         await Promise.all(fetchPromises);
     }
 
@@ -57,20 +55,17 @@ class ModularContentRenderer {
             
             await this.loadModules();
             
-            // 确定默认激活的模块（按 order 排序的第一个）
             const enabledModules = Array.from(this.modules.entries())
                 .sort(([, a], [, b]) => a.order - b.order);
             
             if (enabledModules.length > 0) {
-                this.currentModule = enabledModules[0][0]; // 获取第一个 moduleId
+                this.currentModule = enabledModules[0][0]; 
             }
             
             this.renderNavigation();
             this.renderFooter(this.config.footer);
             
-            // 首屏渲染当前模块
             this.renderCurrentModule();
-            
         } catch (error) {
             this.showError('初始化失败，请检查网络或配置文件。');
         } finally {
@@ -78,17 +73,19 @@ class ModularContentRenderer {
         }
     }
 
-    // --- 交互与视图更新层 ---
+    // --- 路由与切换 ---
     switchModule(moduleId) {
         if (!this.modules.has(moduleId)) return;
-        if (this.currentModule === moduleId) return; // 优化：状态相同直接拦截，不查 DOM
+        if (this.currentModule === moduleId) {
+            const existingSection = document.querySelector(`#${moduleId}`);
+            if (existingSection && existingSection.innerHTML.trim() !== '') return;
+        }
         
         this.currentModule = moduleId;
         this.updateNavigationHighlight();
-        this.renderCurrentModule(); // 统一调用核心渲染方法
+        this.renderCurrentModule(); 
     }
 
-    // 核心重构：统一的模块渲染出口，直接注入 HTML，消除所有 setTimeout
     renderCurrentModule() {
         const main = document.querySelector('main');
         if (!main) return;
@@ -97,11 +94,9 @@ class ModularContentRenderer {
         if (!moduleData) return;
 
         let html = '';
-        // 核心路由：根据模块类型或 ID 选择不同的渲染器
         if (moduleData.renderer === 'papers') {
             html = this.buildPapersHtml(this.currentModule, moduleData);
         } else if (['employment', 'education', 'experience'].includes(this.currentModule)) {
-            // 🔥 新增：如果当前是工作、教育或项目经历模块，启用时间轴渲染
             html = this.buildTimelineHtml(this.currentModule, moduleData);
         } else {
             html = this.buildStandardHtml(this.currentModule, moduleData);
@@ -116,9 +111,8 @@ class ModularContentRenderer {
         });
     }
 
-    // --- HTML 构建器 (纯函数设计，不直接操作 DOM) ---
+    // --- HTML 构建器 ---
     buildStandardHtml(moduleId, moduleData) {
-        // 直接在 section 上增加 visible 或 fade-in 类
         let html = `<section id="${moduleId}" class="module-section visible fade-in">`;
         if (moduleData.content) {
             moduleData.content.forEach(item => { html += this.renderContentItem(item); });
@@ -130,22 +124,18 @@ class ModularContentRenderer {
         return html;
     }
 
-    // 🔥 新增：时间轴 HTML 构建器
     buildTimelineHtml(moduleId, moduleData) {
         let html = `<section id="${moduleId}" class="module-section visible fade-in">`;
-        html += `<h2>${moduleData.title || ''}</h2>`;
         html += `<div class="timeline-container">`;
 
         if (moduleData.content) {
             moduleData.content.forEach(item => {
                 if (item.type === 'list' || item.type === 'orderedList') {
-                    // 🔥 优先尊重局部 layout 设定
                     if (item.layout === 'tags') {
                         html += this.renderTags(item);
                     } else if (item.layout === 'cards') {
                         html += this.renderCards(item);
                     } else {
-                        // 原来的时间轴渲染逻辑...
                         item.items.forEach(listItem => {
                             let rawText = typeof listItem === 'string' ? listItem : (listItem.text || '');
                             const dateRegex = /^([0-9]{4}(?:\.[0-9]{1,2})?\s*(?:-|~|—)\s*(?:[0-9]{4}(?:\.[0-9]{1,2})?|至今|Present|Now)?)([,，:：\s]*)/;
@@ -180,7 +170,7 @@ class ModularContentRenderer {
 
     buildPapersHtml(moduleId, moduleData) {
         let html = `<section id="${moduleId}" class="module-section visible fade-in">`;
-        html += '<h2>主要论文</h2><div class="papers-container">';
+        html += '<div class="papers-container">';
         if (moduleData.papers && Array.isArray(moduleData.papers)) {
             moduleData.papers.forEach((paper, index) => {
                 html += this.renderPaperItem(paper, index + 1);
@@ -190,7 +180,7 @@ class ModularContentRenderer {
         return html;
     }
 
-    // --- 基础组件渲染逻辑 (保留原版逻辑，仅做精简整理) ---
+    // --- 基础组件渲染逻辑 ---
     renderHeader(headerConfig) {
         document.title = headerConfig.title;
         ['description', 'keywords', 'author'].forEach(name => {
@@ -205,21 +195,25 @@ class ModularContentRenderer {
         const header = document.querySelector('header');
         if (!header) return;
         
-        // 生成邮箱HTML
-        const emailsHTML = profile.email ? profile.email.map(email => 
-            `<a href="mailto:${email.display}${email.domain}" class="contact-email">${email.display}${email.domain}</a>`
-        ).join(' | ') : '';
+        // 解析新增加的 bio (简介) 和 email (头部联系方式)
+        const bioHtml = profile.bio ? `<p class="profile-bio" style="color: var(--text-muted); line-height: 1.6; margin-top: 12px; margin-bottom: 12px; max-width: 700px;">${profile.bio}</p>` : '';
         
+        let contactHtml = '';
+        if (profile.email && Array.isArray(profile.email)) {
+            const emails = profile.email.map(e => `<a href="mailto:${e.display}${e.domain}" style="display: inline-flex; align-items: center; margin-right: 16px; color: var(--primary-color); font-weight: 500; font-size: 0.95rem; text-decoration: none;"><svg style="width: 16px; height: 16px; margin-right: 4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>${e.display}${e.domain}</a>`).join('');
+            contactHtml = `<div class="profile-contacts" style="margin-top: 12px; display: flex; flex-wrap: wrap;">${emails}</div>`;
+        }
+
         header.innerHTML = `
-            <div class="header-content">
+            <div class="header-content" style="align-items: center;">
                 <img src="${profile.photo}" alt="${profile.name}" class="profile-img">
                 <div class="header-info">
-                    <h1>${profile.name}</h1>
+                    <h1 style="margin-bottom: 6px;">${profile.name}</h1>
                     <div class="affiliation">
-                        ${profile.affiliations.map(aff => `<p><a href="${aff.url}" target="_blank">${aff.name}</a></p>`).join('')}
+                        ${profile.affiliations.map(aff => `<p style="margin: 0; display: inline-block; margin-right: 12px;"><a href="${aff.url}" target="_blank">${aff.name}</a></p>`).join('')}
                     </div>
-                    ${profile.bio ? `<p class="bio-text">${profile.bio}</p>` : ''}
-                    ${emailsHTML ? `<div class="header-contacts">${emailsHTML}</div>` : ''}
+                    ${bioHtml}
+                    ${contactHtml}
                 </div>
             </div>
         `;
@@ -237,9 +231,7 @@ class ModularContentRenderer {
         }
         
         let navHTML = '<li class="nav-brand">龚成明@DERI</li><div class="nav-menu">';
-        // 按配置的order排序
-        const sortedModules = Array.from(this.modules.entries()).sort(([, a], [, b]) => (a.order || 999) - (b.order || 999));
-        sortedModules.forEach(([moduleId, moduleData]) => {
+        this.modules.forEach((moduleData, moduleId) => {
             const activeClass = moduleId === this.currentModule ? 'active' : '';
             navHTML += `<li><a href="#${moduleId}" class="nav-link ${activeClass}" data-module="${moduleId}">${moduleData.title}</a></li>`;
         });
@@ -250,7 +242,6 @@ class ModularContentRenderer {
         
         nav.innerHTML = navHTML;
         
-        // 重新绑定事件
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -259,11 +250,14 @@ class ModularContentRenderer {
         });
     }
 
+    // 🔥 彻底修复的页脚渲染器：强制清除内外边距，确保完美顶端对齐
     renderFooter(footer) {
         const footerElement = document.querySelector('footer');
         if (!footerElement) return;
+        
+        // 兼容 config.json 中固定的更新日期或动态日期
         const now = new Date();
-        const updateDate = `${now.getFullYear()}年${String(now.getMonth() + 1).padStart(2, '0')}月${String(now.getDate()).padStart(2, '0')}日`;
+        const updateDate = footer.updateDate || `${now.getFullYear()}年${String(now.getMonth() + 1).padStart(2, '0')}月${String(now.getDate()).padStart(2, '0')}日`;
 
         let contactsHTML = '';
         if (footer.contacts) {
@@ -288,11 +282,9 @@ class ModularContentRenderer {
     renderContentItem(item) {
         switch (item.type) {
             case 'paragraph': 
-                // 给小标题加个默认类名，方便统一样式
                 return `<h3 class="section-subtitle">${item.text}</h3>`;
             case 'list':
             case 'orderedList':
-                // 🔥 智能路由：根据 JSON 中的 layout 字段渲染不同形态
                 if (item.layout === 'tags') return this.renderTags(item);
                 if (item.layout === 'cards') return this.renderCards(item);
                 return item.type === 'list' ? this.renderList(item) : this.renderOrderedList(item);
@@ -383,7 +375,6 @@ class ModularContentRenderer {
         `;
     }
 
-    // 🔥 新增：渲染标签组
     renderTags(listData) {
         let html = `<div class="tags-container">`;
         listData.items.forEach(item => {
@@ -394,7 +385,6 @@ class ModularContentRenderer {
         return html;
     }
 
-    // 🔥 新增：渲染卡片组
     renderCards(listData) {
         let html = `<div class="cards-container">`;
         listData.items.forEach(item => {
@@ -404,7 +394,6 @@ class ModularContentRenderer {
             let badgeHtml = '';
             let badgeClass = '';
             
-            // 智能提取角标：匹配年份 (如 2014) 或 专利前缀 (如 发明专利)
             const yearMatch = rawText.match(/^([0-9]{4})(?:\s+|-|年)/);
             const patentMatch = rawText.match(/^(发明专利|实用新型|外观设计)[\.。,，\s]*/);
             
@@ -416,12 +405,10 @@ class ModularContentRenderer {
                 badgeHtml = patentMatch[1];
                 badgeClass = 'badge-patent';
                 contentHtml = contentHtml.replace(patentMatch[0], '');
-                // 把专利号单独高亮
                 const numMatch = contentHtml.match(/^([a-zA-Z0-9\.]+)(?:\.\s*|\s+)/);
                 if(numMatch) {
                    contentHtml = contentHtml.replace(numMatch[0], `<span class="patent-number">${numMatch[1]}</span> `);
                 }
-                // 将"发明人"或"设计人"单独一行显示
                 contentHtml = contentHtml.replace(/(发明人|设计人)[:：]\s*([^，。]+)/g, '<br><strong>$1:</strong>$2');
             }
 
@@ -437,7 +424,7 @@ class ModularContentRenderer {
     }
 }
 
-// 启动入口统一变更为 init()
+// 唯一启动入口
 document.addEventListener('DOMContentLoaded', () => {
     const renderer = new ModularContentRenderer();
     renderer.init(); 
