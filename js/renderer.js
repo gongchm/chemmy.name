@@ -97,10 +97,12 @@ class ModularContentRenderer {
         if (!moduleData) return;
 
         let html = '';
-        // 建议在你的 CSS 文件中加入 .fade-in 的动画效果
-        // 只要注入带有 .fade-in 的 DOM，浏览器会自动播放动画，无需 JS 介入
+        // 核心路由：根据模块类型或 ID 选择不同的渲染器
         if (moduleData.renderer === 'papers') {
             html = this.buildPapersHtml(this.currentModule, moduleData);
+        } else if (['employment', 'education', 'experience'].includes(this.currentModule)) {
+            // 🔥 新增：如果当前是工作、教育或项目经历模块，启用时间轴渲染
+            html = this.buildTimelineHtml(this.currentModule, moduleData);
         } else {
             html = this.buildStandardHtml(this.currentModule, moduleData);
         }
@@ -125,6 +127,54 @@ class ModularContentRenderer {
             html += `<p><a href="${moduleData.footerLink.url}">${moduleData.footerLink.text}</a></p>`;
         }
         html += '</section>';
+        return html;
+    }
+
+    // 🔥 新增：时间轴 HTML 构建器
+    buildTimelineHtml(moduleId, moduleData) {
+        let html = `<section id="${moduleId}" class="module-section visible fade-in">`;
+        html += `<h2>${moduleData.title || ''}</h2>`;
+        html += `<div class="timeline-container">`;
+
+        if (moduleData.content) {
+            moduleData.content.forEach(item => {
+                if (item.type === 'list' || item.type === 'orderedList') {
+                    // 🔥 优先尊重局部 layout 设定
+                    if (item.layout === 'tags') {
+                        html += this.renderTags(item);
+                    } else if (item.layout === 'cards') {
+                        html += this.renderCards(item);
+                    } else {
+                        // 原来的时间轴渲染逻辑...
+                        item.items.forEach(listItem => {
+                            let rawText = typeof listItem === 'string' ? listItem : (listItem.text || '');
+                            const dateRegex = /^([0-9]{4}(?:\.[0-9]{1,2})?\s*(?:-|~|—)\s*(?:[0-9]{4}(?:\.[0-9]{1,2})?|至今|Present|Now)?)([,，:：\s]*)/;
+                            let dateStr = "";
+                            let contentHtml = this.renderComplexItemContent(listItem);
+                            const match = rawText.match(dateRegex);
+                            if (match) {
+                                dateStr = match[1];
+                                contentHtml = contentHtml.replace(match[0], ''); 
+                            }
+                            html += `
+                                <div class="timeline-item">
+                                    <div class="timeline-date">${dateStr}</div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-text">${contentHtml}</div>
+                                        ${listItem.sublist ? `<ul class="timeline-sublist">${listItem.sublist.map(sub => `<li>${sub}</li>`).join('')}</ul>` : ''}
+                                    </div>
+                                </div>
+                            `;
+                        });
+                    }
+                } else {
+                    html += this.renderContentItem(item);
+                }
+            });
+        }
+        
+        if (moduleData.footerLink) html += `<p><a href="${moduleData.footerLink.url}">${moduleData.footerLink.text}</a></p>`;
+        html += `</div></section>`;
         return html;
     }
 
@@ -231,10 +281,17 @@ class ModularContentRenderer {
 
     renderContentItem(item) {
         switch (item.type) {
-            case 'paragraph': return `<p>${item.text}</p>`;
-            case 'list': return this.renderList(item);
-            case 'orderedList': return this.renderOrderedList(item);
-            default: return '';
+            case 'paragraph': 
+                // 给小标题加个默认类名，方便统一样式
+                return `<h3 class="section-subtitle">${item.text}</h3>`;
+            case 'list':
+            case 'orderedList':
+                // 🔥 智能路由：根据 JSON 中的 layout 字段渲染不同形态
+                if (item.layout === 'tags') return this.renderTags(item);
+                if (item.layout === 'cards') return this.renderCards(item);
+                return item.type === 'list' ? this.renderList(item) : this.renderOrderedList(item);
+            default: 
+                return '';
         }
     }
 
@@ -318,6 +375,57 @@ class ModularContentRenderer {
                 ${paper.abstractEn ? `<div class="paper-abstract-en"><strong>Abstract:</strong> ${paper.abstractEn}</div>` : ''}
             </div>
         `;
+    }
+
+    // 🔥 新增：渲染标签组
+    renderTags(listData) {
+        let html = `<div class="tags-container">`;
+        listData.items.forEach(item => {
+            const text = typeof item === 'string' ? item : this.renderComplexItemContent(item);
+            html += `<span class="tag-item">${text}</span>`;
+        });
+        html += `</div>`;
+        return html;
+    }
+
+    // 🔥 新增：渲染卡片组
+    renderCards(listData) {
+        let html = `<div class="cards-container">`;
+        listData.items.forEach(item => {
+            let rawText = typeof item === 'string' ? item : (item.text || '');
+            let contentHtml = typeof item === 'string' ? item : this.renderComplexItemContent(item);
+            
+            let badgeHtml = '';
+            let badgeClass = '';
+            
+            // 智能提取角标：匹配年份 (如 2014) 或 专利前缀 (如 发明专利)
+            const yearMatch = rawText.match(/^([0-9]{4})(?:\s+|-|年)/);
+            const patentMatch = rawText.match(/^(发明专利|实用新型)[\.。,，\s]*/);
+            
+            if (yearMatch) {
+                badgeHtml = yearMatch[1];
+                badgeClass = 'badge-year';
+                contentHtml = contentHtml.replace(yearMatch[0], '');
+            } else if (patentMatch) {
+                badgeHtml = patentMatch[1];
+                badgeClass = 'badge-patent';
+                contentHtml = contentHtml.replace(patentMatch[0], '');
+                // 把专利号单独高亮
+                const numMatch = contentHtml.match(/^([a-zA-Z0-9\.]+)(?:\.\s*|\s+)/);
+                if(numMatch) {
+                   contentHtml = contentHtml.replace(numMatch[0], `<span class="patent-number">${numMatch[1]}</span> `);
+                }
+            }
+
+            html += `
+                <div class="card-item">
+                    ${badgeHtml ? `<div class="card-badge ${badgeClass}">${badgeHtml}</div>` : ''}
+                    <div class="card-body">${contentHtml}</div>
+                </div>
+            `;
+        });
+        html += `</div>`;
+        return html;
     }
 }
 
