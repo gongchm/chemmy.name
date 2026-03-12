@@ -84,10 +84,10 @@ header {
 }
 
 .profile-img {
-  width: 180px;
+  width: 160px;
   height: 180px;
-  border-radius: 50%;
-  object-fit: contain;
+  border-radius: 50% / 60%;  /* 竖椭圆：水平50%，垂直60% */
+  object-fit: cover;
   object-position: top center;
   border: 1px solid var(--border-color);
   /* 放弃厚重阴影，改用极其微妙的弥散光 */
