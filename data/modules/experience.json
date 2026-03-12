@@ -10,10 +10,7 @@
       "start": 1,
       "items": [
         {
-          "text": "继续教育",
-          "sublist": [
-            "2015.1-2015.4 Heterogeneous Parallel Programming, UIUC@Coursera"
-          ]
+          "text": "2015.1-2015.4 线上课程，Heterogeneous Parallel Programming, UIUC@Coursera"
         },
         {
           "text": "1998.9-2001.4 国家电力公司电力自动化研究院（现",
@@ -66,35 +63,24 @@
       "type": "orderedList",
       "start": 1,
       "items": [
-        "2023 江苏省产业教授",
         "2017 电力工程研究员级高级工程师",
-        "2016 国网电科院硕士研究生导师",
         "2010 IEEE-CS CSDP",
         "2007 电力工程高级工程师"
       ]
     },
     {
       "type": "paragraph",
-      "text": "学术兼职"
+      "text": "学术和社会兼职"
     },
     {
       "type": "orderedList",
       "start": 1,
       "items": [
-        "2016 国网电科院硕士研究生导师"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": "社会兼职"
-    },
-    {
-      "type": "orderedList",
-      "start": 1,
-      "items": [
-        "CIGRE 会员",
-        "IEEE 会员 (PES & CS)",
-        "中国电机工程学会高级会员"
+        "2016 国网电科院硕士研究生导师",
+        "2022 南京大学工管学院兼职研究生导师",
+        "2023 江苏省产业教授（南京邮电大学）",
+        "2024 中国能源研究会智能微电网专委会副秘书长",
+        "2025 中电联虚拟电厂专委会副主任委员"
       ]
     }
   ]

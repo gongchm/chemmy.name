@@ -237,7 +237,9 @@ class ModularContentRenderer {
         }
         
         let navHTML = '<li class="nav-brand">龚成明@DERI</li><div class="nav-menu">';
-        this.modules.forEach((moduleData, moduleId) => {
+        // 按配置的order排序
+        const sortedModules = Array.from(this.modules.entries()).sort(([, a], [, b]) => (a.order || 999) - (b.order || 999));
+        sortedModules.forEach(([moduleId, moduleData]) => {
             const activeClass = moduleId === this.currentModule ? 'active' : '';
             navHTML += `<li><a href="#${moduleId}" class="nav-link ${activeClass}" data-module="${moduleId}">${moduleData.title}</a></li>`;
         });
