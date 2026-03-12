@@ -1,4 +1,4 @@
-// 模块化内容渲染引擎 (终极对齐与配置适配版)
+// 模块化内容渲染引擎 (完全数据驱动版)
 class ModularContentRenderer {
     constructor() {
         this.config = null;
@@ -8,7 +8,6 @@ class ModularContentRenderer {
         this.currentModule = null; 
     }
 
-    // --- UI 状态管理 ---
     showLoading() {
         const main = document.querySelector('main');
         if (main) main.innerHTML = `<div class="loading-container"><div class="loading-spinner"></div><p>正在加载内容...</p></div>`;
@@ -20,7 +19,6 @@ class ModularContentRenderer {
         if (main) main.innerHTML = `<div class="error-container"><h2>加载错误</h2><p>${message}</p></div>`;
     }
 
-    // --- 数据加载层 ---
     async loadConfig() {
         const response = await fetch('data/config.json');
         if (!response.ok) throw new Error(`HTTP ${response.status}: 加载主配置失败`);
@@ -43,7 +41,6 @@ class ModularContentRenderer {
         await Promise.all(fetchPromises);
     }
 
-    // --- 初始化入口 ---
     async init() {
         try {
             this.isLoading = true;
@@ -73,7 +70,6 @@ class ModularContentRenderer {
         }
     }
 
-    // --- 路由与切换 ---
     switchModule(moduleId) {
         if (!this.modules.has(moduleId)) return;
         if (this.currentModule === moduleId) {
@@ -96,8 +92,6 @@ class ModularContentRenderer {
         let html = '';
         if (moduleData.renderer === 'papers') {
             html = this.buildPapersHtml(this.currentModule, moduleData);
-        } else if (['employment', 'education', 'experience'].includes(this.currentModule)) {
-            html = this.buildTimelineHtml(this.currentModule, moduleData);
         } else {
             html = this.buildStandardHtml(this.currentModule, moduleData);
         }
@@ -111,7 +105,6 @@ class ModularContentRenderer {
         });
     }
 
-    // --- HTML 构建器 ---
     buildStandardHtml(moduleId, moduleData) {
         let html = `<section id="${moduleId}" class="module-section visible fade-in">`;
         if (moduleData.content) {
@@ -121,50 +114,6 @@ class ModularContentRenderer {
             html += `<p><a href="${moduleData.footerLink.url}">${moduleData.footerLink.text}</a></p>`;
         }
         html += '</section>';
-        return html;
-    }
-
-    buildTimelineHtml(moduleId, moduleData) {
-        let html = `<section id="${moduleId}" class="module-section visible fade-in">`;
-        html += `<div class="timeline-container">`;
-
-        if (moduleData.content) {
-            moduleData.content.forEach(item => {
-                if (item.type === 'list' || item.type === 'orderedList') {
-                    if (item.layout === 'tags') {
-                        html += this.renderTags(item);
-                    } else if (item.layout === 'cards') {
-                        html += this.renderCards(item);
-                    } else {
-                        item.items.forEach(listItem => {
-                            let rawText = typeof listItem === 'string' ? listItem : (listItem.text || '');
-                            const dateRegex = /^([0-9]{4}(?:\.[0-9]{1,2})?\s*(?:-|~|—)\s*(?:[0-9]{4}(?:\.[0-9]{1,2})?|至今|Present|Now)?)([,，:：\s]*)/;
-                            let dateStr = "";
-                            let contentHtml = this.renderComplexItemContent(listItem);
-                            const match = rawText.match(dateRegex);
-                            if (match) {
-                                dateStr = match[1];
-                                contentHtml = contentHtml.replace(match[0], ''); 
-                            }
-                            html += `
-                                <div class="timeline-item">
-                                    <div class="timeline-date">${dateStr}</div>
-                                    <div class="timeline-content">
-                                        <div class="timeline-text">${contentHtml}</div>
-                                        ${listItem.sublist ? `<ul class="timeline-sublist">${listItem.sublist.map(sub => `<li>${sub}</li>`).join('')}</ul>` : ''}
-                                    </div>
-                                </div>
-                            `;
-                        });
-                    }
-                } else {
-                    html += this.renderContentItem(item);
-                }
-            });
-        }
-        
-        if (moduleData.footerLink) html += `<p><a href="${moduleData.footerLink.url}">${moduleData.footerLink.text}</a></p>`;
-        html += `</div></section>`;
         return html;
     }
 
@@ -180,7 +129,6 @@ class ModularContentRenderer {
         return html;
     }
 
-    // --- 基础组件渲染逻辑 ---
     renderHeader(headerConfig) {
         document.title = headerConfig.title;
         ['description', 'keywords', 'author'].forEach(name => {
@@ -195,8 +143,7 @@ class ModularContentRenderer {
         const header = document.querySelector('header');
         if (!header) return;
         
-        // 解析新增加的 bio (简介) 和 email (头部联系方式)
-        const bioHtml = profile.bio ? `<p class="profile-bio" style="color: var(--text-muted); line-height: 1.6; margin-top: 12px; margin-bottom: 12px; max-width: 700px; font-style: italic;">${profile.bio}</p>` : '';
+        const bioHtml = profile.bio ? `<p class="profile-bio" style="color: var(--text-muted); line-height: 1.6; margin-top: 12px; margin-bottom: 12px; max-width: 700px;">${profile.bio}</p>` : '';
         
         let contactHtml = '';
         if (profile.email && Array.isArray(profile.email)) {
@@ -250,12 +197,10 @@ class ModularContentRenderer {
         });
     }
 
-    // 🔥 彻底修复的页脚渲染器：强制清除内外边距，确保完美顶端对齐
     renderFooter(footer) {
         const footerElement = document.querySelector('footer');
         if (!footerElement) return;
         
-        // 兼容 config.json 中固定的更新日期或动态日期
         const now = new Date();
         const updateDate = footer.updateDate || `${now.getFullYear()}年${String(now.getMonth() + 1).padStart(2, '0')}月${String(now.getDate()).padStart(2, '0')}日`;
 
@@ -285,8 +230,10 @@ class ModularContentRenderer {
                 return `<h3 class="section-subtitle">${item.text}</h3>`;
             case 'list':
             case 'orderedList':
+                // 🔥 强制数据驱动路由
                 if (item.layout === 'tags') return this.renderTags(item);
                 if (item.layout === 'cards') return this.renderCards(item);
+                if (item.layout === 'timeline') return this.renderTimeline(item);
                 return item.type === 'list' ? this.renderList(item) : this.renderOrderedList(item);
             default: 
                 return '';
@@ -422,9 +369,36 @@ class ModularContentRenderer {
         html += `</div>`;
         return html;
     }
+
+    // 🔥 独立的时间轴渲染器
+    renderTimeline(listData) {
+        let html = `<div class="timeline-container">`;
+        listData.items.forEach(item => {
+            let rawText = typeof item === 'string' ? item : (item.text || '');
+            // 智能抓取开头的时间段
+            const dateRegex = /^([0-9]{4}(?:\.[0-9]{1,2})?\s*(?:-|~|—)\s*(?:[0-9]{4}(?:\.[0-9]{1,2})?|至今|Present|Now)?)([,，:：\s]*)/;
+            let dateStr = "";
+            let contentHtml = this.renderComplexItemContent(item);
+            const match = rawText.match(dateRegex);
+            if (match) {
+                dateStr = match[1];
+                contentHtml = contentHtml.replace(match[0], ''); 
+            }
+            html += `
+                <div class="timeline-item">
+                    <div class="timeline-date">${dateStr}</div>
+                    <div class="timeline-content">
+                        <div class="timeline-text">${contentHtml}</div>
+                        ${item.sublist ? `<ul class="timeline-sublist">${item.sublist.map(sub => `<li>${sub}</li>`).join('')}</ul>` : ''}
+                    </div>
+                </div>
+            `;
+        });
+        html += `</div>`;
+        return html;
+    }
 }
 
-// 唯一启动入口
 document.addEventListener('DOMContentLoaded', () => {
     const renderer = new ModularContentRenderer();
     renderer.init(); 
