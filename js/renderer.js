@@ -269,12 +269,9 @@ class ModularContentRenderer {
         if (footer.contacts) {
             const c = footer.contacts;
             const addrLink = c.address?.coordinates ? `<a href="${c.address.coordinates.url}" target="_blank">${c.address.coordinates.text}</a>` : '';
-            const emails = Array.isArray(c.email) ? c.email.map(e => `<a href="mailto:${e.display}${e.domain}">${e.display}${e.domain}</a>`).join('; ') : '';
             
-            contactsHTML = `<div class="footer-contacts"><h3>联系方式</h3>` +
-                (c.address ? `<div class="contact-item"><strong>地址：</strong>${c.address.text}${addrLink}${c.address.suffix || ''}</div>` : '') +
-                (c.phone ? `<div class="contact-item"><strong>电话：</strong>${c.phone}</div>` : '') +
-                (emails ? `<div class="contact-item"><strong>电子邮件：</strong>${emails}</div>` : '') +
+            contactsHTML = `<div class="footer-contacts">` +
+                (c.address ? `<div class="contact-item">${c.address.text}${addrLink}${c.address.suffix || ''}</div>` : '') +
                 `</div>`;
         }
 
