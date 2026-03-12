@@ -143,23 +143,28 @@ class ModularContentRenderer {
         const header = document.querySelector('header');
         if (!header) return;
         
-        // 🔥 优化点：明确设置 text-align: left，并在移动端增加宽度自适应
-        const bioHtml = profile.bio ? `<p class="profile-bio" style="color: var(--text-muted); line-height: 1.6; margin: 12px 0; max-width: 100%; font-style: italic; text-align: left;">${profile.bio}</p>` : '';
+        // 简介部分：强制左对齐，增加呼吸感
+        const bioHtml = profile.bio ? 
+            `<p style="color: var(--text-muted); line-height: 1.6; margin: 16px 0; font-style: italic; text-align: left; font-size: 0.95rem;">${profile.bio}</p>` : '';
         
         let contactHtml = '';
         if (profile.email && Array.isArray(profile.email)) {
-            const emails = profile.email.map(e => `<a href="mailto:${e.display}${e.domain}" style="display: inline-flex; align-items: center; margin-right: 16px; color: var(--primary-color); font-weight: 500; font-size: 0.9rem; text-decoration: none; white-space: nowrap;"><svg style="width: 14px; height: 14px; margin-right: 4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>${e.display}${e.domain}</a>`).join('');
-            contactHtml = `<div class="profile-contacts" style="margin-top: 8px; display: flex; flex-wrap: wrap; justify-content: flex-start;">${emails}</div>`;
+            const emails = profile.email.map(e => 
+                `<a href="mailto:${e.display}${e.domain}" style="display: inline-flex; align-items: center; margin-right: 16px; color: var(--primary-color); font-weight: 500; font-size: 0.9rem; text-decoration: none; white-space: nowrap;">
+                    <svg style="width: 14px; height: 14px; margin-right: 4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    ${e.display}${e.domain}
+                </a>`).join('');
+            contactHtml = `<div style="display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 8px;">${emails}</div>`;
         }
 
         header.innerHTML = `
-            <div class="header-content" style="display: flex; flex-direction: column; align-items: flex-start;">
-                <div style="display: flex; align-items: center; width: 100%; gap: 20px;">
-                    <img src="${profile.photo}" alt="${profile.name}" class="profile-img" style="flex-shrink: 0;">
-                    <div class="header-info">
-                        <h1 style="margin: 0 0 4px 0; text-align: left;">${profile.name}</h1>
-                        <div class="affiliation" style="text-align: left;">
-                            ${profile.affiliations.map(aff => `<p style="margin: 0; font-size: 0.95rem;"><a href="${aff.url}" target="_blank">${aff.name}</a></p>`).join('')}
+            <div class="header-content" style="display: flex; flex-direction: column; align-items: flex-start; text-align: left;">
+                <div style="display: flex; align-items: center; width: 100%; gap: 16px; margin-bottom: 8px;">
+                    <img src="${profile.photo}" alt="${profile.name}" class="profile-img" style="width: 100px; height: 100px; flex-shrink: 0; object-position: center top;">
+                    <div style="flex-grow: 1;">
+                        <h1 style="margin: 0; font-size: 1.8rem; color: var(--text-main);">${profile.name}</h1>
+                        <div class="affiliation" style="margin-top: 4px;">
+                            ${profile.affiliations.map(aff => `<p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);"><a href="${aff.url}" target="_blank">${aff.name}</a></p>`).join('')}
                         </div>
                     </div>
                 </div>
@@ -181,26 +186,29 @@ class ModularContentRenderer {
         }
         
         const brandText = this.config.navBrand || this.config.profile.name;
-        // 🔥 优化点：给 nav-menu 增加 flex-nowrap 和 滚动支持
-        let navHTML = `<li class="nav-brand" style="white-space: nowrap; flex-shrink: 0;">${brandText}</li><div class="nav-menu" style="display: flex; align-items: center; overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; flex-grow: 1; justify-content: flex-end; scrollbar-width: none;">`;
+        
+        // 导航栏采用 Flex 布局，品牌名和菜单左右对齐
+        let navHTML = `<li class="nav-brand" style="font-weight: 700; font-size: 1.1rem; white-space: nowrap;">${brandText}</li>`;
+        navHTML += `<div style="display: flex; align-items: center; gap: 8px; margin-left: auto;">`;
         
         // 按order排序模块
         const sortedModules = Array.from(this.modules.entries())
             .sort(([, a], [, b]) => a.order - b.order);
         sortedModules.forEach(([moduleId, moduleData]) => {
             const activeClass = moduleId === this.currentModule ? 'active' : '';
-            navHTML += `<li style="display: inline-block;"><a href="#${moduleId}" class="nav-link ${activeClass}" data-module="${moduleId}" style="padding: 0 8px;">${moduleData.title}</a></li>`;
+            navHTML += `<li><a href="#${moduleId}" class="nav-link ${activeClass}" data-module="${moduleId}" style="font-size: 0.9rem; padding: 4px 6px;">${moduleData.title}</a></li>`;
         });
         
         if (this.config.englishLink) {
-            // 给 English 标签加一个明显的边框或区分
-            navHTML += `<li style="display: inline-block; margin-left: 4px;"><a href="${this.config.englishLink.url}" class="english-link" style="border: 1px solid #d1d5db; padding: 2px 8px; border-radius: 4px; font-size: 0.85rem;">${this.config.englishLink.text}</a></li>`;
+            navHTML += `<li><a href="${this.config.englishLink.url}" style="font-size: 0.8rem; padding: 2px 8px; border: 1px solid var(--border-color); border-radius: 12px; color: var(--text-muted); text-decoration: none; margin-left: 4px;">EN</a></li>`;
         }
-        navHTML += '</div>';
+        navHTML += `</div>`;
         
+        nav.style.display = 'flex';
+        nav.style.alignItems = 'center';
+        nav.style.width = '100%';
         nav.innerHTML = navHTML;
         
-        // 绑定事件保持不变...
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
