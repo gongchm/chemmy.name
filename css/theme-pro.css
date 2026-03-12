@@ -94,6 +94,14 @@ header {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
+/* 响应式头像：手机端使用小尺寸 */
+@media (max-width: 768px) {
+  .profile-img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
 .header-info h1 {
   font-size: 2.25rem;
   letter-spacing: -0.02em;
