@@ -168,20 +168,21 @@ class ModularContentRenderer {
                                 <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted); position: relative; display: inline-block;">
                                     <a href="${aff.url}" target="_blank" 
                                        style="text-decoration: none; color: inherit; cursor: pointer;"
-                                       title="${aff.name}"
                                        onmouseover="this.parentElement.querySelector('.tooltip').style.display='block';"
                                        onmouseout="this.parentElement.querySelector('.tooltip').style.display='none';">
                                         德睿特来电
                                     </a>
+                                    ${aff.tip ? `
                                     <span class="tooltip" 
                                           style="display: none; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); 
                                                  background: var(--text-main); color: white; padding: 4px 8px; border-radius: 4px; 
                                                  font-size: 0.8rem; white-space: nowrap; z-index: 1000; margin-bottom: 4px;
                                                  box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
-                                        ${aff.name}
+                                        ${aff.tip}
                                         <span style="position: absolute; top: 100%; left: 50%; transform: translateX(-50); 
                                                    border: 4px solid transparent; border-top-color: var(--text-main);"></span>
                                     </span>
+                                    ` : ''}
                                 </p>
                             `).join('')}
                         </div>
