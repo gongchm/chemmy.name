@@ -57,23 +57,17 @@
     }
   ],
   "footer": {
-    "updateDate": "2025年03月10日",
+    "createDate": "2008.2.15创建",
+    "updateDate": "2025.03.10",
     "updateLink": "https://github.com/gongchm/homepage/commits/master",
-    "createDate": "2008年2月15日创建",
-    "cssValidator": {
-      "url": "http://jigsaw.w3.org/css-validator/check/referer",
-      "img": "http://jigsaw.w3.org/css-validator/images/vcss",
-      "alt": "Valid CSS!"
-    },
     "contacts": {
       "address": {
         "text": "南京市雨花台区文竹路8号四号楼五楼（",
         "coordinates": {
-          "text": "31.9792, 118.7789",
-          "url": "https://map.baidu.com/search?query=南京市雨花台区文竹路8号",
+          "text": "31.9792°N, 118.7789°E",
+          "url": "https://map.baidu.com/search?query=南京德睿特来电能源研究院有限公司",
           "target": "_blank"
-        },
-        "suffix": "），210002"
+        }
       },
       "phone": "+86 25 58793001",
       "email": [

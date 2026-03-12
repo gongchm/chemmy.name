@@ -282,7 +282,6 @@ class ModularContentRenderer {
             <div class="footer-content">
                 <div class="footer-info">
                     <p>${footer.createDate}，${updateDate}<a href="${footer.updateLink}">更新</a></p>
-                    <p><a href="${footer.cssValidator.url}"><img style="border:0;width:88px;height:31px" src="${footer.cssValidator.img}" alt="${footer.cssValidator.alt}" /></a></p>
                 </div>
                 ${contactsHTML}
             </div>
