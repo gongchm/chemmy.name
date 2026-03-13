@@ -57,5 +57,13 @@
 <!-- 引入内容渲染引擎 -->
 <script src="js/renderer.js"></script>
 
+<!-- 初始化应用 -->
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    const renderer = new ModularContentRenderer();
+    await renderer.init();
+  });
+</script>
+
 </body>
 </html>
