@@ -160,7 +160,7 @@ class ModularContentRenderer {
         header.innerHTML = `
             <div class="header-content" style="display: flex; flex-direction: column; align-items: flex-start; text-align: left;">
                 <div style="display: flex; align-items: center; width: 100%; gap: 16px; margin-bottom: 8px;">
-                    <img src="${profile.photo}" alt="${profile.name}" class="profile-img">
+                    <img src="${profile.photo}" alt="${profile.name}" class="profile-img" loading="eager">
                     <div style="flex-grow: 1;">
                         <h1 style="margin: 0; font-size: 1.8rem; color: var(--text-main);">${profile.name}</h1>
                         <div class="affiliation" style="margin-top: 4px;">

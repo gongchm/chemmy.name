@@ -1,1 +1,6 @@
+User-agent: *
+Allow: /
 Disallow: /pm/
+
+# Sitemap
+Sitemap: https://chemmy.name/sitemap.xml
