@@ -55,6 +55,11 @@
   </script>
   
   <title>龚成明 - 电力系统专家 | 南京德睿特来电能源研究院有限公司</title>
+  
+  <!-- 预加载关键资源 -->
+  <link rel="preconnect" href="https://deri.org.cn">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  
   <link rel="stylesheet" href="css/theme-pro.css?v=1.0" type="text/css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -75,7 +80,7 @@
     <!-- 预渲染的头部内容，用于SEO -->
     <div class="header-content" style="display: flex; flex-direction: column; align-items: flex-start; text-align: left;">
       <div style="display: flex; align-items: center; width: 100%; gap: 16px; margin-bottom: 8px;">
-        <img src="pic/photo.jpg" alt="龚成明" class="profile-img" style="display: none;">
+        <!-- 头像由JS动态加载，预渲染时不加载图片 -->
         <div style="flex-grow: 1;">
           <h1 style="margin: 0; font-size: 1.8rem; color: var(--text-main);">龚成明</h1>
           <div class="affiliation" style="margin-top: 4px;">
@@ -141,6 +146,16 @@
 
 <!-- 初始化应用 -->
 <script>
+  // 预加载图片资源
+  function preloadImage(url) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = resolve;
+      img.onerror = reject;
+      img.src = url;
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', async () => {
     // 隐藏预渲染内容，让JS重新渲染
     const preRenderedHeader = document.querySelector('.header-content');
