@@ -73,8 +73,8 @@ header, nav, main, footer {
 
 /* --- 4. 头部区域 (Header) --- */
 header {
-  padding-top: 60px;
-  padding-bottom: 30px;
+  padding-top: 30px;
+  padding-bottom: 20px;
 }
 
 /* 响应式头部：手机端保持较大间距 */
