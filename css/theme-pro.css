@@ -95,14 +95,27 @@ header {
 @media (min-width: 769px) {
   .header-content {
     flex-direction: row;
+    align-items: flex-start;
   }
   
   .header-content .profile-img {
     flex-shrink: 0;
+    align-self: flex-start;
   }
   
   .header-content > div {
     flex: 1;
+    min-width: 0; /* 防止flex item溢出 */
+  }
+  
+  .header-content h1 {
+    white-space: nowrap;
+  }
+  
+  .header-content .affiliation p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 

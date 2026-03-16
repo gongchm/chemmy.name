@@ -158,39 +158,37 @@ class ModularContentRenderer {
         }
 
         header.innerHTML = `
-            <div class="header-content" style="align-items: flex-start; text-align: left;">
-                <div style="display: flex; align-items: center; width: 100%; gap: 16px; margin-bottom: 8px;">
-                    <img src="${profile.photo}" alt="${profile.name}" class="profile-img" loading="eager">
-                    <div style="flex-grow: 1;">
-                        <h1 style="margin: 0; font-size: 1.8rem; color: var(--text-main);">${profile.name}</h1>
-                        <div class="affiliation" style="margin-top: 4px;">
-                            ${profile.affiliations.map(aff => `
-                                <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted); position: relative; display: inline-block;">
-                                    <a href="${aff.url}" target="_blank" 
-                                       style="text-decoration: none; color: inherit; cursor: pointer;"
-                                       onmouseover="this.parentElement.querySelector('.tooltip').style.display='block';"
-                                       onmouseout="this.parentElement.querySelector('.tooltip').style.display='none';">
-                                        <span class="affiliation-full">${aff.name}</span>
-                                        <span class="affiliation-abbr" style="display: none;">${aff.abbr || aff.name}</span>
-                                    </a>
-                                    ${aff.tip ? `
-                                    <span class="tooltip" 
-                                          style="display: none; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); 
-                                                 background: var(--text-main); color: white; padding: 4px 8px; border-radius: 4px; 
-                                                 font-size: 0.8rem; white-space: nowrap; z-index: 1000; margin-bottom: 4px;
-                                                 box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
-                                        ${aff.tip}
-                                        <span style="position: absolute; top: 100%; left: 50%; transform: translateX(-50); 
-                                                   border: 4px solid transparent; border-top-color: var(--text-main);"></span>
-                                    </span>
-                                    ` : ''}
-                                </p>
-                            `).join('')}
-                        </div>
+            <div class="header-content" style="text-align: left;">
+                <img src="${profile.photo}" alt="${profile.name}" class="profile-img" loading="eager">
+                <div class="header-info" style="flex: 1; min-width: 0;">
+                    <h1 style="margin: 0; font-size: 1.8rem; color: var(--text-main);">${profile.name}</h1>
+                    <div class="affiliation" style="margin-top: 4px;">
+                        ${profile.affiliations.map(aff => `
+                            <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted); position: relative; display: inline-block;">
+                                <a href="${aff.url}" target="_blank" 
+                                   style="text-decoration: none; color: inherit; cursor: pointer;"
+                                   onmouseover="this.parentElement.querySelector('.tooltip').style.display='block';"
+                                   onmouseout="this.parentElement.querySelector('.tooltip').style.display='none';">
+                                    <span class="affiliation-full">${aff.name}</span>
+                                    <span class="affiliation-abbr" style="display: none;">${aff.abbr || aff.name}</span>
+                                </a>
+                                ${aff.tip ? `
+                                <span class="tooltip" 
+                                      style="display: none; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); 
+                                             background: var(--text-main); color: white; padding: 4px 8px; border-radius: 4px; 
+                                             font-size: 0.8rem; white-space: nowrap; z-index: 1000; margin-bottom: 4px;
+                                             box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                                    ${aff.tip}
+                                    <span style="position: absolute; top: 100%; left: 50%; transform: translateX(-50); 
+                                               border: 4px solid transparent; border-top-color: var(--text-main);"></span>
+                                </span>
+                                ` : ''}
+                            </p>
+                        `).join('')}
                     </div>
+                    ${bioHtml}
+                    ${contactHtml}
                 </div>
-                ${bioHtml}
-                ${contactHtml}
             </div>
         `;
 
