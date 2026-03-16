@@ -158,7 +158,7 @@ class ModularContentRenderer {
         }
 
         header.innerHTML = `
-            <div class="header-content" style="display: flex; flex-direction: column; align-items: flex-start; text-align: left;">
+            <div class="header-content" style="align-items: flex-start; text-align: left;">
                 <div style="display: flex; align-items: center; width: 100%; gap: 16px; margin-bottom: 8px;">
                     <img src="${profile.photo}" alt="${profile.name}" class="profile-img" loading="eager">
                     <div style="flex-grow: 1;">
