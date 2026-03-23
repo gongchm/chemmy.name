@@ -56,6 +56,14 @@
       "title": "获奖与专利",
       "enabled": true,
       "order": 3
+    },
+    {
+      "id": "posts",
+      "file": "posts.json",
+      "title": "Posts",
+      "enabled": true,
+      "order": 4,
+      "renderer": "posts"
     }
   ],
   "footer": {

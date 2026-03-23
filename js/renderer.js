@@ -92,6 +92,8 @@ class ModularContentRenderer {
         let html = '';
         if (moduleData.renderer === 'papers') {
             html = this.buildPapersHtml(this.currentModule, moduleData);
+        } else if (moduleData.renderer === 'posts') {
+            html = this.buildPostsHtml(this.currentModule, moduleData);
         } else {
             html = this.buildStandardHtml(this.currentModule, moduleData);
         }
@@ -127,6 +129,44 @@ class ModularContentRenderer {
         }
         html += '</div></section>';
         return html;
+    }
+
+    buildPostsHtml(moduleId, moduleData) {
+        let html = `<section id="${moduleId}" class="module-section visible fade-in">`;
+        html += '<div class="posts-container">';
+        if (moduleData.items && Array.isArray(moduleData.items)) {
+            moduleData.items.forEach((post) => {
+                html += this.renderPostItem(post);
+            });
+        }
+        html += '</div></section>';
+        return html;
+    }
+
+    renderPostItem(post) {
+        const tagsHtml = post.tags && Array.isArray(post.tags) 
+            ? post.tags.map(tag => `<span class="post-tag">${tag}</span>`).join('')
+            : '';
+        
+        return `
+            <article class="post-item">
+                <header class="post-header">
+                    <h3 class="post-title">
+                        <a href="${post.url}" target="_self">${post.title}</a>
+                    </h3>
+                    <div class="post-meta">
+                        <span class="post-date">${post.date}</span>
+                        ${tagsHtml ? `<div class="post-tags">${tagsHtml}</div>` : ''}
+                    </div>
+                </header>
+                <div class="post-summary">
+                    <p>${post.summary}</p>
+                </div>
+                <footer class="post-footer">
+                    <a href="${post.url}" class="post-read-more" target="_self">阅读全文 →</a>
+                </footer>
+            </article>
+        `;
     }
 
     renderHeader(headerConfig) {

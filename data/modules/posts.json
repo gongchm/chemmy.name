@@ -1,0 +1,46 @@
+{
+  "title": "Posts",
+  "description": "技术博客文章 - 分享电力系统、软件工程和个人成长的心得体会",
+  "items": [
+    {
+      "id": "open-3000",
+      "title": "OPEN-3000忆事",
+      "date": "2017-12-27",
+      "summary": "带领着我们前进的姚总抑或更高、更广的层面有着清晰的、远大的、坚定的目标、愿景或理想，现在再去思考，我想一定是有这一点的。",
+      "url": "posts/open-3000-memories.htm",
+      "tags": ["OPEN-3000", "电力系统", "回忆录"]
+    },
+    {
+      "id": "nevcc-2018",
+      "title": "参加2018中国新能源汽车国际合作大会圆桌论坛",
+      "date": "2018-06-15",
+      "summary": "围绕能源主题，提出两个要点，三个场景",
+      "url": "posts/nevcc-2018.htm",
+      "tags": ["新能源汽车", "V2G", "论坛"]
+    },
+    {
+      "id": "cote-divoire",
+      "title": "在首届非洲智能电网论坛闭幕式上的致辞",
+      "date": "2018-03-20",
+      "summary": "很荣幸能够代表国家电网公司在首届非洲智能电网论坛闭幕式上致辞。",
+      "url": "posts/cote-divoire.htm",
+      "tags": ["非洲", "智能电网", "国际合作"]
+    },
+    {
+      "id": "software-ability",
+      "title": "应用软件开发人员的软件素养",
+      "date": "2018-02-10",
+      "summary": "非计算机专业的应用软件开发人员花适当的精力来提升自己的软件素养是非常有必要也是值得的。",
+      "url": "posts/software-ability.htm",
+      "tags": ["软件工程", "职业发展", "能力提升"]
+    },
+    {
+      "id": "csdp",
+      "title": "通过了IEEE Computer Society的CSDP认证",
+      "date": "2017-09-05",
+      "summary": "通过此次CSDP认证的中国人有3位，美国人有87位，印度人有7位，其他国家的有21位。",
+      "url": "posts/csdp.htm",
+      "tags": ["CSDP", "软件认证", "IEEE"]
+    }
+  ]
+}
